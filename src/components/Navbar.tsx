@@ -118,12 +118,11 @@ export const Navbar: React.FC<NavbarProps> = ({
     { num: '01', label: t.nav.configurator, href: '#configurator', sectionId: 'configurator', icon: Sliders, desc: t.nav.configuratorDesc },
     { num: '02', label: t.nav.pvcGrades, href: '#products', sectionId: 'products', icon: Layers, desc: t.nav.pvcGradesDesc },
     { num: '03', label: language === 'hi' ? 'सभी उत्पाद' : 'All Products', href: '#all-products', sectionId: 'all-products', icon: Package, desc: 'Complete 30+ Industrial Facility Range' },
-    { num: '04', label: language === 'hi' ? 'वास्तविक तस्वीरें' : 'Real Photos', href: '#real-photos', sectionId: 'real-photos' as any, icon: Sparkles, desc: '19+ Authentic Project Installations' },
-    { num: '05', label: language === 'hi' ? 'हमारे ग्राहक' : 'Happy Clients', href: '#happy-clients', sectionId: 'happy-clients', icon: ShieldCheck, desc: '10,000+ Clients & Facility Profiles' },
-    { num: '06', label: t.nav.thermalRoi, href: '#roi-calculator', sectionId: 'roi-calculator', icon: Zap, desc: t.nav.thermalRoiDesc },
-    { num: '07', label: t.nav.hardware, href: '#installation', sectionId: 'installation', icon: Package, desc: t.nav.hardwareDesc },
-    { num: '08', label: t.nav.quality, href: '#quality', sectionId: 'quality', icon: Award, desc: t.nav.qualityDesc },
-    { num: '09', label: language === 'hi' ? 'संपर्क' : 'Contact', href: '#contact', sectionId: 'contact', icon: MapPin, desc: 'Ahmedabad HQ 3D Map & Inquiry' },
+    { num: '04', label: language === 'hi' ? 'हमारे ग्राहक' : 'Happy Clients', href: '#happy-clients', sectionId: 'happy-clients', icon: ShieldCheck, desc: '10,000+ Clients & Facility Profiles' },
+    { num: '05', label: t.nav.thermalRoi, href: '#roi-calculator', sectionId: 'roi-calculator', icon: Zap, desc: t.nav.thermalRoiDesc },
+    { num: '06', label: t.nav.hardware, href: '#installation', sectionId: 'installation', icon: Package, desc: t.nav.hardwareDesc },
+    { num: '07', label: t.nav.quality, href: '#quality', sectionId: 'quality', icon: Award, desc: t.nav.qualityDesc },
+    { num: '08', label: language === 'hi' ? 'संपर्क' : 'Contact', href: '#contact', sectionId: 'contact', icon: MapPin, desc: 'Ahmedabad HQ 3D Map & Inquiry' },
   ];
 
   const handleLinkClick = (href: string, sectionId?: FocusedSectionId) => {
