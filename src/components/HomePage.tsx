@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MultiLogo, MultiLogoIcon } from './MultiLogo';
 import { IsometricFactoryDiagram } from './IsometricFactoryDiagram';
-import { RealPhotosSection } from './RealPhotosSection';
 import { useLanguage } from '../i18n/LanguageContext';
 import { PVCGrade } from '../types';
 import { 
@@ -127,91 +126,6 @@ export const HomePage: React.FC<HomePageProps> = ({
       badge: 'SAFETY FILTER',
       imageUrl: '/assets/Screenshot 2026-08-16 214148.png',
       grade: 'welding-safety'
-    }
-  ];
-
-  // Gateway Cards to specific modules
-  const sectionGateways = [
-    {
-      id: 'configurator',
-      title: '3D CAD Configurator',
-      subtitle: 'Interactive Doorway Engine',
-      desc: 'Build custom doorways with real-time 3D physics, overlap calculation, FLIR thermal view & engineering Bill of Materials.',
-      icon: Box,
-      accent: '#F27D26',
-      badge: 'CAD PHYSICS'
-    },
-    {
-      id: 'real-photos',
-      title: 'Real Project Photos',
-      subtitle: '19+ Authentic Installations',
-      desc: 'Explore real warehouse docks, cold storage rooms, pharma cleanrooms, welding booths, and SS 304 hardware setups.',
-      icon: Camera,
-      accent: '#F27D26',
-      badge: '19+ REAL PHOTOS'
-    },
-    {
-      id: 'products',
-      title: 'PVC Strip Curtains',
-      subtitle: '7 Polymer Grade Matrix',
-      desc: 'Standard Clear, Polar Freezer (-50°C), Double Ribbed, Anti-Insect Amber, Anti-Static ESD, Welding Bronze & Opaque.',
-      icon: Layers,
-      accent: '#38bdf8',
-      badge: '7 FORMULATIONS'
-    },
-    {
-      id: 'all-products',
-      title: 'All Facility Products',
-      subtitle: 'Complete 30+ Industrial Range',
-      desc: 'Industrial Air Curtains, Insect Light Traps, SS Suspension Tracks, Anti-Fatigue Mats, Strip Rolls & Industrial Curtains.',
-      icon: Package,
-      accent: '#22c55e',
-      badge: '30+ PRODUCTS'
-    },
-    {
-      id: 'happy-clients',
-      title: 'Our Happy Clients',
-      subtitle: '21 Enterprise Tier Matrix',
-      desc: 'Trusted by Amul, Zydus Cadila, Sun Pharma, Adani, Tata Motors, Reliance, Cadila Pharmaceuticals & 5000+ facilities.',
-      icon: Users,
-      accent: '#a855f7',
-      badge: '5000+ DOORWAYS'
-    },
-    {
-      id: 'roi-calculator',
-      title: 'Energy ROI Calculator',
-      subtitle: 'HVAC Thermal Loss Estimator',
-      desc: 'Calculate annual kWh electricity savings, compressor run-hour reduction, and payback timeline for your facility.',
-      icon: Calculator,
-      accent: '#ec4899',
-      badge: 'PAYBACK ~4 MONTHS'
-    },
-    {
-      id: 'installation',
-      title: 'Hardware & Installation',
-      subtitle: 'SS 304 Blueprint Systems',
-      desc: 'Hook-on track rails, sliding mechanisms, face/lintel mounting, torque specs, and tool-less strip replacement.',
-      icon: Wrench,
-      accent: '#f59e0b',
-      badge: 'SS 304 AISI'
-    },
-    {
-      id: 'quality',
-      title: 'Quality & Test Standards',
-      subtitle: 'Material Specifications',
-      desc: 'Tear resistance, flame retardance, food contact safety, welding radiation filter, and optical clarity testing reports.',
-      icon: ShieldCheck,
-      accent: '#06b6d4',
-      badge: 'TESTED RESIN'
-    },
-    {
-      id: 'contact',
-      title: 'Contact & 3D Map',
-      subtitle: 'Ahmedabad Headquarters',
-      desc: 'Interactive 3D map with animated engineer guide, live GPS navigation, quotation form, and direct factory contacts.',
-      icon: MapPin,
-      accent: '#00a8cc',
-      badge: '3D GUIDE & MAP'
     }
   ];
 
@@ -532,91 +446,37 @@ export const HomePage: React.FC<HomePageProps> = ({
             </motion.div>
           ))}
         </div>
-      </section>
 
-      {/* ========================================================================= */}
-      {/* 4. REAL PROJECT PHOTOS SHOWCASE (19+ Authentic Factory Photos) */}
-      {/* ========================================================================= */}
-      <RealPhotosSection
-        onOpenQuoteModal={onOpenQuoteModal}
-        onOpenConfigurator={(grade) => {
-          onNavigateSection('configurator');
-        }}
-        onOpenSampleModal={onOpenSampleModal}
-      />
-
-      {/* ========================================================================= */}
-      {/* 5. EXPLORE DEDICATED SECTIONS (Futuristic Architecture Gateways) */}
-      {/* ========================================================================= */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-white/10">
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#F27D26] animate-ping" />
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#F27D26]">
-              [ DEDICATED INDUSTRIAL SECTIONS ]
-            </span>
+        {/* Full Gallery Gateway Banner */}
+        <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#14161F] via-[#1A1D28] to-[#14161F] border border-[#F27D26]/30 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xl">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-[#F27D26]/20 border border-[#F27D26]/40 flex items-center justify-center flex-shrink-0">
+              <Camera className="w-6 h-6 text-[#F27D26]" />
+            </div>
+            <div>
+              <h3 className="text-base sm:text-lg font-bold text-white font-mono uppercase tracking-wide">
+                {language === 'hi' ? '19+ वास्तविक फैक्ट्री और प्रोजेक्ट तस्वीरें' : 'Complete 19+ Real Project Photo Archive'}
+              </h3>
+              <p className="text-xs text-white/60 font-light mt-0.5 max-w-xl">
+                {language === 'hi' 
+                  ? 'वेयरहाउस लोडिंग बे, कोल्ड स्टोरेज, क्लीनरूम और हेवी-ड्यूटी एसएस ट्रैक्स की 19 वास्तविक तस्वीरें फुल स्क्रीन में देखें।' 
+                  : 'Explore high-resolution authentic installations across warehouses, sub-zero cold rooms, and cleanrooms in dedicated full view.'}
+              </p>
+            </div>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black uppercase text-white tracking-tight font-display mb-3">
-            Explore Specialized Engineering Portals
-          </h2>
-          <p className="text-sm sm:text-base text-white/60 font-light">
-            Every section opens into a focused, full-screen tool with interactive CAD simulations, data tables, and rapid ordering.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-          {sectionGateways.map((gate) => {
-            const Icon = gate.icon;
-            return (
-              <motion.div
-                key={gate.id}
-                whileHover={{ y: -4, scale: 1.01 }}
-                onClick={() => onNavigateSection(gate.id)}
-                className="p-5 rounded-2xl bg-[#111319] border border-white/10 hover:border-white/30 transition-all cursor-pointer group flex flex-col justify-between shadow-lg relative overflow-hidden"
-              >
-                {/* Ambient Top Glow Line */}
-                <div 
-                  className="absolute top-0 left-0 right-0 h-1 opacity-60 group-hover:opacity-100 transition-opacity"
-                  style={{ backgroundColor: gate.accent }}
-                />
-
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div 
-                      className="w-11 h-11 rounded-xl flex items-center justify-center shadow-lg"
-                      style={{ backgroundColor: `${gate.accent}20`, border: `1px solid ${gate.accent}40` }}
-                    >
-                      <Icon className="w-5 h-5" style={{ color: gate.accent }} />
-                    </div>
-                    <span 
-                      className="px-2 py-0.5 rounded text-[9px] font-mono font-bold"
-                      style={{ backgroundColor: `${gate.accent}20`, color: gate.accent, border: `1px solid ${gate.accent}30` }}
-                    >
-                      {gate.badge}
-                    </span>
-                  </div>
-
-                  <h3 className="text-base font-bold text-white group-hover:text-[#F27D26] transition-colors mb-1">
-                    {gate.title}
-                  </h3>
-                  <div className="text-[11px] font-mono text-white/40 mb-2.5">{gate.subtitle}</div>
-                  <p className="text-xs text-white/60 leading-relaxed font-light">
-                    {gate.desc}
-                  </p>
-                </div>
-
-                <div className="pt-4 mt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono font-bold text-white/80 group-hover:text-white">
-                  <span>Open Section</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" style={{ color: gate.accent }} />
-                </div>
-              </motion.div>
-            );
-          })}
+          <button
+            type="button"
+            onClick={() => onNavigateSection('real-photos')}
+            className="w-full sm:w-auto flex-shrink-0 px-6 py-3.5 bg-gradient-to-r from-[#F27D26] to-[#ff8c37] hover:from-[#ff8c37] hover:to-[#ffa25b] text-white font-mono font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-[0_0_20px_rgba(242,125,38,0.4)] flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <span>{language === 'hi' ? 'फुल स्क्रीन गैलरी खोलें (19)' : 'Open 19+ Photo Gallery'}</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 5. SIGNATURE CONTACT & QUICK LINKS FOOTER (Cyan Theme matching Image.png) */}
+      {/* 4. SIGNATURE CONTACT & QUICK LINKS FOOTER (Cyan Theme matching Image.png) */}
       {/* ========================================================================= */}
       <footer className="relative bg-[#07242B] text-white pt-16 pb-8 border-t-2 border-cyan-500/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

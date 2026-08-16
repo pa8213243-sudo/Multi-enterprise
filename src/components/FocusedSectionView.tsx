@@ -20,6 +20,7 @@ import {
   LayoutGrid,
   ShieldCheck,
   MoreHorizontal,
+  MoreVertical,
   Compass,
   ArrowRight,
   MapPin
@@ -291,20 +292,19 @@ export const FocusedSectionView: React.FC<FocusedSectionViewProps> = ({
 
             {/* Right: Quick Drawer, Language & Actions */}
             <div className="flex items-center gap-2 sm:gap-3">
-              {/* All Sections Grid Modal Trigger */}
+              {/* 3-Dot Quick Menu Trigger */}
               <button
                 type="button"
                 onClick={() => setIsQuickMenuOpen(!isQuickMenuOpen)}
-                className={`flex items-center gap-1.5 px-3 py-2 border rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${
+                className={`p-2.5 rounded-xl border transition-all cursor-pointer flex items-center justify-center ${
                   isQuickMenuOpen 
-                    ? 'bg-[#F27D26] text-white border-[#F27D26]' 
-                    : 'bg-white/5 hover:bg-white/10 text-white/90 border-white/15'
+                    ? 'bg-[#F27D26] text-white border-[#F27D26] shadow-lg shadow-[#F27D26]/30' 
+                    : 'bg-white/5 hover:bg-white/15 text-white/80 hover:text-white border-white/15'
                 }`}
-                title="Open complete sections overview"
+                title={language === 'hi' ? 'सभी 11 सेक्शन्स मेनू' : 'All Sections Menu (11)'}
+                aria-label="Toggle all sections menu"
               >
-                <LayoutGrid className="w-3.5 h-3.5 text-[#F27D26]" />
-                <span className="hidden sm:inline">{language === 'hi' ? 'सभी 11 सेक्शन्स' : 'All Sections (11)'}</span>
-                <span className="sm:hidden">Menu</span>
+                <MoreVertical className="w-4 h-4" />
               </button>
 
               {/* Language Toggle */}
