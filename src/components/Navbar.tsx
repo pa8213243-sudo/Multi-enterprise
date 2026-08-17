@@ -168,7 +168,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       href: '#happy-clients', 
       sectionId: 'happy-clients', 
       icon: ShieldCheck, 
-      desc: '10,000+ Clients & Facility Profiles' 
+      desc: 'Pan-India Industrial Clientele' 
     },
     { 
       num: '06', 

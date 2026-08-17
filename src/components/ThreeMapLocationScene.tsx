@@ -735,7 +735,7 @@ export const ThreeMapLocationScene: React.FC<ThreeMapLocationSceneProps> = ({
       '👋 Namaste! Multi Enterprise welcomes you to Ahmedabad!',
       '✨ Manufacturing industrial PVC curtains since 1998!',
       '📍 Come visit us at FF-5, Madhuram Complex, Keshav Nagar!',
-      '🏭 Over 10,000+ facilities supplied across India!'
+      '🏭 Pan-India industrial supply from Ahmedabad HQ!'
     ];
     const nextMsg = messages[Math.floor(Math.random() * messages.length)];
     setCharacterMessage(nextMsg);

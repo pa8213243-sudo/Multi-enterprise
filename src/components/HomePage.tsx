@@ -240,8 +240,8 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="text-[11px] font-mono text-[#64748B] uppercase">Tested Industrial Grade</div>
             </div>
             <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#EAE5DA] text-center">
-              <div className="text-xl sm:text-2xl font-black text-cyan-500 font-mono">10,000+</div>
-              <div className="text-[11px] font-mono text-[#64748B] uppercase">Doorways Installed</div>
+              <div className="text-xl sm:text-2xl font-black text-cyan-600 font-mono">Pan-India</div>
+              <div className="text-[11px] font-mono text-[#64748B] uppercase">Nationwide Supply</div>
             </div>
             <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#EAE5DA] text-center">
               <div className="text-xl sm:text-2xl font-black text-emerald-600 font-mono">24-48h</div>

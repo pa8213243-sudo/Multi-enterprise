@@ -509,7 +509,7 @@ export const HappyClientsShowcase: React.FC<HappyClientsShowcaseProps> = ({
             <div className="flex items-center justify-center gap-2 mb-3">
               <MultiLogoIcon size={18} className="w-4.5 h-4.5" />
               <span className="text-[#0077ED] text-xs font-mono tracking-widest uppercase font-bold">
-                [ {language === 'hi' ? '30+ वर्षों का विश्वास • 10,000+ ग्राहक' : 'TRUSTED INDUSTRIAL CLIENTELE'} ]
+                [ {language === 'hi' ? '30+ वर्षों का विश्वास • प्रमाणित औद्योगिक ग्राहक' : 'TRUSTED INDUSTRIAL CLIENTELE'} ]
               </span>
             </div>
 
@@ -519,8 +519,8 @@ export const HappyClientsShowcase: React.FC<HappyClientsShowcaseProps> = ({
 
             <p className="text-xs sm:text-sm text-[#475569] font-light max-w-xl mx-auto font-sans">
               {language === 'hi'
-                ? '3 दशकों में फार्मास्युटिकल्स, खाद्य लॉजिस्टिक्स, ऑटोमोटिव और बुनियादी ढांचा क्षेत्रों में सेवा प्राप्त 10,000+ ग्राहकों में से कुछ प्रमुख नाम।'
-                : 'Sharing few of the clients from over 10,000+ served over 3 decades across pharmaceuticals, food logistics, automotive, and infrastructure sectors.'}
+                ? 'फार्मास्युटिकल्स, खाद्य लॉजिस्टिक्स, ऑटोमोटिव और बुनियादी ढांचा क्षेत्रों में देश भर के प्रमुख ग्राहकों में से कुछ नाम।'
+                : 'Trusted across pharmaceuticals, food logistics, automotive, and infrastructure sectors nationwide.'}
             </p>
 
             {/* Sector Filter Chips */}
@@ -569,7 +569,7 @@ export const HappyClientsShowcase: React.FC<HappyClientsShowcaseProps> = ({
             ))}
           </div>
 
-          {/* 10,000+ Milestone Counter Banner */}
+          {/* Verified Network Counter Banner */}
           <div className="mt-8 max-w-5xl mx-auto bg-[#FFFFFF] border border-[#E2DDD2] p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-[#0077ED]/20 border border-[#0077ED] flex items-center justify-center text-[#0077ED] font-mono font-bold text-sm">
@@ -586,7 +586,7 @@ export const HappyClientsShowcase: React.FC<HappyClientsShowcaseProps> = ({
             </div>
 
             <div className="text-xs font-mono text-emerald-600 font-bold bg-emerald-500/10 px-3 py-1.5 border border-emerald-500/30 rounded-lg">
-              {language === 'hi' ? '✓ 10,000+ सफल इंस्टॉलेशन पूर्ण' : '✓ 10,000+ Installations Completed'}
+              {language === 'hi' ? '✓ प्रमाणित औद्योगिक आपूर्ति नेटवर्क' : '✓ Verified Industrial Supply Network'}
             </div>
           </div>
         </div>
