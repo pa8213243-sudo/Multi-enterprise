@@ -116,6 +116,49 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
           })}
         </div>
 
+        {/* Why Choose Us & What You Get Section */}
+        <div className="mb-16 rounded-2xl bg-gradient-to-r from-[#00A8C5] to-[#0089A3] p-8 sm:p-10 text-white shadow-xl border border-[#007A91]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
+            
+            {/* Why Choose Us */}
+            <div className="space-y-4 bg-white/10 p-6 sm:p-8 rounded-2xl backdrop-blur-xs border border-white/20">
+              <h3 className="text-2xl sm:text-3xl font-black uppercase font-display tracking-tight text-white border-b border-white/25 pb-3">
+                {language === 'hi' ? 'हमें क्यों चुनें (Why Choose Us)' : 'Why Choose Us'}
+              </h3>
+              <div className="space-y-3.5 text-xs sm:text-sm text-white/95 leading-relaxed font-light font-sans">
+                <p>
+                  With a legacy of excellence dating back to 1998, we have earned a reputation for manufacturing customized solutions that deliver results. What sets us apart is not just the quality of our products, but also our dedication to customer satisfaction.
+                </p>
+                <p>
+                  Whether you&apos;re looking to improve energy efficiency in your warehouse or maintain temperature control in your cold storage facility, our PVC strip curtains provide the ideal solution.
+                </p>
+                <p>
+                  In today&apos;s world, hygiene has never been more important, and our company is here to provide you with the tools you need to maintain the highest standards of cleanliness and safety. Our hygiene products are not just effective; they&apos;re essential for ensuring the well-being of your employees, customers, and loved ones. With our unwavering commitment to quality, choosing us as your hygiene partner is the smart choice for a safer, healthier future.
+                </p>
+              </div>
+            </div>
+
+            {/* What You Get */}
+            <div className="space-y-4 bg-white/10 p-6 sm:p-8 rounded-2xl backdrop-blur-xs border border-white/20">
+              <h3 className="text-2xl sm:text-3xl font-black uppercase font-display tracking-tight text-white border-b border-white/25 pb-3">
+                {language === 'hi' ? 'आपको क्या मिलता है (What You Get)' : 'What You Get'}
+              </h3>
+              <div className="space-y-3.5 text-xs sm:text-sm text-white/95 leading-relaxed font-light font-sans">
+                <p>
+                  With over three decades of experience in the industry, we have perfected the art of manufacturing PVC strip curtains that not only meet but exceed expectations. Our commitment to innovation ensures that our products are at the forefront of technology, offering unmatched durability and performance in any environment.
+                </p>
+                <p>
+                  Our love for PVC strip curtains is evident in every detail of our products, from their durability and versatility to their ability to enhance safety and workflow efficiency. When you choose our PVC strip curtains, you&apos;re choosing decades of expertise, innovation, and a passion for excellence.
+                </p>
+                <p>
+                  From powerful disinfectants to convenient sanitizing wipes, our range of products is designed to address the unique needs of various industries and settings. By choosing our hygiene products, you&apos;re not just investing in cleanliness; you&apos;re investing in peace of mind.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
         {/* Corporate Trust Banner */}
         <div className="bg-[#FAF8F5] border border-[#D8D2C5] p-8 rounded-2xl shadow-xl flex flex-col lg:flex-row items-center justify-between gap-8">
           <div className="space-y-2 max-w-2xl">

@@ -496,53 +496,6 @@ export const HomePage: React.FC<HomePageProps> = ({
       </section>
 
       {/* ========================================================================= */}
-      {/* 3.5 WHY CHOOSE US & WHAT YOU GET (Official Multi Enterprise Excellence) */}
-      {/* ========================================================================= */}
-      <section className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[#00A8C5] to-[#0089A3] text-white overflow-hidden shadow-inner border-y border-[#007A91]">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
-            
-            {/* Why Choose Us Card */}
-            <div className="space-y-4 bg-white/10 p-6 sm:p-8 rounded-2xl backdrop-blur-xs border border-white/20 shadow-lg">
-              <h3 className="text-2xl sm:text-3xl font-black uppercase font-display tracking-tight text-white border-b border-white/25 pb-3 flex items-center gap-2">
-                <span>{language === 'hi' ? 'हमें क्यों चुनें' : 'Why Choose Us'}</span>
-              </h3>
-              <div className="space-y-3.5 text-xs sm:text-sm text-white/95 leading-relaxed font-light font-sans">
-                <p>
-                  With a legacy of excellence dating back to 1998, we have earned a reputation for manufacturing customized solutions that deliver results. What sets us apart is not just the quality of our products, but also our dedication to customer satisfaction.
-                </p>
-                <p>
-                  Whether you&apos;re looking to improve energy efficiency in your warehouse or maintain temperature control in your cold storage facility, our PVC strip curtains provide the ideal solution.
-                </p>
-                <p>
-                  In today&apos;s world, hygiene has never been more important, and our company is here to provide you with the tools you need to maintain the highest standards of cleanliness and safety. Our hygiene products are not just effective; they&apos;re essential for ensuring the well-being of your employees, customers, and loved ones. With our unwavering commitment to quality, choosing us as your hygiene partner is the smart choice for a safer, healthier future.
-                </p>
-              </div>
-            </div>
-
-            {/* What You Get Card */}
-            <div className="space-y-4 bg-white/10 p-6 sm:p-8 rounded-2xl backdrop-blur-xs border border-white/20 shadow-lg">
-              <h3 className="text-2xl sm:text-3xl font-black uppercase font-display tracking-tight text-white border-b border-white/25 pb-3 flex items-center gap-2">
-                <span>{language === 'hi' ? 'आपको क्या मिलता है' : 'What You Get'}</span>
-              </h3>
-              <div className="space-y-3.5 text-xs sm:text-sm text-white/95 leading-relaxed font-light font-sans">
-                <p>
-                  With over three decades of experience in the industry, we have perfected the art of manufacturing PVC strip curtains that not only meet but exceed expectations. Our commitment to innovation ensures that our products are at the forefront of technology, offering unmatched durability and performance in any environment.
-                </p>
-                <p>
-                  Our love for PVC strip curtains is evident in every detail of our products, from their durability and versatility to their ability to enhance safety and workflow efficiency. When you choose our PVC strip curtains, you&apos;re choosing decades of expertise, innovation, and a passion for excellence.
-                </p>
-                <p>
-                  From powerful disinfectants to convenient sanitizing wipes, our range of products is designed to address the unique needs of various industries and settings. By choosing our hygiene products, you&apos;re not just investing in cleanliness; you&apos;re investing in peace of mind.
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
       {/* 4. SIGNATURE CONTACT & QUICK LINKS FOOTER (Cyan Theme matching Image.png) */}
       {/* ========================================================================= */}
       <footer className="relative bg-[#07242B] text-white pt-16 pb-8 border-t-2 border-cyan-500/40">

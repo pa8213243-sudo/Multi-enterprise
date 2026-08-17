@@ -122,6 +122,16 @@ export const Navbar: React.FC<NavbarProps> = ({
   }[] = [
     { 
       num: '01', 
+      topLine: language === 'hi' ? 'कंपनी' : 'ABOUT', 
+      bottomLine: language === 'hi' ? 'परिचय' : 'MULTI', 
+      label: language === 'hi' ? 'कंपनी परिचय' : 'About Multi', 
+      href: '#about', 
+      sectionId: 'about', 
+      icon: Info, 
+      desc: 'Est. 1998 Heritage & Leadership' 
+    },
+    { 
+      num: '02', 
       topLine: '3D', 
       bottomLine: 'CONFIGURATOR', 
       label: '3D Configurator', 
@@ -131,7 +141,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       desc: t.nav.configuratorDesc 
     },
     { 
-      num: '02', 
+      num: '03', 
       topLine: language === 'hi' ? 'पीवीसी' : 'PVC', 
       bottomLine: language === 'hi' ? 'ग्रेड्स' : 'GRADES', 
       label: t.nav.pvcGrades, 
@@ -141,7 +151,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       desc: t.nav.pvcGradesDesc 
     },
     { 
-      num: '03', 
+      num: '04', 
       topLine: language === 'hi' ? 'सभी' : 'ALL', 
       bottomLine: language === 'hi' ? 'उत्पाद' : 'PRODUCTS', 
       label: language === 'hi' ? 'सभी उत्पाद' : 'All Products', 
@@ -151,7 +161,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       desc: 'Complete 30+ Industrial Facility Range' 
     },
     { 
-      num: '04', 
+      num: '05', 
       topLine: language === 'hi' ? 'हमारे' : 'HAPPY', 
       bottomLine: language === 'hi' ? 'ग्राहक' : 'CLIENTS', 
       label: language === 'hi' ? 'हमारे ग्राहक' : 'Happy Clients', 
@@ -161,7 +171,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       desc: '10,000+ Clients & Facility Profiles' 
     },
     { 
-      num: '05', 
+      num: '06', 
       topLine: language === 'hi' ? 'थर्मल' : 'THERMAL', 
       bottomLine: language === 'hi' ? 'आर.ओ.आई' : 'ROI', 
       label: t.nav.thermalRoi, 
@@ -171,7 +181,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       desc: t.nav.thermalRoiDesc 
     },
     { 
-      num: '06', 
+      num: '07', 
       topLine: language === 'hi' ? 'उद्योग' : 'SECTOR &', 
       bottomLine: language === 'hi' ? 'हार्डवेयर' : 'HARDWARE', 
       label: language === 'hi' ? 'उद्योग व हार्डवेयर समाधान' : 'Sector & Hardware Solutions', 
@@ -181,7 +191,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       desc: 'Industry Matrix & Mounting Systems' 
     },
     { 
-      num: '07', 
+      num: '08', 
       topLine: language === 'hi' ? 'क्वालिटी' : 'QUALITY', 
       bottomLine: language === 'hi' ? 'मानक' : 'STANDARDS', 
       label: t.nav.quality, 
@@ -189,16 +199,6 @@ export const Navbar: React.FC<NavbarProps> = ({
       sectionId: 'quality', 
       icon: Award, 
       desc: t.nav.qualityDesc 
-    },
-    { 
-      num: '08', 
-      topLine: language === 'hi' ? 'कंपनी' : 'ABOUT', 
-      bottomLine: language === 'hi' ? 'परिचय' : 'MULTI', 
-      label: language === 'hi' ? 'कंपनी परिचय' : 'About Multi', 
-      href: '#about', 
-      sectionId: 'about', 
-      icon: Info, 
-      desc: 'Est. 1998 Heritage & Leadership' 
     },
     { 
       num: '09', 
