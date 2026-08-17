@@ -94,7 +94,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <div className="hidden md:flex items-center gap-6 text-[11px] font-mono uppercase tracking-widest text-[#64748B]">
             <span className="flex items-center gap-1.5 bg-[#FAF8F5] px-2.5 py-1 rounded border border-[#E2DDD2] text-[#475569]">
               <ShieldCheck className="w-3.5 h-3.5 text-[#0077ED]" />
-              100% VIRGIN PVC COMPOUND
+              HIGH-GRADE TESTED PVC COMPOUND
             </span>
             <span className="flex items-center gap-1.5 bg-[#FAF8F5] px-2.5 py-1 rounded border border-[#E2DDD2] text-[#475569]">
               <ThermometerSnowflake className="w-3.5 h-3.5 text-white" />

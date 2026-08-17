@@ -83,7 +83,7 @@ export const ALL_FACILITY_PRODUCTS: FacilityProduct[] = [
     tagline: 'Reusable, water-resistant & lightweight polypropylene storage and transit boxes',
     description: 'High-impact polypropylene fluted hollow board containers designed for durable internal logistics, picking, and export packaging.',
     imageUrl: '/assets/Products/Screenshot 2026-08-17 102938.png',
-    specs: ['Material: 100% Virgin Polypropylene', 'Thickness: 2mm to 8mm (250 - 1800 GSM)', 'Properties: 100% Waterproof, Oil Resistant', 'Customization: Partitioned, Foldable, Stackable'],
+    specs: ['Material: High-Grade Polypropylene', 'Thickness: 2mm to 8mm (250 - 1800 GSM)', 'Properties: 100% Waterproof, Oil Resistant', 'Customization: Partitioned, Foldable, Stackable'],
     applications: ['Automotive component transit', 'Electronics packaging', 'Pharma sample transport', 'Cold chain distribution'],
     featured: false
   },
@@ -215,7 +215,7 @@ export const ALL_FACILITY_PRODUCTS: FacilityProduct[] = [
     tagline: 'Lightweight breathable non-woven hairnets preventing loose hair contamination',
     description: 'Double-elastic pleated bouffant caps ensuring complete hair containment in hygienic production lines and cleanrooms.',
     imageUrl: '/assets/Products/Screenshot 2026-08-17 103140.png',
-    specs: ['Material: 10-14 GSM Virgin Polypropylene Spunbond', 'Size: 18", 21", 24" Expandable', 'Elastic: Dual elastic headband for secure grip', 'Breathability: High airflow, lint-free fabric'],
+    specs: ['Material: 10-14 GSM Durable Polypropylene Spunbond', 'Size: 18", 21", 24" Expandable', 'Elastic: Dual elastic headband for secure grip', 'Breathability: High airflow, lint-free fabric'],
     applications: ['Pharma production bays', 'Catering & bakery lines', 'Electronics assembly', 'Hospital surgical suites'],
     featured: false
   },
@@ -226,7 +226,7 @@ export const ALL_FACILITY_PRODUCTS: FacilityProduct[] = [
     tagline: 'High-density polyethylene (HDPE) stackable and nestable heavy-duty material crates',
     description: 'Rigid injection molded and custom fabricated storage crates with reinforced ribs for automated conveyor systems and warehouse stacking.',
     imageUrl: '/assets/Products/Screenshot 2026-08-16 215405.png',
-    specs: ['Material: Virgin HDPE / Copolymer PP', 'Load Capacity: 25 kg to 100 kg per crate', 'Features: Reinforced handles, label holders, dollies compatible', 'Temperature: Resists -30°C to +75°C'],
+    specs: ['Material: High-Grade HDPE / Copolymer PP', 'Load Capacity: 25 kg to 100 kg per crate', 'Features: Reinforced handles, label holders, dollies compatible', 'Temperature: Resists -30°C to +75°C'],
     applications: ['Automotive sub-assembly logistics', 'Agriculture & fresh produce', 'Retail logistics hubs', 'Cold room inventory'],
     featured: false
   },
@@ -235,9 +235,9 @@ export const ALL_FACILITY_PRODUCTS: FacilityProduct[] = [
     name: 'Heavy Duty Wheeled Dustbins',
     category: 'Waste & Sanitation',
     tagline: 'Commercial mobile waste bins with solid rubber wheels & foot-pedal opening',
-    description: 'High-capacity outdoor and indoor wheeled refuse containers manufactured from UV-stabilized virgin high-density polyethylene.',
+    description: 'High-capacity outdoor and indoor wheeled refuse containers manufactured from UV-stabilized high-density polyethylene.',
     imageUrl: '/assets/Products/Screenshot 2026-08-16 215411.png',
-    specs: ['Capacity: 120L, 240L, 660L, 1100L', 'Material: UV-stabilized Virgin HDPE', 'Wheels: Solid heavy-duty rubber with steel axle', 'Compliance: EN 840 Standard Compliant'],
+    specs: ['Capacity: 120L, 240L, 660L, 1100L', 'Material: UV-stabilized High-Grade HDPE', 'Wheels: Solid heavy-duty rubber with steel axle', 'Compliance: EN 840 Standard Compliant'],
     applications: ['Factory floor waste management', 'Municipal recycling', 'Commercial complexes', 'Hospital bio-waste transport'],
     featured: true
   },
@@ -248,7 +248,7 @@ export const ALL_FACILITY_PRODUCTS: FacilityProduct[] = [
     tagline: 'High-strength low-density polyethylene & polypropylene bags for bulk packaging',
     description: 'Heavy gauge transparent and colored polymer bags, drum liners, and box liners ensuring moisture and dust barrier protection.',
     imageUrl: '/assets/Products/Screenshot 2026-08-16 215421.png',
-    specs: ['Material: LDPE, LLDPE, PP (Virgin Grade)', 'Thickness: 25 to 200 Microns (100 - 800 Gauge)', 'Sealing: Heavy-duty bottom & side heat seals', 'Custom: Gusseted, anti-static, printed available'],
+    specs: ['Material: LDPE, LLDPE, PP (Premium Grade)', 'Thickness: 25 to 200 Microns (100 - 800 Gauge)', 'Sealing: Heavy-duty bottom & side heat seals', 'Custom: Gusseted, anti-static, printed available'],
     applications: ['Chemical & resin packaging', 'Textile export bales', 'Pharma active ingredient liners', 'Food grain storage'],
     featured: false
   },
@@ -391,7 +391,7 @@ export const ALL_FACILITY_PRODUCTS: FacilityProduct[] = [
     tagline: 'Color-coded biomedical waste bins (Yellow, Red, Blue, Black) with universal biohazard symbol',
     description: 'Foot-pedal operated color-coded infectious waste bins complying with Biomedical Waste Management Rules for segregated medical refuse.',
     imageUrl: '/assets/Products/Screenshot 2026-08-17 103447.png',
-    specs: ['Colors: Yellow (Infectious), Red (Plastics), Blue (Glass), Black (General)', 'Capacities: 30L, 45L, 60L, 80L Foot Pedal', 'Material: Virgin Polypropylene Autoclavable', 'Marking: High-visibility Biohazard Warning Graphic'],
+    specs: ['Colors: Yellow (Infectious), Red (Plastics), Blue (Glass), Black (General)', 'Capacities: 30L, 45L, 60L, 80L Foot Pedal', 'Material: Autoclavable Polypropylene', 'Marking: High-visibility Biohazard Warning Graphic'],
     applications: ['Hospitals & clinics', 'Diagnostic laboratories', 'Blood banks & dialysis centers', 'Pharma R&D labs'],
     featured: true
   }

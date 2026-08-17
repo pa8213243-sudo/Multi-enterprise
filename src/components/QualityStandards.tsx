@@ -55,7 +55,7 @@ export const QualityStandards: React.FC = () => {
     {
       code: 'TENSILE & TEAR TESTED',
       title: 'High Tensile Resin Compound',
-      desc: 'Extruded from virgin polymer resin compound ensuring high tear resistance and long flex life.'
+      desc: 'Extruded from high-grade polymer resin compound ensuring high tear resistance and long flex life.'
     },
     {
       code: 'PHTHALATE FREE OPTIONS',

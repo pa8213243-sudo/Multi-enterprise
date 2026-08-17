@@ -195,7 +195,7 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="hover:text-[#0077ED] transition-colors">100% VIRGIN POLYMER</span>
+            <span className="hover:text-[#0077ED] transition-colors">HIGH GRADE INDUSTRIAL QUALITY</span>
             <span>•</span>
             <span className="hover:text-[#0077ED] transition-colors">FOOD & PHARMA SUITABLE</span>
             <span>•</span>

@@ -28,10 +28,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
 
   const highlights = [
     {
-      title: language === 'hi' ? '100% वर्जिन ग्रेड पॉलिमर' : '100% Virgin Grade Polymer',
+      title: language === 'hi' ? 'उच्च गुणवत्ता एवं टिकाऊ पॉलीमर' : 'High-Grade Tested Industrial Quality',
       desc: language === 'hi'
-        ? 'हम केवल प्रथम-गुणवत्ता वाले अनरिसाइकिल पॉलिमर का उपयोग करते हैं, जिससे अद्वितीय स्पष्टता और लचीलापन सुनिश्चित होता है।'
-        : 'Formulated exclusively with virgin polymer compounds to guarantee consistent optical transparency and extended wear life.',
+        ? 'हम उच्च गुणवत्ता वाले टिकाऊ पॉलीमर कम्पाउंड का उपयोग करते हैं, जिससे अद्वितीय स्पष्टता और लम्बा जीवनकाल सुनिश्चित होता है।'
+        : 'Formulated with high-grade, durable polymer compounds to guarantee consistent optical transparency and extended wear life.',
       icon: ShieldCheck
     },
     {

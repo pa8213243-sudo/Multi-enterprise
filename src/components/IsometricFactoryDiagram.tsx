@@ -114,9 +114,9 @@ export const IsometricFactoryDiagram: React.FC<IsometricFactoryDiagramProps> = (
       grade: 'transparent',
       category: 'safety',
       tempRange: '-15°C to +50°C',
-      specs: '200mm x 2mm & 300mm x 3mm 100% Virgin Polymer Clear • 92% Optical Clarity',
+      specs: '200mm x 2mm & 300mm x 3mm High-Grade Industrial Clear • 92% Optical Clarity',
       description: 'Isolates airborne dust, sawdust, chemical powders, and particulates between office partitions and manufacturing floors.',
-      benefits: ['High Efficiency Particulate Containment', 'High-Clarity Optical Grade Virgin Polymer', 'Reduces HVAC Filter Clogging & Wear']
+      benefits: ['High Efficiency Particulate Containment', 'High-Clarity Optical Grade Polymer', 'Reduces HVAC Filter Clogging & Wear']
     },
     {
       id: 'noise-reduction',

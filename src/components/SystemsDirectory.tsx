@@ -46,7 +46,7 @@ export const SystemsDirectory: React.FC<SystemsDirectoryProps> = ({ onSelectSect
       desc: t.nav.pvcGradesDesc,
       icon: Layers,
       badge: '6 Polymers',
-      techSpec: '100% Virgin Compound'
+      techSpec: 'Good Quality Compound'
     },
     {
       id: 'roi-calculator',

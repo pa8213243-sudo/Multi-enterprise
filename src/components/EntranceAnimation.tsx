@@ -14,8 +14,8 @@ export const EntranceAnimation: React.FC<EntranceAnimationProps> = ({ onComplete
   useEffect(() => {
     const statuses = [
       'INITIALIZING MULTI ENTERPRISE CAD ENGINE...',
-      'CALIBRATING 100% VIRGIN PVC POLYMER COMPOUND...',
-      'LOADING ISO 9001:2015 CERTIFIED SPECIFICATIONS...',
+      'CALIBRATING HIGH-GRADE PVC POLYMER COMPOUND...',
+      'LOADING 27+ YEARS OF TRUSTED SPECIFICATIONS...',
       'PREPARING 3D THERMAL & CFD AIRFLOW SIMULATOR...',
       'WELCOME TO MULTI ENTERPRISE • EST. 1998'
     ];
@@ -135,8 +135,8 @@ export const EntranceAnimation: React.FC<EntranceAnimationProps> = ({ onComplete
 
           <div className="flex items-center justify-between text-[10px] font-mono text-[#64748B] pt-1">
             <span className="flex items-center gap-1">
-              <ShieldCheck className="w-3 h-3 text-emerald-400" />
-              ISO 9001:2015 &amp; CE
+              <ShieldCheck className="w-3 h-3 text-emerald-600" />
+              27+ YEARS OF TRUST
             </span>
             <span>AHMEDABAD • NATIONWIDE</span>
           </div>

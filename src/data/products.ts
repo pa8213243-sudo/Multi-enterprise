@@ -5,7 +5,7 @@ export const PVC_GRADES: Record<string, ProductGradeInfo> = {
     id: 'transparent',
     name: 'Transparent',
     shortName: 'Transparent Clear',
-    tagline: 'High-optical clarity virgin polymer barrier for industrial warehouses & pedestrian thoroughfares',
+    tagline: 'High-optical clarity high-clarity industrial polymer barrier for industrial warehouses & pedestrian thoroughfares',
     colorHex: '#e0f2fe',
     color3D: {
       color: 0xe0f2fe,
@@ -25,7 +25,7 @@ export const PVC_GRADES: Record<string, ProductGradeInfo> = {
       'Effective thermal barrier to separate ambient temperature zones',
       'Acoustic noise isolation across noisy factory floor areas',
       'Smooth non-snag rounded edge profile for smooth passage',
-      '100% Virgin compound formulation free from DOP/DEHP contaminants'
+      'High-grade polymer formulation free from DOP/DEHP contaminants'
     ],
     applications: [
       'Warehouse loading docks & internal partition barriers',
@@ -214,7 +214,7 @@ export const PVC_GRADES: Record<string, ProductGradeInfo> = {
       'Effective light suppression and partial privacy barrier',
       'Strong resistance to industrial vapors and drafts',
       'Smooth edges prevent snags during staff passage',
-      'Virgin compound durable under continuous heavy cycle use'
+      'Durable compound engineered for continuous heavy cycle use'
     ],
     applications: [
       'Assembly line boundary partitions',
@@ -447,7 +447,7 @@ export const PVC_GRADES: Record<string, ProductGradeInfo> = {
     keyFeatures: [
       'Bright vibrant green color creates clear visual segregation between bays',
       'Good light transmission while establishing distinct operational boundaries',
-      'Flexible, scratch-resistant virgin polymer compound',
+      'Flexible, scratch-resistant high-clarity industrial polymer compound',
       'Resistant to grease, water, dust and mild chemicals',
       'Smooth non-snag edge finish for employee comfort'
     ],
@@ -665,7 +665,7 @@ export const INDUSTRY_SOLUTIONS: IndustrySolution[] = [
       { label: 'Clarity', value: 'Transparent', desc: 'Workstation visibility' }
     ],
     keyBenefits: [
-      'Virgin compound without offensive odors',
+      'Clean compound without offensive odors',
       'Useful for server aisle and cleanroom containment',
       'Smooth pass-through for technicians and carts'
     ]
@@ -715,7 +715,7 @@ export const INDUSTRY_SOLUTIONS: IndustrySolution[] = [
 export const TECHNICAL_METRICS = [
   { label: 'Years of Manufacturing Experience', value: '27+', detail: 'Established in 1998' },
   { label: 'Product Formulations Available', value: '6 Types', detail: 'Tailored for varied industries' },
-  { label: 'Material Quality', value: '100% Virgin', detail: 'Consistent clarity & durability' },
+  { label: 'Material Quality', value: 'Good Quality', detail: 'Consistent clarity & durability' },
   { label: 'Dispatch Turnaround', value: '24-48h', detail: 'Standard rolls & cut kits' }
 ];
 
@@ -787,8 +787,8 @@ export const FAQS: FAQItem[] = [
     id: 'faq-trimming-lifespan',
     category: 'maintenance',
     question: "Can PVC strips be trimmed on-site, and what is their typical working life?",
-    answer: "Yes, strips can be easily trimmed on-site using a sharp utility knife and a straight metal ruler. If strips stretch slightly over time and touch the floor, simply trim 10mm from the bottom edge. In typical indoor warehouse use, quality virgin PVC curtains last several years, with high-traffic center strips replaced as needed.",
-    highlights: ['Trimmable on-site with utility knife', 'Individual center strip replacement saves cost', 'Long-life virgin polymer construction']
+    answer: "Yes, strips can be easily trimmed on-site using a sharp utility knife and a straight metal ruler. If strips stretch slightly over time and touch the floor, simply trim 10mm from the bottom edge. In typical indoor warehouse use, high-quality PVC curtains last several years, with high-traffic center strips replaced as needed.",
+    highlights: ['Trimmable on-site with utility knife', 'Individual center strip replacement saves cost', 'Long-life high-clarity industrial polymer construction']
   },
   {
     id: 'faq-subzero-thermal',
@@ -808,8 +808,8 @@ export const FAQS: FAQItem[] = [
     id: 'faq-food-haccp',
     category: 'compliance',
     question: "Are your PVC curtains suitable for food storage and processing areas?",
-    answer: "Yes. Our standard clear, polar, and anti-insect PVC strips are manufactured from virgin compounds without hazardous heavy metals or recycled industrial contaminants. They are non-porous and can be washed regularly to maintain sanitation in food handling environments.",
-    highlights: ['Virgin non-toxic compound', 'Smooth and easy to sanitize', 'Suitable for food and storage areas']
+    answer: "Yes. Our standard clear, polar, and anti-insect PVC strips are manufactured from high-grade polymer compounds without hazardous heavy metals or recycled industrial contaminants. They are non-porous and can be washed regularly to maintain sanitation in food handling environments.",
+    highlights: ['Tested non-toxic compound', 'Smooth and easy to sanitize', 'Suitable for food and storage areas']
   },
   {
     id: 'faq-welding-esd',

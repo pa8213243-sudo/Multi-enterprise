@@ -573,22 +573,22 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="px-6 py-4 bg-[#F8F6F0] border-t border-[#E2DDD2] text-xs font-mono text-[#64748B] flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-2 text-[10px]">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#0077ED]" />
-                <span>FACTORY DIRECT MFG • 100% VIRGIN PVC</span>
+                <span>FACTORY DIRECT MFG • GOOD QUALITY PVC</span>
               </div>
 
               <div className="flex items-center gap-4 text-[10px]">
                 <a 
-                  href="tel:+919820000000" 
-                  className="flex items-center gap-1 text-white hover:text-[#0077ED] transition-colors focus:outline-none focus:ring-1 focus:ring-[#0077ED] p-1 rounded"
+                  href="tel:+919377678155" 
+                  className="flex items-center gap-1 text-[#0F172A] hover:text-[#0077ED] transition-colors focus:outline-none focus:ring-1 focus:ring-[#0077ED] p-1 rounded"
                 >
                   <PhoneCall className="w-3 h-3 text-[#0077ED]" />
-                  <span>Call Direct</span>
+                  <span>+91 9377 678 155</span>
                 </a>
                 <a 
-                  href="https://wa.me/919820000000" 
+                  href="https://wa.me/919377678155" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1 text-emerald-400 hover:underline focus:outline-none focus:ring-1 focus:ring-emerald-400 p-1 rounded"
+                  className="flex items-center gap-1 text-emerald-600 hover:underline focus:outline-none focus:ring-1 focus:ring-emerald-600 p-1 rounded"
                 >
                   <MessageSquare className="w-3 h-3" />
                   <span>WhatsApp</span>

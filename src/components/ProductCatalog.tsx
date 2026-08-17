@@ -301,8 +301,8 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                     className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="p-2.5 bg-[#FAF8F5] border-t border-[#E2DDD2] flex items-center justify-between text-[11px] font-mono text-[#475569]">
-                    <span>100% Virgin Grade Polymer</span>
-                    <span className="text-[#0077ED] font-bold">ASTM D638 / DIN 53387</span>
+                    <span>High-Grade Tested Polymer</span>
+                    <span className="text-[#0077ED] font-bold">Industrial Quality</span>
                   </div>
                 </div>
 

@@ -233,18 +233,18 @@ export const HomePage: React.FC<HomePageProps> = ({
           >
             <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#EAE5DA] text-center">
               <div className="text-xl sm:text-2xl font-black text-[#0F172A] font-mono">27+ Years</div>
-              <div className="text-[11px] font-mono text-[#64748B] uppercase">Heritage Since 1998</div>
+              <div className="text-[11px] font-mono text-[#64748B] uppercase">Heritage & Trust</div>
             </div>
             <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#EAE5DA] text-center">
-              <div className="text-xl sm:text-2xl font-black text-[#0077ED] font-mono">100% Virgin</div>
-              <div className="text-[11px] font-mono text-[#64748B] uppercase">Certified Polymer</div>
+              <div className="text-xl sm:text-2xl font-black text-[#0077ED] font-mono">Good Quality</div>
+              <div className="text-[11px] font-mono text-[#64748B] uppercase">Tested Industrial Grade</div>
             </div>
             <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#EAE5DA] text-center">
-              <div className="text-xl sm:text-2xl font-black text-cyan-400 font-mono">5,000+</div>
+              <div className="text-xl sm:text-2xl font-black text-cyan-500 font-mono">10,000+</div>
               <div className="text-[11px] font-mono text-[#64748B] uppercase">Doorways Installed</div>
             </div>
             <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#EAE5DA] text-center">
-              <div className="text-xl sm:text-2xl font-black text-emerald-400 font-mono">24-48h</div>
+              <div className="text-xl sm:text-2xl font-black text-emerald-600 font-mono">24-48h</div>
               <div className="text-[11px] font-mono text-[#64748B] uppercase">Fast Dispatch</div>
             </div>
           </motion.div>
@@ -270,13 +270,13 @@ export const HomePage: React.FC<HomePageProps> = ({
               Leading Manufacturer of PVC Strip Curtains
             </h2>
 
-            {/* Exact Content from image.png */}
+            {/* Exact Content from Official Catalog */}
             <div className="space-y-4 text-sm sm:text-base text-[#475569] font-light leading-relaxed">
               <p>
-                Multi Enterprise is the leading manufacturer of PVC Strip Curtains, delivering high-performance, cost-effective solutions for dust control, temperature retention, and workplace safety across diverse industries. With over two decades of engineering excellence, we are committed to providing top-quality materials, customized solutions, and outstanding service.
+                Multi Enterprise is the leading manufacturer of high-quality, durable, certified PVC Strip Curtains, delivering high-performance, cost-effective solutions for dust control, temperature retention, and workplace safety across diverse industries. With over two decades of engineering excellence, we are committed to providing top-quality materials, customized solutions, and outstanding service.
               </p>
               <p>
-                Our PVC strip curtains are crafted from 100% virgin-grade polymer, ensuring superior optical clarity, exceptional flexibility, and long-lasting durability in even the most demanding environments.
+                Our PVC strip curtains are crafted from high-grade, durable polymer compounds, ensuring superior optical clarity, exceptional flexibility, and long-lasting durability in even the most demanding environments.
               </p>
               <p className="text-xs text-[#475569]">
                 Whether you need polar-grade curtains for sub-zero cold rooms, anti-insect yellow strips for food facilities, or heavy-duty double-ribbed curtains for forklift traffic, Multi Enterprise has the perfect solution tailored to your operational needs.
@@ -288,8 +288,8 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#E2DDD2] flex items-start gap-2.5 shadow-xs">
                 <CheckCircle2 className="w-4 h-4 text-[#0077ED] flex-shrink-0 mt-0.5" />
                 <div className="text-xs">
-                  <strong className="text-[#0F172A] block font-mono font-bold">100% Virgin Polymer</strong>
-                  <span className="text-[#475569] text-[11px]">Unmatched wear life &amp; clarity</span>
+                  <strong className="text-[#0F172A] block font-mono font-bold">Good Quality Tested</strong>
+                  <span className="text-[#475569] text-[11px]">High wear life &amp; clarity</span>
                 </div>
               </div>
               <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#E2DDD2] flex items-start gap-2.5 shadow-xs">
@@ -319,11 +319,18 @@ export const HomePage: React.FC<HomePageProps> = ({
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <button
                 type="button"
-                onClick={() => onNavigateSection('about')}
-                className="px-5 py-2.5 rounded-lg bg-[#F4EFE6] hover:bg-[#EAE4D7] text-[#0F172A] text-xs font-mono font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+                onClick={() => onNavigateSection('configurator')}
+                className="px-5 py-3 rounded-xl bg-[#0077ED] hover:bg-[#2B8EFF] text-white font-mono font-bold text-xs uppercase tracking-wider transition-all shadow-md flex items-center gap-2 cursor-pointer"
               >
-                <span>Read Full Company Profile</span>
-                <ChevronRight className="w-3.5 h-3.5" />
+                <span>3D Configurator</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => onNavigateSection('about')}
+                className="px-4 py-2.5 rounded-lg bg-[#F4EFE6] hover:bg-[#EAE4D7] text-[#0F172A] border border-[#E2DDD2] text-xs font-mono font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+              >
+                <span>Full Company Profile</span>
               </button>
               <button
                 type="button"
@@ -489,6 +496,53 @@ export const HomePage: React.FC<HomePageProps> = ({
       </section>
 
       {/* ========================================================================= */}
+      {/* 3.5 WHY CHOOSE US & WHAT YOU GET (Official Multi Enterprise Excellence) */}
+      {/* ========================================================================= */}
+      <section className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[#00A8C5] to-[#0089A3] text-white overflow-hidden shadow-inner border-y border-[#007A91]">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
+            
+            {/* Why Choose Us Card */}
+            <div className="space-y-4 bg-white/10 p-6 sm:p-8 rounded-2xl backdrop-blur-xs border border-white/20 shadow-lg">
+              <h3 className="text-2xl sm:text-3xl font-black uppercase font-display tracking-tight text-white border-b border-white/25 pb-3 flex items-center gap-2">
+                <span>{language === 'hi' ? 'हमें क्यों चुनें' : 'Why Choose Us'}</span>
+              </h3>
+              <div className="space-y-3.5 text-xs sm:text-sm text-white/95 leading-relaxed font-light font-sans">
+                <p>
+                  With a legacy of excellence dating back to 1998, we have earned a reputation for manufacturing customized solutions that deliver results. What sets us apart is not just the quality of our products, but also our dedication to customer satisfaction.
+                </p>
+                <p>
+                  Whether you&apos;re looking to improve energy efficiency in your warehouse or maintain temperature control in your cold storage facility, our PVC strip curtains provide the ideal solution.
+                </p>
+                <p>
+                  In today&apos;s world, hygiene has never been more important, and our company is here to provide you with the tools you need to maintain the highest standards of cleanliness and safety. Our hygiene products are not just effective; they&apos;re essential for ensuring the well-being of your employees, customers, and loved ones. With our unwavering commitment to quality, choosing us as your hygiene partner is the smart choice for a safer, healthier future.
+                </p>
+              </div>
+            </div>
+
+            {/* What You Get Card */}
+            <div className="space-y-4 bg-white/10 p-6 sm:p-8 rounded-2xl backdrop-blur-xs border border-white/20 shadow-lg">
+              <h3 className="text-2xl sm:text-3xl font-black uppercase font-display tracking-tight text-white border-b border-white/25 pb-3 flex items-center gap-2">
+                <span>{language === 'hi' ? 'आपको क्या मिलता है' : 'What You Get'}</span>
+              </h3>
+              <div className="space-y-3.5 text-xs sm:text-sm text-white/95 leading-relaxed font-light font-sans">
+                <p>
+                  With over three decades of experience in the industry, we have perfected the art of manufacturing PVC strip curtains that not only meet but exceed expectations. Our commitment to innovation ensures that our products are at the forefront of technology, offering unmatched durability and performance in any environment.
+                </p>
+                <p>
+                  Our love for PVC strip curtains is evident in every detail of our products, from their durability and versatility to their ability to enhance safety and workflow efficiency. When you choose our PVC strip curtains, you&apos;re choosing decades of expertise, innovation, and a passion for excellence.
+                </p>
+                <p>
+                  From powerful disinfectants to convenient sanitizing wipes, our range of products is designed to address the unique needs of various industries and settings. By choosing our hygiene products, you&apos;re not just investing in cleanliness; you&apos;re investing in peace of mind.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
       {/* 4. SIGNATURE CONTACT & QUICK LINKS FOOTER (Cyan Theme matching Image.png) */}
       {/* ========================================================================= */}
       <footer className="relative bg-[#07242B] text-white pt-16 pb-8 border-t-2 border-cyan-500/40">
@@ -499,12 +553,12 @@ export const HomePage: React.FC<HomePageProps> = ({
             <div className="space-y-4">
               <MultiLogo textColor="white" />
               <p className="text-xs text-cyan-100/75 leading-relaxed font-light">
-                Your trusted partner since 1998. India&apos;s leading industrial manufacturer of certified 100% virgin-grade PVC strip curtains, sub-zero cold room polar barriers, and SS304 suspension hardware.
+                Your trusted partner since 1998. India&apos;s leading manufacturer of high-quality, durable PVC strip curtains, sub-zero cold room polar barriers, and SS304 suspension hardware.
               </p>
               <div className="pt-2">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-900/60 border border-cyan-400/30 text-[11px] font-mono text-cyan-200">
                   <ShieldCheck className="w-3.5 h-3.5 text-cyan-300" />
-                  ISO 9001:2015 &amp; CE Certified
+                  27+ Years of Trust &amp; Good Quality
                 </span>
               </div>
             </div>
@@ -642,7 +696,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             <div className="flex items-center gap-4">
               <span>Ahmedabad, Gujarat, India</span>
               <span>•</span>
-              <span>100% Virgin Grade Polymer</span>
+              <span>Good Quality Tested Polymer</span>
             </div>
           </div>
         </div>

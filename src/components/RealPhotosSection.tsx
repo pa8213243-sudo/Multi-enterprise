@@ -71,7 +71,7 @@ export const REAL_PROJECT_PHOTOS: RealPhotoItem[] = [
     clientType: 'FMCG & Retail Cargo Staging Area',
     specs: '200mm x 2mm Standard Clear • Ceiling Suspended Frame • 50% Overlap',
     grade: 'standard-clear',
-    gradeName: '100% Virgin Standard Clear',
+    gradeName: 'Standard Clear High Grade',
     description: 'Complete loading ramp containment cube constructed with clear PVC strip partitions. Isolates outdoor ambient dust and rain while allowing continuous pallet truck transit.',
     benefits: ['100% Daylight Transmission', 'Shields open loading ramp from monsoon rain & dust', 'Suppresses noise from cargo conveyors'],
     imageUrl: '/assets/Screenshot 2026-08-16 214040.png',
