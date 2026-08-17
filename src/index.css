@@ -5,18 +5,23 @@
     --font-mono: 'JetBrains Mono', monospace;
     --font-sans: 'Plus Jakarta Sans', sans-serif;
     --font-display: 'Space Grotesk', sans-serif;
-    --color-accent: #F27D26;
+    --color-accent: #0077ED;
+    --bg-cream: #F8F6F0;
+    --surface-card: #FFFFFF;
+    --surface-secondary: #FAF8F5;
+    --border-cream: #E5DFD3;
   }
 
   body {
     font-family: var(--font-sans);
-    background-color: #0A0A0B;
-    color: #E0E0E0;
+    background-color: #F8F6F0;
+    color: #1E293B;
   }
   
   h1, h2, h3, .font-display {
     font-family: var(--font-display);
     letter-spacing: -0.03em;
+    color: #0F172A;
   }
   
   .font-mono {
@@ -24,58 +29,58 @@
   }
 }
 
-/* Custom industrial scrollbar */
+/* Custom industrial scrollbar for cream aesthetic */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0A0A0B;
+  background: #F8F6F0;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #232529;
-  border-radius: 2px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: #D8D2C4;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #F27D26;
+  background: #0077ED;
 }
 
-/* Professional Polish Dot Matrix & Grid Pattern */
+/* Professional Polish Dot Matrix & Grid Pattern for Cream Theme */
 .bg-dot-matrix {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+  background-size: 36px 36px;
 }
 
 .bg-grid-pattern {
-  background-size: 40px 40px;
+  background-size: 36px 36px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
 }
 
 .bg-dot-pattern {
   background-size: 24px 24px;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px);
 }
 
-/* Precision metallic edge gradient */
+/* Precision metallic edge gradient for Cream Theme */
 .metal-border {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.005) 100%);
+  border: 1px solid #E5DFD3;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAF8F5 100%);
 }
 
-.metal-border-orange {
-  border: 1px solid rgba(242, 125, 38, 0.35);
-  background: linear-gradient(180deg, rgba(242, 125, 38, 0.08) 0%, rgba(242, 125, 38, 0.01) 100%);
+.metal-border-blue {
+  border: 1px solid rgba(0, 119, 237, 0.3);
+  background: linear-gradient(180deg, rgba(0, 119, 237, 0.06) 0%, rgba(0, 119, 237, 0.01) 100%);
 }
 
 .metal-border-cyan {
-  border: 1px solid rgba(6, 182, 212, 0.25);
-  background: linear-gradient(180deg, rgba(6, 182, 212, 0.05) 0%, rgba(6, 182, 212, 0.01) 100%);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  background: linear-gradient(180deg, rgba(6, 182, 212, 0.06) 0%, rgba(6, 182, 212, 0.01) 100%);
 }
 
 /* Glowing pulse */

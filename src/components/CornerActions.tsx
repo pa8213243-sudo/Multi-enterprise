@@ -80,8 +80,8 @@ export const CornerActions: React.FC<CornerActionsProps> = ({
           title="Industrial Systems Quick Directory (3 Dots)"
           className={`w-11 h-11 rounded-full flex items-center justify-center transition-all shadow-[0_4px_25px_rgba(0,0,0,0.8)] border cursor-pointer ${
             menuOpen
-              ? 'bg-[#F27D26] text-white border-[#F27D26] rotate-90 scale-105'
-              : 'bg-[#141519]/95 text-white hover:text-[#F27D26] border-white/20 hover:border-[#F27D26]'
+              ? 'bg-[#0077ED] text-white border-[#0077ED] rotate-90 scale-105'
+              : 'bg-[#EFE9DE]/95 text-white hover:text-[#0077ED] border-[#CFC8BA] hover:border-[#0077ED]'
           }`}
         >
           {menuOpen ? (
@@ -99,29 +99,29 @@ export const CornerActions: React.FC<CornerActionsProps> = ({
       {/* Floating Corner Systems Directory Overlay / Drawer */}
       <AnimatePresence>
         {menuOpen && (
-          <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-end p-3 sm:p-6 bg-black/60 backdrop-blur-sm">
+          <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-end p-3 sm:p-6 bg-[#FAF8F5] backdrop-blur-sm">
             <motion.div
               initial={{ opacity: 0, scale: 0.92, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.92, y: 20 }}
               transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-              className="w-full max-w-sm bg-[#0E0F12] border border-white/20 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh]"
+              className="w-full max-w-sm bg-[#FAF8F5] border border-[#CFC8BA] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh]"
               data-lenis-prevent
             >
               {/* Header */}
-              <div className="p-4 bg-[#141519] border-b border-white/10 flex items-center justify-between">
+              <div className="p-4 bg-[#EFE9DE] border-b border-[#E2DDD2] flex items-center justify-between">
                 <div>
-                  <div className="text-[10px] font-mono text-[#F27D26] uppercase tracking-widest font-bold">
+                  <div className="text-[10px] font-mono text-[#0077ED] uppercase tracking-widest font-bold">
                     [ SYSTEMS DIRECTORY ]
                   </div>
-                  <h3 className="text-sm font-bold text-white font-display uppercase tracking-tight">
+                  <h3 className="text-sm font-bold text-[#0F172A] font-display uppercase tracking-tight">
                     {language === 'hi' ? 'त्वरित अनुभाग नेविगेशन' : 'Quick Section Navigator'}
                   </h3>
                 </div>
                 <button
                   type="button"
                   onClick={() => setMenuOpen(false)}
-                  className="p-1.5 text-white/50 hover:text-white hover:bg-white/10 rounded-lg transition-colors cursor-pointer"
+                  className="p-1.5 text-[#64748B] hover:text-[#0077ED] hover:bg-[#F4EFE6] rounded-lg transition-colors cursor-pointer"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -139,36 +139,36 @@ export const CornerActions: React.FC<CornerActionsProps> = ({
                       key={sec.id}
                       type="button"
                       onClick={() => handleSelect(sec.id)}
-                      className="w-full py-2.5 px-3 rounded-lg flex items-center justify-between hover:bg-white/5 transition-all text-left group cursor-pointer"
+                      className="w-full py-2.5 px-3 rounded-lg flex items-center justify-between hover:bg-[#FAF8F5] transition-all text-left group cursor-pointer"
                     >
                       <div className="flex items-center gap-3">
-                        <span className="text-xs font-mono font-bold text-[#F27D26] px-1.5 py-0.5 bg-[#F27D26]/10 rounded">
+                        <span className="text-xs font-mono font-bold text-[#0077ED] px-1.5 py-0.5 bg-[#0077ED]/10 rounded">
                           {sec.num}
                         </span>
                         <div>
-                          <div className="text-xs font-bold text-white group-hover:text-[#F27D26] transition-colors uppercase font-mono">
+                          <div className="text-xs font-bold text-white group-hover:text-[#0077ED] transition-colors uppercase font-mono">
                             {sec.label}
                           </div>
-                          <div className="text-[10px] text-white/40 font-mono">
+                          <div className="text-[10px] text-[#64748B] font-mono">
                             {sec.desc}
                           </div>
                         </div>
                       </div>
-                      <ChevronRight className="w-4 h-4 text-white/30 group-hover:text-white transition-transform group-hover:translate-x-1" />
+                      <ChevronRight className="w-4 h-4 text-[#94A3B8] group-hover:text-[#0077ED] transition-transform group-hover:translate-x-1" />
                     </button>
                   );
                 })}
               </div>
 
               {/* Bottom CTAs */}
-              <div className="p-3 bg-[#121316] border-t border-white/10 grid grid-cols-2 gap-2">
+              <div className="p-3 bg-[#FFFFFF] border-t border-[#E2DDD2] grid grid-cols-2 gap-2">
                 <button
                   type="button"
                   onClick={() => {
                     setMenuOpen(false);
                     onOpenQuoteModal();
                   }}
-                  className="py-2 px-3 bg-[#F27D26] text-white font-mono font-bold text-[10px] uppercase tracking-wider rounded text-center cursor-pointer hover:bg-[#ff8c37] transition-colors"
+                  className="py-2 px-3 bg-[#0077ED] text-white font-mono font-bold text-[10px] uppercase tracking-wider rounded text-center cursor-pointer hover:bg-[#2B8EFF] transition-colors"
                 >
                   {language === 'hi' ? 'कोटेशन प्राप्त करें' : 'Get Quote'}
                 </button>
@@ -179,7 +179,7 @@ export const CornerActions: React.FC<CornerActionsProps> = ({
                     setMenuOpen(false);
                     onOpenSampleModal();
                   }}
-                  className="py-2 px-3 bg-white/5 border border-white/15 text-white font-mono text-[10px] uppercase tracking-wider rounded text-center cursor-pointer hover:bg-white/10 transition-colors"
+                  className="py-2 px-3 bg-[#FAF8F5] border border-[#D8D2C5] text-[#0F172A] font-mono text-[10px] uppercase tracking-wider rounded text-center cursor-pointer hover:bg-[#F4EFE6] transition-colors"
                 >
                   {language === 'hi' ? 'नि:शुल्क स्वैच' : 'Free Swatches'}
                 </button>

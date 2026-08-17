@@ -37,6 +37,7 @@ interface HomePageProps {
   onNavigateSection: (sectionId: string) => void;
   onOpenQuoteModal: () => void;
   onOpenSampleModal: () => void;
+  onSelectGradeForConfigurator?: (grade: PVCGrade) => void;
 }
 
 interface LatestWorkItem {
@@ -54,7 +55,8 @@ interface LatestWorkItem {
 export const HomePage: React.FC<HomePageProps> = ({
   onNavigateSection,
   onOpenQuoteModal,
-  onOpenSampleModal
+  onOpenSampleModal,
+  onSelectGradeForConfigurator
 }) => {
   const { language } = useLanguage();
   const [selectedWork, setSelectedWork] = useState<LatestWorkItem | null>(null);
@@ -130,7 +132,7 @@ export const HomePage: React.FC<HomePageProps> = ({
   ];
 
   return (
-    <div className="relative bg-[#08090C] text-[#E0E0E0] overflow-hidden min-h-screen">
+    <div className="relative bg-[#F8F6F0] text-[#1E293B] overflow-x-clip min-h-screen">
       {/* Precision Background Grid */}
       <div 
         className="absolute inset-0 opacity-15 pointer-events-none" 
@@ -141,24 +143,24 @@ export const HomePage: React.FC<HomePageProps> = ({
       />
 
       {/* Hero Atmosphere Radial Glows */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-gradient-to-b from-[#F27D26]/15 via-cyan-500/5 to-transparent blur-[140px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-gradient-to-b from-[#0077ED]/15 via-cyan-500/5 to-transparent blur-[140px] pointer-events-none" />
 
       {/* ========================================================================= */}
       {/* 1. HERO BANNER (Matches Reference Image Banner & Information) */}
       {/* ========================================================================= */}
-      <section className="relative pt-12 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-white/10">
+      <section className="relative pt-12 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-[#E2DDD2]">
         <div className="text-center max-w-4xl mx-auto space-y-6">
           {/* Top Brand Pill */}
           <motion.div 
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#161820] border border-[#F27D26]/30 shadow-lg shadow-[#F27D26]/10"
+            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#FAF8F5] border border-[#D8D2C5] shadow-lg shadow-[#0077ED]/10"
           >
             <MultiLogoIcon size={18} className="w-4.5 h-4.5" />
-            <span className="text-xs font-mono font-bold tracking-widest text-[#F27D26] uppercase">
+            <span className="text-xs font-mono font-bold tracking-widest text-[#0077ED] uppercase">
               WELCOME TO MULTI ENTERPRISE!
             </span>
-            <span className="text-[10px] font-mono text-white/40 border-l border-white/20 pl-2">
+            <span className="text-[10px] font-mono text-[#64748B] border-l border-[#CFC8BA] pl-2">
               EST. 1998
             </span>
           </motion.div>
@@ -168,10 +170,10 @@ export const HomePage: React.FC<HomePageProps> = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white font-display leading-[1.1]"
+            className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-[#0F172A] font-display leading-[1.1]"
           >
             YOUR ONE STOP SOLUTION TO <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F27D26] via-amber-300 to-[#F27D26]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0077ED] via-amber-300 to-[#0077ED]">
               PVC STRIP CURTAINS
             </span>
           </motion.h1>
@@ -181,7 +183,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-sm sm:text-base lg:text-lg text-white/70 font-light max-w-3xl mx-auto leading-relaxed"
+            className="text-sm sm:text-base lg:text-lg text-[#475569] font-light max-w-3xl mx-auto leading-relaxed"
           >
             YOUR TRUSTED PARTNER SINCE 1998, AND LEADING MANUFACTURER OF HIGH-QUALITY, DURABLE, CERTIFIED PVC STRIP CURTAINS &amp; COMPLETE INDUSTRIAL FACILITY BARRIERS.
           </motion.p>
@@ -196,7 +198,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             <button
               type="button"
               onClick={() => onNavigateSection('configurator')}
-              className="px-6 py-3 rounded-xl bg-[#F27D26] hover:bg-[#ff8f3d] text-white font-mono font-bold text-sm transition-all shadow-xl shadow-[#F27D26]/25 hover:shadow-[#F27D26]/40 hover:-translate-y-0.5 flex items-center gap-2 cursor-pointer"
+              className="px-6 py-3 rounded-xl bg-[#0077ED] hover:bg-[#2B8EFF] text-white font-mono font-bold text-sm transition-all shadow-xl shadow-[#0077ED]/25 hover:shadow-[#0077ED]/40 hover:-translate-y-0.5 flex items-center gap-2 cursor-pointer"
             >
               <Box className="w-4 h-4" />
               <span>Launch 3D CAD Configurator</span>
@@ -206,7 +208,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             <button
               type="button"
               onClick={() => onNavigateSection('all-products')}
-              className="px-6 py-3 rounded-xl bg-[#161822] hover:bg-[#1f2230] text-white font-mono font-bold text-sm border border-white/15 transition-all hover:border-white/30 flex items-center gap-2 cursor-pointer"
+              className="px-6 py-3 rounded-xl bg-[#FFFFFF] hover:bg-[#F4EFE6] text-[#0F172A] font-mono font-bold text-sm border border-[#D8D2C5] transition-all hover:border-[#B8AF9F] flex items-center gap-2 cursor-pointer"
             >
               <Package className="w-4 h-4 text-emerald-400" />
               <span>Explore 30+ Products Range</span>
@@ -215,7 +217,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             <button
               type="button"
               onClick={onOpenQuoteModal}
-              className="px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white font-mono text-sm border border-white/10 transition-all flex items-center gap-2 cursor-pointer"
+              className="px-5 py-3 rounded-xl bg-[#FAF8F5] hover:bg-[#F4EFE6] text-[#0F172A] font-mono text-sm border border-[#E2DDD2] transition-all flex items-center gap-2 cursor-pointer"
             >
               <FileDown className="w-4 h-4 text-amber-400" />
               <span>Instant Factory Quote</span>
@@ -227,23 +229,23 @@ export const HomePage: React.FC<HomePageProps> = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-white/10 max-w-4xl mx-auto"
+            className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-[#E2DDD2] max-w-4xl mx-auto"
           >
-            <div className="p-3 rounded-lg bg-white/5 border border-white/5 text-center">
-              <div className="text-xl sm:text-2xl font-black text-white font-mono">27+ Years</div>
-              <div className="text-[11px] font-mono text-white/50 uppercase">Heritage Since 1998</div>
+            <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#EAE5DA] text-center">
+              <div className="text-xl sm:text-2xl font-black text-[#0F172A] font-mono">27+ Years</div>
+              <div className="text-[11px] font-mono text-[#64748B] uppercase">Heritage Since 1998</div>
             </div>
-            <div className="p-3 rounded-lg bg-white/5 border border-white/5 text-center">
-              <div className="text-xl sm:text-2xl font-black text-[#F27D26] font-mono">100% Virgin</div>
-              <div className="text-[11px] font-mono text-white/50 uppercase">Certified Polymer</div>
+            <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#EAE5DA] text-center">
+              <div className="text-xl sm:text-2xl font-black text-[#0077ED] font-mono">100% Virgin</div>
+              <div className="text-[11px] font-mono text-[#64748B] uppercase">Certified Polymer</div>
             </div>
-            <div className="p-3 rounded-lg bg-white/5 border border-white/5 text-center">
+            <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#EAE5DA] text-center">
               <div className="text-xl sm:text-2xl font-black text-cyan-400 font-mono">5,000+</div>
-              <div className="text-[11px] font-mono text-white/50 uppercase">Doorways Installed</div>
+              <div className="text-[11px] font-mono text-[#64748B] uppercase">Doorways Installed</div>
             </div>
-            <div className="p-3 rounded-lg bg-white/5 border border-white/5 text-center">
+            <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#EAE5DA] text-center">
               <div className="text-xl sm:text-2xl font-black text-emerald-400 font-mono">24-48h</div>
-              <div className="text-[11px] font-mono text-white/50 uppercase">Fast Dispatch</div>
+              <div className="text-[11px] font-mono text-[#64748B] uppercase">Fast Dispatch</div>
             </div>
           </motion.div>
         </div>
@@ -252,63 +254,63 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* ========================================================================= */}
       {/* 2. ABOUT US & 3D ISOMETRIC FACTORY BLUEPRINT (Direct from Image.png) */}
       {/* ========================================================================= */}
-      <section id="about-us-section" className="relative py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-white/10">
+      <section id="about-us-section" className="relative py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-[#E2DDD2]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Column: About Us Narrative & Feature Badges */}
           <div className="lg:col-span-5 space-y-6">
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#F27D26]" />
-              <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#F27D26]">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#0077ED]" />
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0077ED]">
                 [ ABOUT US • MULTI ENTERPRISE ]
               </span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase text-white tracking-tight font-display">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase text-[#0F172A] tracking-tight font-display">
               Leading Manufacturer of PVC Strip Curtains
             </h2>
 
             {/* Exact Content from image.png */}
-            <div className="space-y-4 text-sm sm:text-base text-white/70 font-light leading-relaxed">
+            <div className="space-y-4 text-sm sm:text-base text-[#475569] font-light leading-relaxed">
               <p>
                 Multi Enterprise is the leading manufacturer of PVC Strip Curtains, delivering high-performance, cost-effective solutions for dust control, temperature retention, and workplace safety across diverse industries. With over two decades of engineering excellence, we are committed to providing top-quality materials, customized solutions, and outstanding service.
               </p>
               <p>
                 Our PVC strip curtains are crafted from 100% virgin-grade polymer, ensuring superior optical clarity, exceptional flexibility, and long-lasting durability in even the most demanding environments.
               </p>
-              <p className="text-xs text-white/60">
+              <p className="text-xs text-[#475569]">
                 Whether you need polar-grade curtains for sub-zero cold rooms, anti-insect yellow strips for food facilities, or heavy-duty double-ribbed curtains for forklift traffic, Multi Enterprise has the perfect solution tailored to your operational needs.
               </p>
             </div>
 
             {/* Feature Bullets Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-              <div className="p-3 rounded-lg bg-[#12141C] border border-white/10 flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-[#F27D26] flex-shrink-0 mt-0.5" />
+              <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#E2DDD2] flex items-start gap-2.5 shadow-xs">
+                <CheckCircle2 className="w-4 h-4 text-[#0077ED] flex-shrink-0 mt-0.5" />
                 <div className="text-xs">
-                  <strong className="text-white block font-mono">100% Virgin Polymer</strong>
-                  <span className="text-white/50 text-[11px]">Unmatched wear life &amp; clarity</span>
+                  <strong className="text-[#0F172A] block font-mono font-bold">100% Virgin Polymer</strong>
+                  <span className="text-[#475569] text-[11px]">Unmatched wear life &amp; clarity</span>
                 </div>
               </div>
-              <div className="p-3 rounded-lg bg-[#12141C] border border-white/10 flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+              <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#E2DDD2] flex items-start gap-2.5 shadow-xs">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
                 <div className="text-xs">
-                  <strong className="text-white block font-mono">SS 304 Tracks</strong>
-                  <span className="text-white/50 text-[11px]">Tool-less hook-on suspension</span>
+                  <strong className="text-[#0F172A] block font-mono font-bold">SS 304 Tracks</strong>
+                  <span className="text-[#475569] text-[11px]">Tool-less hook-on suspension</span>
                 </div>
               </div>
-              <div className="p-3 rounded-lg bg-[#12141C] border border-white/10 flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
+              <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#E2DDD2] flex items-start gap-2.5 shadow-xs">
+                <CheckCircle2 className="w-4 h-4 text-cyan-600 flex-shrink-0 mt-0.5" />
                 <div className="text-xs">
-                  <strong className="text-white block font-mono">Custom Sizing</strong>
-                  <span className="text-white/50 text-[11px]">Ready-to-hang pre-clamped kits</span>
+                  <strong className="text-[#0F172A] block font-mono font-bold">Custom Sizing</strong>
+                  <span className="text-[#475569] text-[11px]">Ready-to-hang pre-clamped kits</span>
                 </div>
               </div>
-              <div className="p-3 rounded-lg bg-[#12141C] border border-white/10 flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
+              <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#E2DDD2] flex items-start gap-2.5 shadow-xs">
+                <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
                 <div className="text-xs">
-                  <strong className="text-white block font-mono">Fast 24-48h Dispatch</strong>
-                  <span className="text-white/50 text-[11px]">Nationwide &amp; global shipping</span>
+                  <strong className="text-[#0F172A] block font-mono font-bold">Fast 24-48h Dispatch</strong>
+                  <span className="text-[#475569] text-[11px]">Nationwide &amp; global shipping</span>
                 </div>
               </div>
             </div>
@@ -318,7 +320,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <button
                 type="button"
                 onClick={() => onNavigateSection('about')}
-                className="px-5 py-2.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-mono font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+                className="px-5 py-2.5 rounded-lg bg-[#F4EFE6] hover:bg-[#EAE4D7] text-[#0F172A] text-xs font-mono font-bold transition-all flex items-center gap-1.5 cursor-pointer"
               >
                 <span>Read Full Company Profile</span>
                 <ChevronRight className="w-3.5 h-3.5" />
@@ -326,7 +328,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <button
                 type="button"
                 onClick={onOpenSampleModal}
-                className="px-4 py-2.5 rounded-lg bg-[#F27D26]/20 hover:bg-[#F27D26]/30 text-[#F27D26] border border-[#F27D26]/40 text-xs font-mono font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+                className="px-4 py-2.5 rounded-lg bg-[#0077ED]/20 hover:bg-[#0077ED]/30 text-[#0077ED] border border-[#0077ED]/40 text-xs font-mono font-bold transition-all flex items-center gap-1.5 cursor-pointer"
               >
                 <span>Request Physical Samples</span>
               </button>
@@ -337,8 +339,13 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div className="lg:col-span-7">
             <IsometricFactoryDiagram 
               onSelectHotspotGrade={(grade) => {
-                onNavigateSection('configurator');
+                if (onSelectGradeForConfigurator) {
+                  onSelectGradeForConfigurator(grade);
+                } else {
+                  onNavigateSection('configurator');
+                }
               }}
+              onOpenQuoteModal={onOpenQuoteModal}
             />
           </div>
 
@@ -348,7 +355,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* ========================================================================= */}
       {/* 3. LATEST WORKS SHOWCASE (Direct from Image.png) */}
       {/* ========================================================================= */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-white/10">
+      <section className="relative py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-[#E2DDD2]">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-2">
@@ -357,10 +364,10 @@ export const HomePage: React.FC<HomePageProps> = ({
                 [ RECENT INSTALLATIONS &amp; CASE STUDIES ]
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-black uppercase text-white tracking-tight font-display">
+            <h2 className="text-3xl sm:text-4xl font-black uppercase text-[#0F172A] tracking-tight font-display">
               LATEST WORKS
             </h2>
-            <p className="text-sm sm:text-base text-white/60 font-light mt-1">
+            <p className="text-sm sm:text-base text-[#475569] font-light mt-1">
               Take a glimpse of some of our recent works across diverse industrial environments.
             </p>
           </div>
@@ -368,10 +375,10 @@ export const HomePage: React.FC<HomePageProps> = ({
           <button
             type="button"
             onClick={onOpenQuoteModal}
-            className="px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-mono font-bold text-white transition-all self-start sm:self-auto flex items-center gap-2 cursor-pointer"
+            className="px-5 py-2.5 rounded-xl bg-[#FAF8F5] hover:bg-[#F4EFE6] border border-[#D8D2C5] text-xs font-mono font-bold text-[#0F172A] transition-all self-start sm:self-auto flex items-center gap-2 cursor-pointer"
           >
             <span>Get Similar Setup For Your Unit</span>
-            <ArrowRight className="w-3.5 h-3.5 text-[#F27D26]" />
+            <ArrowRight className="w-3.5 h-3.5 text-[#0077ED]" />
           </button>
         </div>
 
@@ -381,11 +388,11 @@ export const HomePage: React.FC<HomePageProps> = ({
             <motion.div
               key={work.id}
               whileHover={{ y: -5 }}
-              className="bg-[#11131A] border border-white/10 hover:border-[#F27D26]/50 rounded-2xl overflow-hidden shadow-xl group transition-all flex flex-col justify-between"
+              className="bg-[#FFFFFF] border border-[#E2DDD2] hover:border-[#0077ED]/50 rounded-2xl overflow-hidden shadow-xl group transition-all flex flex-col justify-between"
             >
               <div>
                 {/* Visual Image Header */}
-                <div className="relative w-full h-52 overflow-hidden bg-black/40">
+                <div className="relative w-full h-52 overflow-hidden bg-[#FAF8F5]">
                   <img
                     src={work.imageUrl}
                     alt={work.title}
@@ -395,11 +402,11 @@ export const HomePage: React.FC<HomePageProps> = ({
                   <div className="absolute inset-0 bg-gradient-to-t from-[#11131A] via-transparent to-black/30" />
                   
                   {/* Category & Badge */}
-                  <span className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md border border-white/20 text-[10px] font-mono font-bold text-[#F27D26]">
+                  <span className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-[#FAF8F5]/90 backdrop-blur-md border border-[#D8D2C5] text-[10px] font-mono font-bold text-[#0077ED]">
                     {work.badge}
                   </span>
                   
-                  <span className="absolute bottom-3 right-3 px-2 py-0.5 rounded text-[10px] font-mono text-white/70 bg-black/60 backdrop-blur-sm">
+                  <span className="absolute bottom-3 right-3 px-2 py-0.5 rounded text-[10px] font-mono text-[#475569] bg-[#FAF8F5] backdrop-blur-sm">
                     {work.location}
                   </span>
                 </div>
@@ -407,38 +414,44 @@ export const HomePage: React.FC<HomePageProps> = ({
                 {/* Content */}
                 <div className="p-5 space-y-3">
                   <div>
-                    <div className="text-[11px] font-mono text-white/40 uppercase mb-0.5">{work.category}</div>
-                    <h3 className="text-lg font-bold text-white group-hover:text-[#F27D26] transition-colors">
+                    <div className="text-[11px] font-mono text-[#64748B] uppercase mb-0.5">{work.category}</div>
+                    <h3 className="text-lg font-bold text-[#0F172A] group-hover:text-[#0077ED] transition-colors">
                       {work.title}
                     </h3>
                   </div>
 
-                  <p className="text-xs text-white/60 leading-relaxed font-light line-clamp-2">
+                  <p className="text-xs text-[#475569] leading-relaxed font-light line-clamp-2">
                     {work.description}
                   </p>
 
-                  <div className="p-2.5 rounded bg-white/5 border border-white/5 text-[11px] font-mono text-white/70">
-                    <strong className="text-white/90 block mb-0.5">Specifications:</strong>
+                  <div className="p-2.5 rounded bg-[#FAF8F5] border border-[#EAE5DA] text-[11px] font-mono text-[#475569]">
+                    <strong className="text-[#1E293B] block mb-0.5">Specifications:</strong>
                     {work.specs}
                   </div>
                 </div>
               </div>
 
               {/* Card Footer Actions */}
-              <div className="p-5 pt-0 flex items-center justify-between border-t border-white/5 mt-4">
+              <div className="p-5 pt-0 flex items-center justify-between border-t border-[#EAE5DA] mt-4">
                 <button
                   type="button"
                   onClick={() => setSelectedWork(work)}
-                  className="text-xs font-mono text-white/70 hover:text-white flex items-center gap-1 cursor-pointer transition-colors"
+                  className="text-xs font-mono text-[#475569] hover:text-[#0077ED] flex items-center gap-1 cursor-pointer transition-colors"
                 >
                   <span>Inspect Details</span>
-                  <Maximize2 className="w-3 h-3 text-[#F27D26]" />
+                  <Maximize2 className="w-3 h-3 text-[#0077ED]" />
                 </button>
 
                 <button
                   type="button"
-                  onClick={() => onNavigateSection('configurator')}
-                  className="text-xs font-mono font-bold text-[#F27D26] hover:text-[#ff9a4d] flex items-center gap-1 cursor-pointer transition-colors"
+                  onClick={() => {
+                    if (onSelectGradeForConfigurator) {
+                      onSelectGradeForConfigurator(work.grade);
+                    } else {
+                      onNavigateSection('configurator');
+                    }
+                  }}
+                  className="text-xs font-mono font-bold text-[#0077ED] hover:text-[#ff9a4d] flex items-center gap-1 cursor-pointer transition-colors"
                 >
                   <span>Configure 3D &rarr;</span>
                 </button>
@@ -448,16 +461,16 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
 
         {/* Full Gallery Gateway Banner */}
-        <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#14161F] via-[#1A1D28] to-[#14161F] border border-[#F27D26]/30 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xl">
+        <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-[#FAF8F5] border border-[#D8D2C5] flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-[#F27D26]/20 border border-[#F27D26]/40 flex items-center justify-center flex-shrink-0">
-              <Camera className="w-6 h-6 text-[#F27D26]" />
+            <div className="w-12 h-12 rounded-xl bg-[#0077ED]/10 border border-[#0077ED]/30 flex items-center justify-center flex-shrink-0">
+              <Camera className="w-6 h-6 text-[#0077ED]" />
             </div>
             <div>
-              <h3 className="text-base sm:text-lg font-bold text-white font-mono uppercase tracking-wide">
+              <h3 className="text-base sm:text-lg font-bold text-[#0F172A] font-mono uppercase tracking-wide">
                 {language === 'hi' ? '19+ वास्तविक फैक्ट्री और प्रोजेक्ट तस्वीरें' : 'Complete 19+ Real Project Photo Archive'}
               </h3>
-              <p className="text-xs text-white/60 font-light mt-0.5 max-w-xl">
+              <p className="text-xs sm:text-sm text-[#475569] font-normal mt-0.5 max-w-xl">
                 {language === 'hi' 
                   ? 'वेयरहाउस लोडिंग बे, कोल्ड स्टोरेज, क्लीनरूम और हेवी-ड्यूटी एसएस ट्रैक्स की 19 वास्तविक तस्वीरें फुल स्क्रीन में देखें।' 
                   : 'Explore high-resolution authentic installations across warehouses, sub-zero cold rooms, and cleanrooms in dedicated full view.'}
@@ -467,7 +480,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           <button
             type="button"
             onClick={() => onNavigateSection('real-photos')}
-            className="w-full sm:w-auto flex-shrink-0 px-6 py-3.5 bg-gradient-to-r from-[#F27D26] to-[#ff8c37] hover:from-[#ff8c37] hover:to-[#ffa25b] text-white font-mono font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-[0_0_20px_rgba(242,125,38,0.4)] flex items-center justify-center gap-2 cursor-pointer"
+            className="w-full sm:w-auto flex-shrink-0 px-6 py-3.5 bg-[#0077ED] hover:bg-[#2B8EFF] text-white font-mono font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-lg hover:shadow-xl shadow-[#0077ED]/25 flex items-center justify-center gap-2 cursor-pointer"
           >
             <span>{language === 'hi' ? 'फुल स्क्रीन गैलरी खोलें (19)' : 'Open 19+ Photo Gallery'}</span>
             <ArrowRight className="w-4 h-4" />
@@ -484,7 +497,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             
             {/* Column 1: Multi Enterprise Identity */}
             <div className="space-y-4">
-              <MultiLogo />
+              <MultiLogo textColor="white" />
               <p className="text-xs text-cyan-100/75 leading-relaxed font-light">
                 Your trusted partner since 1998. India&apos;s leading industrial manufacturer of certified 100% virgin-grade PVC strip curtains, sub-zero cold room polar barriers, and SS304 suspension hardware.
               </p>
@@ -638,14 +651,14 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* Lightbox / Modal for Latest Work Inspection */}
       <AnimatePresence>
         {selectedWork && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0F172A]/85 backdrop-blur-md">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-[#12141C] border border-white/20 rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl text-white"
+              className="bg-[#F8F6F0] border border-[#CFC8BA] rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl text-[#0F172A]"
             >
-              <div className="relative h-64 sm:h-72 w-full bg-black">
+              <div className="relative h-64 sm:h-72 w-full bg-[#F8F6F0]">
                 <img
                   src={selectedWork.imageUrl}
                   alt={selectedWork.title}
@@ -655,26 +668,26 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <button
                   type="button"
                   onClick={() => setSelectedWork(null)}
-                  className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/70 hover:bg-black text-white flex items-center justify-center text-sm cursor-pointer border border-white/20"
+                  className="absolute top-3 right-3 w-8 h-8 rounded-full bg-[#FAF8F5] hover:bg-[#E2DDD2] text-[#0F172A] flex items-center justify-center text-sm cursor-pointer border border-[#CFC8BA]"
                 >
                   ✕
                 </button>
-                <div className="absolute bottom-3 left-3 px-3 py-1 rounded bg-[#F27D26] text-black font-mono font-bold text-xs">
+                <div className="absolute bottom-3 left-3 px-3 py-1 rounded bg-[#0077ED] text-black font-mono font-bold text-xs">
                   {selectedWork.badge}
                 </div>
               </div>
 
               <div className="p-6 space-y-4">
                 <div>
-                  <div className="text-xs font-mono text-[#F27D26] uppercase">{selectedWork.category} • {selectedWork.location}</div>
-                  <h3 className="text-xl font-bold text-white mt-1">{selectedWork.title}</h3>
+                  <div className="text-xs font-mono text-[#0077ED] uppercase">{selectedWork.category} • {selectedWork.location}</div>
+                  <h3 className="text-xl font-bold text-[#0F172A] mt-1">{selectedWork.title}</h3>
                 </div>
 
                 <p className="text-xs sm:text-sm text-white/75 leading-relaxed font-light">
                   {selectedWork.description}
                 </p>
 
-                <div className="p-3 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-white/80">
+                <div className="p-3 rounded-lg bg-[#FAF8F5] border border-[#E2DDD2] text-xs font-mono text-[#334155]">
                   <strong className="text-white block mb-1">Technical Bill of Materials &amp; Specs:</strong>
                   {selectedWork.specs}
                 </div>
@@ -683,10 +696,15 @@ export const HomePage: React.FC<HomePageProps> = ({
                   <button
                     type="button"
                     onClick={() => {
+                      const grade = selectedWork.grade;
                       setSelectedWork(null);
-                      onNavigateSection('configurator');
+                      if (onSelectGradeForConfigurator) {
+                        onSelectGradeForConfigurator(grade);
+                      } else {
+                        onNavigateSection('configurator');
+                      }
                     }}
-                    className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-mono font-bold text-white cursor-pointer"
+                    className="px-4 py-2 rounded-lg bg-[#F4EFE6] hover:bg-[#EAE4D7] text-xs font-mono font-bold text-[#0F172A] cursor-pointer"
                   >
                     Open in 3D CAD
                   </button>
@@ -696,7 +714,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                       setSelectedWork(null);
                       onOpenQuoteModal();
                     }}
-                    className="px-4 py-2 rounded-lg bg-[#F27D26] hover:bg-[#ff8f3d] text-xs font-mono font-bold text-white cursor-pointer flex items-center gap-1.5"
+                    className="px-4 py-2 rounded-lg bg-[#0077ED] hover:bg-[#2B8EFF] text-xs font-mono font-bold text-white cursor-pointer flex items-center gap-1.5"
                   >
                     <span>Request Similar Quote</span>
                     <ArrowRight className="w-3.5 h-3.5" />

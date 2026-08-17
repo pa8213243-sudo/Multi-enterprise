@@ -3,20 +3,20 @@ import { motion, AnimatePresence } from 'motion/react';
 import { MultiLogoIcon } from './MultiLogo';
 import { useLanguage } from '../i18n/LanguageContext';
 import { PVCGrade } from '../types';
-import { 
-  Camera, 
-  Maximize2, 
-  Filter, 
-  CheckCircle2, 
-  ArrowRight, 
-  Sliders, 
-  FileDown, 
-  Sparkles, 
-  X, 
-  ChevronLeft, 
-  ChevronRight, 
-  Download, 
-  ShieldCheck, 
+import {
+  Camera,
+  Maximize2,
+  Filter,
+  CheckCircle2,
+  ArrowRight,
+  Sliders,
+  FileDown,
+  Sparkles,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  Download,
+  ShieldCheck,
   ExternalLink,
   MapPin,
   Building,
@@ -154,171 +154,183 @@ export const REAL_PROJECT_PHOTOS: RealPhotoItem[] = [
   },
   {
     id: 'photo-8',
-    title: '100% Virgin Polymer Standard Clear Roll',
-    category: 'hardware-rolls',
-    categoryLabel: 'Raw Materials & Rolls',
-    location: 'Multi Enterprise Central Warehouse, Ahmedabad',
-    clientType: 'Material Quality Inspection Report',
-    specs: '50m Master Roll • Optical Clarity Index 92% • Shore A 76 Hardness',
-    grade: 'standard-clear',
-    gradeName: 'Standard Clear Polymer Roll',
-    description: 'Close-up laboratory clarity inspection of authentic Multi Enterprise virgin polymer. Zero recycled regrind or toxic phthalate plasticizers.',
-    benefits: ['Crystal-clear optical transparency', 'Does not yellow, cloud, or become brittle over time', 'Supple elasticity down to -15°C'],
-    imageUrl: '/assets/Screenshot 2026-08-16 214504.png'
+    title: 'Dual Logistics Dock Bay #5 Exterior Airlock',
+    category: 'warehouse',
+    categoryLabel: 'Industrial Warehouse & Logistics',
+    location: 'Indospace Industrial Park, Luhari, Haryana',
+    clientType: 'National E-Commerce 3PL Fulfillment Center',
+    specs: '300mm x 3mm Ribbed Clear with High-Vis Red Boundary Strips • 100% Weather Shield',
+    grade: 'double-ribbed',
+    gradeName: 'Double-Ribbed Logistics Grade',
+    description: 'Exterior high-bay loading bay 5 dual-dock installation with high-contrast red perimeter strips. Prevents external rain, dust, and wind ingress while trucks are docked for cross-docking.',
+    benefits: ['Maintains interior HVAC climate stability', 'Bright red safety boundary prevents forklift edge collisions', 'Heavy ribbing resists pallet scrape wear'],
+    imageUrl: '/assets/Screenshot 2026-08-16 230157.png',
+    featured: true
   },
   {
     id: 'photo-9',
-    title: 'Cryogenic Polar Freezer Grade (-50°C)',
-    category: 'cold-storage',
-    categoryLabel: 'Cold Storage & Polar',
-    location: 'Kandla Free Trade Zone Cold Storage, Gujarat',
-    clientType: 'Seafood Export & Sub-Zero Cold Chain',
-    specs: '300mm x 3mm Polar Blue Soft • Operational down to -50°C',
-    grade: 'polar-freezer',
-    gradeName: 'Polar Cryogenic (-50°C)',
-    description: 'Ultra-low temperature cryogenic formulation engineered with non-freezing plasticizers that prevent cracking and shattering in blast freezers.',
-    benefits: ['Crack-proof flexibility at -50°C', 'Prevents heavy ice formation on door frames', 'Eliminates refrigerated air escape during door openings'],
-    imageUrl: '/assets/Screenshot 2026-08-16 214521.png'
+    title: 'Dock Ramp 3D Walk-In Isolation Cube',
+    category: 'warehouse',
+    categoryLabel: 'Industrial Warehouse & Logistics',
+    location: 'Taloja MIDC Chemical & Cargo Zone, Navi Mumbai',
+    clientType: 'Export Freight Forwarding Container Hub',
+    specs: 'Heavy Gauge Structural Steel Frame • 200mm Clear Strips • 67% Overlap',
+    grade: 'standard-clear',
+    gradeName: 'Standard Clear Industrial Enclosure',
+    description: 'Free-standing structural steel enclosure cube built directly over the open outdoor loading ramp, preventing rain splatter and particulate infiltration into warehouse inventory.',
+    benefits: ['Creates a sealed weather-proof airlock', 'Zero daylight reduction with 92% optical clarity', 'Accommodates continuous manual pallet truck transit'],
+    imageUrl: '/assets/Screenshot 2026-08-16 230220.png',
+    featured: true
   },
   {
     id: 'photo-10',
-    title: 'Amber Optical Insect Blocker Swatch',
-    category: 'food-insect',
-    categoryLabel: 'Food & Anti-Insect',
-    location: 'Multi Enterprise Testing Lab',
-    clientType: 'Quality Assurance Spectral Testing',
-    specs: '570nm Wavelength Spectral Filter • Food Contact Safe',
-    grade: 'anti-insect',
-    gradeName: 'Anti-Insect Optical Strip',
-    description: 'Yellow amber strip engineered to block the optical wavelength visible to flying insects, making doorways invisible and repelling pests naturally.',
-    benefits: ['Non-chemical pest barrier', 'Mild lemongrass scent', 'Ideal for food packaging & dairies'],
-    imageUrl: '/assets/Screenshot 2026-08-16 214531.png'
+    title: 'Textile Spooling & Yarn Moisture Chamber',
+    category: 'cleanroom',
+    categoryLabel: 'Cleanroom & Humidity Chamber',
+    location: 'Ichalkaranji Textile Park, Maharashtra',
+    clientType: 'Cotton & Synthetic Spun Yarn Mill',
+    specs: 'Anti-Static ESD Clear Polymeric Wall Barrier • 100% Humidity Retention',
+    grade: 'anti-static',
+    gradeName: 'Anti-Static ESD Controlled',
+    description: 'Full-height enclosed PVC curtain booth shielding automated high-speed yarn spinning and spooling equipment. Maintains exact 65% RH humidity levels to prevent yarn breakage.',
+    benefits: ['Eliminates fly lint and fiber cross-contamination', 'Anti-static formulation repels airborne floating fibers', 'Allows supervisors 100% visual monitoring of spindles'],
+    imageUrl: '/assets/Screenshot 2026-08-16 230241.png',
+    featured: false
   },
   {
     id: 'photo-11',
-    title: 'Heavy Duty Double-Ribbed Forklift Profile',
-    category: 'warehouse',
-    categoryLabel: 'Industrial Warehouse',
-    location: 'Multi Enterprise Extrusion Facility',
-    clientType: 'Heavy Traffic Industrial Doorways',
-    specs: 'Dual Extruded Raised Ribs • 3mm Body / 5mm Rib Peak',
-    grade: 'double-ribbed',
-    gradeName: 'Heavy Double-Ribbed Profile',
-    description: 'Raised dual ribs take the abrasive contact from forklift pallets and truck loads, keeping the flat viewing window free of scratches and dirt.',
-    benefits: ['Extends strip optical lifespan by 300%', 'Reduces friction during vehicle pass-through', 'Superior thermal seal with interlocking ribs'],
-    imageUrl: '/assets/Screenshot 2026-08-16 214547.png'
+    title: 'Cleanroom Packaging Softwall Enclosure',
+    category: 'cleanroom',
+    categoryLabel: 'Cleanroom & Pharma',
+    location: 'Pithampur Pharma SEZ, Indore, MP',
+    clientType: 'Medical Device Packaging & Sterilization Unit',
+    specs: 'Modular Aluminum Truss Enclosure • Red Edge Ingress Marker • Class 10,000 ISO',
+    grade: 'standard-clear',
+    gradeName: 'Cleanroom Grade Clear',
+    description: 'Enclosed softwall cleanroom cell installed inside a larger warehouse floor for sterile packing of medical supplies and auto parts. Features designated red strip entryways.',
+    benefits: ['Cost-effective alternative to rigid cleanroom walls', 'Preserves HEPA filtered positive pressure airflow', 'Easily expandable modular steel frame structure'],
+    imageUrl: '/assets/Screenshot 2026-08-16 230257.png',
+    featured: true
   },
   {
     id: 'photo-12',
-    title: 'Bronze UV Welding Screen Protective Strip',
-    category: 'cleanroom',
-    categoryLabel: 'Welding & Safety',
-    location: 'Engineering Fabrication Bay',
-    clientType: 'Welding Arc & UV Filter Zone',
-    specs: 'EN1598 / ISO 25980 Certified UV Blocker • Bronze Tint',
-    grade: 'welding-safety',
-    gradeName: 'Welding Bronze Screen',
-    description: 'Filters hazardous ultraviolet arc radiation and blue light hazard emitted during TIG/MIG welding operations, preventing flash injuries.',
-    benefits: ['Blocks 99.9% harmful UV rays', 'Allows floor supervisors to safely observe welding inside', 'Fire retardant grade DIN 4102 B1'],
-    imageUrl: '/assets/Screenshot 2026-08-16 214608.png'
+    title: 'Heavy Forklift Ingress Dock Bay #1',
+    category: 'warehouse',
+    categoryLabel: 'Industrial Warehouse & Logistics',
+    location: 'Sri City Industrial Zone, Andhra Pradesh',
+    clientType: 'Heavy Electrical Machinery Assembly Plant',
+    specs: '400mm x 4mm Double-Ribbed Heavy Clear with Red Warning Borders • SS304 Tracks',
+    grade: 'double-ribbed',
+    gradeName: 'Double-Ribbed Forklift Grade',
+    description: 'Extra heavy-duty dock bay #1 doorway partition engineered to withstand 500+ daily crossings of high-capacity electric counterbalance forklifts.',
+    benefits: ['Raised ribs absorb fork tine and wooden pallet friction', 'High-visibility red border strip markings prevent mast collision', 'Stainless steel 304 tracks ensure zero rust in coastal environment'],
+    imageUrl: '/assets/Screenshot 2026-08-16 230306.png',
+    featured: false
   },
   {
     id: 'photo-13',
-    title: 'Anti-Static ESD Safe Electronics Strip',
-    category: 'cleanroom',
-    categoryLabel: 'Cleanroom & Pharma',
-    location: 'Microelectronics & Semiconductor Line',
-    clientType: 'SMT Assembly & PCB Manufacturing',
-    specs: 'Surface Resistivity 10^9 to 10^11 Ω/sq • Zero Static Build-up',
-    grade: 'anti-static',
-    gradeName: 'Anti-Static ESD Strip',
-    description: 'Discharges surface static charges instantly, preventing electrostatic discharge (ESD) shocks that destroy sensitive electronic microchips.',
-    benefits: ['Prevents ESD component burnout', 'Repels airborne dust & particulate attraction', 'Complies with ANSI/ESD S20.20'],
-    imageUrl: '/assets/Screenshot 2026-08-16 214616.png'
+    title: 'Plant Workshop Full-Height Truss Partition',
+    category: 'warehouse',
+    categoryLabel: 'Industrial Warehouse & Logistics',
+    location: 'Sanand Engineering Corridor, Ahmedabad',
+    clientType: 'Automotive Engine & Gearbox Machining Plant',
+    specs: '6.5-Meter Height Steel Truss Structure • Continuous Clear PVC Sheet Barrier',
+    grade: 'standard-clear',
+    gradeName: 'Standard Clear Industrial Partition',
+    description: 'Multi-bay structural steel truss wall clad with heavy gauge transparent PVC strip curtains. Separates CNC robotic machining from quality inspection bays.',
+    benefits: ['Full acoustic suppression of loud grinding operations', 'Restricts coolant mist from drifting into adjoining bays', 'Maintains natural overhead skylight transmission'],
+    imageUrl: '/assets/Screenshot 2026-08-16 230319.png',
+    featured: false
   },
   {
     id: 'photo-14',
-    title: 'Opaque Privacy Black/White Barrier Strip',
-    category: 'cleanroom',
-    categoryLabel: 'Privacy & Security',
-    location: 'Confidential R&D & Darkroom Unit',
-    clientType: 'Sensitive Chemical & Photographic Zone',
-    specs: '100% Light Blocking Solid PVC • 2mm & 3mm Thickness',
+    title: '100-Meter Factory Hall Demarcation Wall',
+    category: 'warehouse',
+    categoryLabel: 'Industrial Warehouse & Logistics',
+    location: 'Oragadam Industrial Corridor, Chennai',
+    clientType: 'Consumer Electronics Assembly Plant',
+    specs: '100-Meter Continuous Transparent PVC Divider • Dust Isolation & AC Retention',
     grade: 'standard-clear',
-    gradeName: 'Opaque Visual Partition',
-    description: 'Total light-blocking solid polymer strip curtain for confidential research areas, wash bays, conveyor tunnels, and darkrooms.',
-    benefits: ['Zero optical transmittance', 'Conceals sensitive machinery and inventory', 'Washdown and chemical splash resistant'],
-    imageUrl: '/assets/Screenshot 2026-08-16 214626.png'
+    gradeName: 'Standard Clear Warehouse Division',
+    description: 'Over 100 meters of continuous ceiling-suspended PVC curtain partitioning dividing a massive 50,000 sq ft industrial shed into temperature-controlled sub-zones.',
+    benefits: ['Cuts central air conditioning energy bills by up to 60%', 'Provides flexible walk-through access anywhere along the line', 'Rapid installation with zero structural masonry required'],
+    imageUrl: '/assets/Screenshot 2026-08-16 230334.png',
+    featured: true
   },
   {
     id: 'photo-15',
-    title: 'AISI 304 Stainless Steel Hook-On Track Rail',
-    category: 'hardware-rolls',
-    categoryLabel: 'Hardware & Systems',
-    location: 'Multi Enterprise Metal Fabrication Shop',
-    clientType: 'Corrosion-Proof Suspension Hardware',
-    specs: '1.2mm & 1.5mm Thickness SS304 • Tool-less Hook System',
+    title: 'Aisle Gangway Thermal & Acoustic Wall',
+    category: 'warehouse',
+    categoryLabel: 'Industrial Warehouse & Logistics',
+    location: 'Kheda Industrial Belt, Gujarat',
+    clientType: 'Plastics Extrusion & Masterbatch Compounding Facility',
+    specs: 'Acoustic Dampening Clear PVC Wall • 8m High Clear Span with Floor Anchors',
     grade: 'standard-clear',
-    gradeName: 'SS304 Hook-On Track System',
-    description: 'Precision CNC punched stainless steel suspension rail. Enables tool-less hanging and instant strip removal for periodic cleaning or replacement.',
-    benefits: ['100% Rust-proof AISI 304 stainless steel', 'Individual strip hook-on allows 30-second replacement', 'Available in 1m, 1.2m, 1.5m and continuous modular links'],
-    imageUrl: '/assets/Screenshot 2026-08-16 214731.png'
+    gradeName: 'Heavy Acoustic Clear Partition',
+    description: 'Deep perspective view of high-bay factory gangway wall dividing active polymer extrusion lines from warehouse raw material pallet racks.',
+    benefits: ['Dampens ambient decibel levels across pedestrian gangway', 'Prevents masterbatch pigment powder migration', 'Self-extinguishing fire safe formulation (DIN 4102 B1)'],
+    imageUrl: '/assets/Screenshot 2026-08-16 230342.png',
+    featured: false
   },
   {
     id: 'photo-16',
-    title: 'SS 304 Clamping Plates & Riveted Fasteners',
-    category: 'hardware-rolls',
-    categoryLabel: 'Hardware & Systems',
-    location: 'Multi Enterprise Hardware Assembly',
-    clientType: 'Standard Pre-Clamped Kit Hardware',
-    specs: '200mm, 300mm & 400mm Plate Sets with Heavy Grip Fasteners',
-    grade: 'standard-clear',
-    gradeName: 'Stainless Steel Clamp Pairs',
-    description: 'Dual clamping plates fabricated from 304-grade stainless steel that sandwich each PVC strip securely, preventing tearing under forklift snag.',
-    benefits: ['Distributes hanging stress evenly across polymer top', 'Smooth rounded edges prevent strip chafing', 'High tensile load capacity'],
-    imageUrl: '/assets/Screenshot 2026-08-16 214746.png'
+    title: 'Industrial Fryer & Oven Thermal Enclosure',
+    category: 'food-insect',
+    categoryLabel: 'Food & Anti-Insect',
+    location: 'Bawal Industrial Estate, Haryana',
+    clientType: 'Packaged Snack Foods & Namkeen Processor',
+    specs: 'Heat Resistant Amber Anti-Insect Clear Screen • FSSAI Food Contact Safe',
+    grade: 'anti-insect',
+    gradeName: 'Food-Grade Amber Anti-Insect',
+    description: 'Yellow amber thermal barrier enclosure wrapped around commercial continuous snack fryer and seasoning line. Blocks insects and contains cooking aroma.',
+    benefits: ['Repels pests via 570nm yellow optical wavelength filtering', 'Shields open fryer from ambient dust and airborne contamination', 'Certified non-toxic, phthalate-free food safe formulation'],
+    imageUrl: '/assets/Screenshot 2026-08-16 230402.png',
+    featured: false
   },
   {
     id: 'photo-17',
-    title: 'Heavy Duty Sliding Track Rail Mechanism',
-    category: 'hardware-rolls',
-    categoryLabel: 'Hardware & Systems',
-    location: 'Wide Cargo Industrial Bay',
-    clientType: 'Bi-Parting & Single-Slide Track System',
-    specs: 'Aluminium / Galvanized Steel Track with Ball Bearing Trolleys',
-    grade: 'standard-clear',
-    gradeName: 'Sliding Track System Assembly',
-    description: 'Smooth sliding track carriage system that allows entire PVC strip curtain assemblies to slide effortlessly aside for oversized machinery passage.',
-    benefits: ['100% Doorway Clearance on demand', 'Smooth ball bearing four-wheel trolley wheels', 'Dual bi-parting or single-slide configuration'],
-    imageUrl: '/assets/Screenshot 2026-08-16 214754.png'
+    title: 'Multi-Bay Logistics Docks Anti-Insect Wall',
+    category: 'food-insect',
+    categoryLabel: 'Food & Anti-Insect',
+    location: 'Farukhnagar Logistics Corridor, Gurgaon',
+    clientType: 'Cold Chain Agricultural & Perishable Produce Depot',
+    specs: '4-Bay Simultaneous Yellow Amber Anti-Insect Roller Curtains • 100% Bug Deterrence',
+    grade: 'anti-insect',
+    gradeName: 'Heavy Amber Anti-Insect Docks',
+    description: '4 heavy-duty loading bays fitted with full-height yellow anti-insect PVC curtains. Keeps nighttime flying insects and pests outside during fruit & vegetable cross-docking.',
+    benefits: ['Eliminates 98.6% of insect ingress into perishable storage', 'Withstands outdoor crosswinds and temperature fluctuations', 'Allows uninhibited view of loading bay operations'],
+    imageUrl: '/assets/Screenshot 2026-08-16 230412.png',
+    featured: true
   },
   {
     id: 'photo-18',
-    title: 'Ready-to-Hang Pre-Clamped Doorway Kit',
-    category: 'hardware-rolls',
-    categoryLabel: 'Custom Cut-to-Size Kits',
-    location: 'Multi Enterprise Dispatch Station',
-    clientType: 'Turnkey Easy-Install Custom Kit',
-    specs: 'Custom Cut Lengths • Pre-Riveted SS Plates • Numbered Order',
+    title: 'High-Bay Workshop Climate Partition',
+    category: 'warehouse',
+    categoryLabel: 'Industrial Warehouse & Logistics',
+    location: 'Vapi Chemical & Polymers Complex, Gujarat',
+    clientType: 'Heavy Industrial Packaging & Paper Converting Mill',
+    specs: 'Extra-High Ceiling Suspended PVC Strip Curtain Wall • Thermal Loss Shield',
     grade: 'standard-clear',
-    gradeName: 'Pre-Clamped Ready-to-Hang Kit',
-    description: 'Turnkey doorway package cut to customer exact door dimensions with stainless steel hanger plates pre-clamped. Ready to mount out of the box.',
-    benefits: ['Zero on-site cutting or drilling needed', 'Numbered strips for foolproof correct overlap installation', 'Dispatched within 24 hours of order'],
-    imageUrl: '/assets/Screenshot 2026-08-16 214803.png'
+    gradeName: 'High-Bay Standard Clear Partition',
+    description: 'High-bay manufacturing hall division suspended directly from factory roof purlins, maintaining comfortable ambient working temperature in occupied workstations.',
+    benefits: ['Stops warm thermal convection drafts', 'Crystal clear transparency gives supervisors complete facility overview', 'High flexibility and resilience against fork truck snag'],
+    imageUrl: '/assets/Screenshot 2026-08-16 230420.png',
+    featured: false
   },
   {
     id: 'photo-19',
-    title: 'Standard 50-Meter Factory Master Rolls',
-    category: 'hardware-rolls',
-    categoryLabel: 'Bulk Factory Packaging',
-    location: 'Multi Enterprise Finished Goods Export Bay',
-    clientType: 'Wholesale & OEM Direct Supply',
-    specs: '50m Continuous Roll • Strapped & Wrapped with Core ID',
+    title: 'Drinking Water Station Red Safety Doorway',
+    category: 'cleanroom',
+    categoryLabel: 'Workplace Hygiene & Safety',
+    location: 'Multi Enterprise Quality Testing Facility, Ahmedabad',
+    clientType: 'Hygienic Workplace Welfare & Safe Water Kiosk',
+    specs: '200mm x 2mm Red Warning Safety Tint PVC • Top SS Clamping Head Rail',
     grade: 'standard-clear',
-    gradeName: 'Bulk 50m Factory Master Rolls',
-    description: 'Export-grade packaged 50-meter rolls of industrial PVC strip curtain material ready for nationwide logistics dispatch and export shipping.',
-    benefits: ['Direct factory wholesale pricing', 'Protected with heavy-duty moisture barrier shrink wrap', 'Available in all widths and thickness grades'],
-    imageUrl: '/assets/Screenshot 2026-08-16 214814.png'
+    gradeName: 'Red Safety Warning Partition',
+    description: 'Dedicated hygienic water purification kiosk enclosure with vivid red warning safety tint PVC strips. Protects clean drinking water dispensary from dust and fly ingress.',
+    benefits: ['Vivid red tint highlights safety & hygiene zones', 'Protects potable water dispensers from airborne contaminants', 'Easy push-through access for factory employees'],
+    imageUrl: '/assets/Screenshot 2026-08-17 104446.png',
+    featured: false
   }
 ];
 
@@ -332,22 +344,20 @@ export const RealPhotosSection: React.FC<RealPhotosSectionProps> = ({
   const [selectedPhoto, setSelectedPhoto] = useState<RealPhotoItem | null>(null);
 
   const categories = [
-    { id: 'all', label: language === 'hi' ? 'सभी तस्वीरें (19)' : 'All Photos (19)', count: 19 },
-    { id: 'warehouse', label: language === 'hi' ? 'गोदाम व फैक्ट्री (5)' : 'Warehouses & Docks (5)', count: 5 },
-    { id: 'cold-storage', label: language === 'hi' ? 'कोल्ड स्टोरेज -50°C (3)' : 'Cold Storage (-50°C)', count: 3 },
-    { id: 'cleanroom', label: language === 'hi' ? 'क्लीनरूम व फार्मा (4)' : 'Cleanroom & Pharma (4)', count: 4 },
-    { id: 'food-insect', label: language === 'hi' ? 'खाद्य व कीट निवारक (3)' : 'Food & Anti-Insect (3)', count: 3 },
-    { id: 'hardware-rolls', label: language === 'hi' ? 'हार्डवेयर व रोल्स (5)' : 'SS304 Tracks & Rolls (5)', count: 5 }
+    { id: 'all', label: language === 'hi' ? 'सभी तस्वीरें (19)' : 'All Real Photos (19)', count: 19 },
+    { id: 'warehouse', label: language === 'hi' ? 'गोदाम व लोडिंग डॉक्स (11)' : 'Warehouses & Docks (11)', count: 11 },
+    { id: 'cleanroom', label: language === 'hi' ? 'क्लीनरूम व असेंबली (5)' : 'Cleanrooms & Safety (5)', count: 5 },
+    { id: 'food-insect', label: language === 'hi' ? 'खाद्य व कीट निवारक (3)' : 'Food & Anti-Insect (3)', count: 3 }
   ];
 
   const filteredPhotos = activeCategory === 'all'
     ? REAL_PROJECT_PHOTOS
     : REAL_PROJECT_PHOTOS.filter(p => {
-        if (activeCategory === 'cold-storage') {
-          return p.category === 'cold-storage' || p.id === 'photo-9';
-        }
-        return p.category === activeCategory;
-      });
+      if (activeCategory === 'cold-storage') {
+        return p.category === 'cold-storage' || p.id === 'photo-9';
+      }
+      return p.category === activeCategory;
+    });
 
   const handleNextPhoto = () => {
     if (!selectedPhoto) return;
@@ -364,33 +374,33 @@ export const RealPhotosSection: React.FC<RealPhotosSectionProps> = ({
   };
 
   return (
-    <section id="real-project-photos" className="relative py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-white/10 text-[#E0E0E0]">
+    <section id="real-project-photos" className="relative py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-[#E2DDD2] text-[#1E293B]">
       {/* Background Ambience */}
-      <div 
-        className="absolute inset-0 opacity-10 pointer-events-none" 
+      <div
+        className="absolute inset-0 opacity-10 pointer-events-none"
         style={{
-          backgroundImage: 'radial-gradient(rgba(242,125,38,0.2) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(rgba(0, 119, 237,0.2) 1px, transparent 1px)',
           backgroundSize: '32px 32px'
-        }} 
+        }}
       />
 
       {/* Header Section */}
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
         <div>
           <div className="flex items-center gap-2.5 mb-3">
-            <span className="p-1.5 rounded-lg bg-[#F27D26]/15 border border-[#F27D26]/30 text-[#F27D26]">
+            <span className="p-1.5 rounded-lg bg-[#0077ED]/15 border border-[#0077ED]/30 text-[#0077ED]">
               <Camera className="w-4 h-4" />
             </span>
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#F27D26]">
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0077ED]">
               {language === 'hi' ? '[ वास्तविक प्रोजेक्ट तस्वीरें • मल्टी एंटरप्राइज ]' : '[ 100% AUTHENTIC PROJECT PHOTOS • MULTI ENTERPRISE ]'}
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase text-white tracking-tight font-display">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase text-[#0F172A] tracking-tight font-display">
             {language === 'hi' ? 'वास्तविक साइट इंस्टॉलेशन गैलरी' : 'Real Project & Factory Photos'}
           </h2>
 
-          <p className="text-sm sm:text-base text-white/60 font-light mt-2 max-w-3xl leading-relaxed">
+          <p className="text-sm sm:text-base text-[#475569] font-light mt-2 max-w-3xl leading-relaxed">
             {language === 'hi'
               ? 'मल्टी एंटरप्राइज द्वारा स्थापित वास्तविक पीवीसी स्ट्रिप कर्टन इंस्टॉलेशन, कोल्ड स्टोरेज, वेयरहाउस डॉक, क्लीनरूम और एसएस 304 हार्डवेयर की वास्तविक तस्वीरें देखें।'
               : 'Browse 19+ authentic high-resolution photos of Multi Enterprise installations across warehouses, sub-zero cold chains, pharma cleanrooms, and factory assembly lines.'}
@@ -402,7 +412,7 @@ export const RealPhotosSection: React.FC<RealPhotosSectionProps> = ({
             <button
               type="button"
               onClick={() => onOpenConfigurator()}
-              className="px-5 py-2.5 rounded-xl bg-[#F27D26] hover:bg-[#ff8f3d] text-white font-mono font-bold text-xs transition-all shadow-lg shadow-[#F27D26]/20 flex items-center gap-2 cursor-pointer"
+              className="px-5 py-2.5 rounded-xl bg-[#0077ED] hover:bg-[#2B8EFF] text-white font-mono font-bold text-xs transition-all shadow-lg shadow-[#0077ED]/20 flex items-center gap-2 cursor-pointer"
             >
               <Sliders className="w-3.5 h-3.5" />
               <span>{language === 'hi' ? '3D कॉन्फिगरेटर खोलें' : 'Configure Custom Doorway'}</span>
@@ -413,7 +423,7 @@ export const RealPhotosSection: React.FC<RealPhotosSectionProps> = ({
             <button
               type="button"
               onClick={() => onOpenQuoteModal()}
-              className="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-white font-mono font-bold text-xs transition-all flex items-center gap-2 cursor-pointer"
+              className="px-4 py-2.5 rounded-xl bg-[#FAF8F5] hover:bg-[#F4EFE6] border border-[#D8D2C5] text-[#0F172A] font-mono font-bold text-xs transition-all flex items-center gap-2 cursor-pointer"
             >
               <FileDown className="w-3.5 h-3.5 text-amber-400" />
               <span>{language === 'hi' ? 'तत्काल कोटेशन प्राप्त करें' : 'Get Quote For Setup'}</span>
@@ -429,11 +439,10 @@ export const RealPhotosSection: React.FC<RealPhotosSectionProps> = ({
             key={cat.id}
             type="button"
             onClick={() => setActiveCategory(cat.id)}
-            className={`px-4 py-2 rounded-xl text-xs font-mono font-bold whitespace-nowrap transition-all flex items-center gap-2 cursor-pointer ${
-              activeCategory === cat.id
-                ? 'bg-[#F27D26] text-white shadow-lg shadow-[#F27D26]/25 ring-1 ring-[#F27D26]'
-                : 'bg-[#12141C] text-white/60 hover:text-white hover:bg-[#1A1D27] border border-white/10'
-            }`}
+            className={`px-4 py-2 rounded-xl text-xs font-mono font-bold whitespace-nowrap transition-all flex items-center gap-2 cursor-pointer ${activeCategory === cat.id
+              ? 'bg-[#0077ED] text-white shadow-lg shadow-[#0077ED]/25 ring-1 ring-[#0077ED]'
+              : 'bg-[#F8F6F0] text-[#475569] hover:text-[#0077ED] hover:bg-[#FAF8F5] border border-[#E2DDD2]'
+              }`}
           >
             <span>{cat.label}</span>
           </button>
@@ -448,12 +457,12 @@ export const RealPhotosSection: React.FC<RealPhotosSectionProps> = ({
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.04 }}
-            className="group bg-[#11131A] border border-white/10 hover:border-[#F27D26]/60 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-[#F27D26]/10 transition-all duration-300 flex flex-col justify-between"
+            className="group bg-[#FFFFFF] border border-[#E2DDD2] hover:border-[#0077ED]/60 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-[#0077ED]/10 transition-all duration-300 flex flex-col justify-between"
           >
             {/* Image Container with Watermark Protection Look & Zoom Button */}
             <div>
-              <div 
-                className="relative w-full h-56 bg-black/60 overflow-hidden cursor-pointer"
+              <div
+                className="relative w-full h-56 bg-[#FAF8F5] overflow-hidden cursor-pointer"
                 onClick={() => setSelectedPhoto(photo)}
               >
                 <img
@@ -462,65 +471,65 @@ export const RealPhotosSection: React.FC<RealPhotosSectionProps> = ({
                   loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                
+
                 {/* Gradient vignette */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#11131A] via-transparent to-black/40" />
 
                 {/* Top Badge */}
-                <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-md border border-white/20 text-[10px] font-mono font-bold text-[#F27D26]">
-                  <ShieldCheck className="w-3 h-3 text-[#F27D26]" />
+                <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#FAF8F5] backdrop-blur-md border border-[#CFC8BA] text-[10px] font-mono font-bold text-[#0077ED]">
+                  <ShieldCheck className="w-3 h-3 text-[#0077ED]" />
                   <span>{photo.categoryLabel}</span>
                 </div>
 
                 {/* Inspect Button on hover */}
-                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity p-2 rounded-lg bg-black/80 backdrop-blur-md text-white border border-white/20 hover:text-[#F27D26]">
+                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity p-2 rounded-lg bg-[#FAF8F5] backdrop-blur-md text-[#0F172A] border border-[#CFC8BA] hover:text-[#0077ED]">
                   <Maximize2 className="w-4 h-4" />
                 </div>
 
                 {/* Location Pill */}
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono text-white/80 bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/10">
+                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono text-[#334155] bg-[#FAF8F5] backdrop-blur-md px-2.5 py-1 rounded-lg border border-[#E2DDD2]">
                   <div className="flex items-center gap-1 truncate">
-                    <MapPin className="w-3 h-3 text-[#F27D26] flex-shrink-0" />
+                    <MapPin className="w-3 h-3 text-[#0077ED] flex-shrink-0" />
                     <span className="truncate">{photo.location}</span>
                   </div>
-                  <span className="text-[10px] text-[#F27D26] font-bold flex-shrink-0 ml-1">REAL PHOTO</span>
+                  <span className="text-[10px] text-[#0077ED] font-bold flex-shrink-0 ml-1">REAL PHOTO</span>
                 </div>
               </div>
 
               {/* Card Body */}
               <div className="p-5 space-y-3">
                 <div>
-                  <span className="text-[10px] font-mono text-white/40 uppercase tracking-wider block mb-1">
+                  <span className="text-[10px] font-mono text-[#64748B] uppercase tracking-wider block mb-1">
                     {photo.gradeName}
                   </span>
-                  <h3 
+                  <h3
                     onClick={() => setSelectedPhoto(photo)}
-                    className="text-base sm:text-lg font-bold text-white group-hover:text-[#F27D26] transition-colors cursor-pointer leading-snug"
+                    className="text-base sm:text-lg font-bold text-[#0F172A] group-hover:text-[#0077ED] transition-colors cursor-pointer leading-snug"
                   >
                     {photo.title}
                   </h3>
                 </div>
 
-                <p className="text-xs text-white/60 leading-relaxed font-light line-clamp-2">
+                <p className="text-xs text-[#475569] leading-relaxed font-light line-clamp-2">
                   {photo.description}
                 </p>
 
-                <div className="p-2.5 rounded-lg bg-white/5 border border-white/5 text-[11px] font-mono text-white/70">
-                  <strong className="text-white/90 block mb-0.5">Configuration:</strong>
+                <div className="p-2.5 rounded-lg bg-[#FAF8F5] border border-[#EAE5DA] text-[11px] font-mono text-[#475569]">
+                  <strong className="text-[#1E293B] block mb-0.5">Configuration:</strong>
                   <span className="line-clamp-2">{photo.specs}</span>
                 </div>
               </div>
             </div>
 
             {/* Card Actions */}
-            <div className="p-5 pt-0 flex items-center justify-between border-t border-white/5 mt-4">
+            <div className="p-5 pt-0 flex items-center justify-between border-t border-[#EAE5DA] mt-4">
               <button
                 type="button"
                 onClick={() => setSelectedPhoto(photo)}
-                className="text-xs font-mono text-white/70 hover:text-white flex items-center gap-1.5 cursor-pointer py-1"
+                className="text-xs font-mono text-[#475569] hover:text-[#0077ED] flex items-center gap-1.5 cursor-pointer py-1"
               >
                 <span>{language === 'hi' ? 'बड़ा देखें' : 'View Full Details'}</span>
-                <Maximize2 className="w-3.5 h-3.5 text-[#F27D26]" />
+                <Maximize2 className="w-3.5 h-3.5 text-[#0077ED]" />
               </button>
 
               <button
@@ -532,7 +541,7 @@ export const RealPhotosSection: React.FC<RealPhotosSectionProps> = ({
                     onOpenConfigurator(photo.grade);
                   }
                 }}
-                className="text-xs font-mono font-bold text-[#F27D26] hover:text-[#ff9d52] flex items-center gap-1 cursor-pointer py-1"
+                className="text-xs font-mono font-bold text-[#0077ED] hover:text-[#ff9d52] flex items-center gap-1 cursor-pointer py-1"
               >
                 <span>{language === 'hi' ? 'कोटेशन प्राप्त करें' : 'Get This Setup'} &rarr;</span>
               </button>
@@ -548,7 +557,7 @@ export const RealPhotosSection: React.FC<RealPhotosSectionProps> = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
+            className="fixed inset-0 z-50 bg-[#0F172A]/95 backdrop-blur-2xl flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
             onClick={() => setSelectedPhoto(null)}
           >
             <motion.div
@@ -556,19 +565,19 @@ export const RealPhotosSection: React.FC<RealPhotosSectionProps> = ({
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-5xl bg-[#101218] border border-white/20 rounded-2xl overflow-hidden shadow-2xl flex flex-col my-auto max-h-[92vh]"
+              className="relative w-full max-w-5xl bg-[#101218] border border-[#CFC8BA] rounded-2xl overflow-hidden shadow-2xl flex flex-col my-auto max-h-[92vh]"
             >
               {/* Modal Top Bar */}
-              <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#0A0B0E]">
+              <div className="flex items-center justify-between px-6 py-4 border-b border-[#E2DDD2] bg-[#F4EFE6]">
                 <div className="flex items-center gap-3">
-                  <div className="p-1.5 rounded-lg bg-[#F27D26]/20 border border-[#F27D26]/40 text-[#F27D26]">
+                  <div className="p-1.5 rounded-lg bg-[#0077ED]/20 border border-[#0077ED]/40 text-[#0077ED]">
                     <Camera className="w-4 h-4" />
                   </div>
                   <div>
-                    <h3 className="text-sm sm:text-base font-bold text-white font-mono uppercase">
+                    <h3 className="text-sm sm:text-base font-bold text-[#0F172A] font-mono uppercase">
                       {selectedPhoto.title}
                     </h3>
-                    <p className="text-[11px] font-mono text-white/50">{selectedPhoto.location}</p>
+                    <p className="text-[11px] font-mono text-[#64748B]">{selectedPhoto.location}</p>
                   </div>
                 </div>
 
@@ -577,7 +586,7 @@ export const RealPhotosSection: React.FC<RealPhotosSectionProps> = ({
                     type="button"
                     onClick={handlePrevPhoto}
                     aria-label="Previous Photo"
-                    className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white border border-white/10 transition-colors cursor-pointer"
+                    className="p-2 rounded-lg bg-[#FAF8F5] hover:bg-[#F4EFE6] text-[#0F172A] border border-[#E2DDD2] transition-colors cursor-pointer"
                   >
                     <ChevronLeft className="w-4 h-4" />
                   </button>
@@ -585,7 +594,7 @@ export const RealPhotosSection: React.FC<RealPhotosSectionProps> = ({
                     type="button"
                     onClick={handleNextPhoto}
                     aria-label="Next Photo"
-                    className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white border border-white/10 transition-colors cursor-pointer"
+                    className="p-2 rounded-lg bg-[#FAF8F5] hover:bg-[#F4EFE6] text-[#0F172A] border border-[#E2DDD2] transition-colors cursor-pointer"
                   >
                     <ChevronRight className="w-4 h-4" />
                   </button>
@@ -593,7 +602,7 @@ export const RealPhotosSection: React.FC<RealPhotosSectionProps> = ({
                     type="button"
                     onClick={() => setSelectedPhoto(null)}
                     aria-label="Close Lightbox"
-                    className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer ml-2"
+                    className="p-2 rounded-lg bg-[#F4EFE6] hover:bg-[#EAE4D7] text-[#0F172A] transition-colors cursor-pointer ml-2"
                   >
                     <X className="w-4 h-4" />
                   </button>
@@ -603,13 +612,13 @@ export const RealPhotosSection: React.FC<RealPhotosSectionProps> = ({
               {/* Modal Content */}
               <div className="overflow-y-auto p-4 sm:p-6 space-y-6">
                 {/* Photo Display */}
-                <div className="relative w-full max-h-[55vh] bg-black/90 rounded-xl overflow-hidden flex items-center justify-center border border-white/10">
+                <div className="relative w-full max-h-[55vh] bg-[#FAF8F5] rounded-xl overflow-hidden flex items-center justify-center border border-[#E2DDD2]">
                   <img
                     src={selectedPhoto.imageUrl}
                     alt={selectedPhoto.title}
                     className="w-full h-auto max-h-[55vh] object-contain"
                   />
-                  <div className="absolute bottom-3 right-3 px-3 py-1 bg-black/80 backdrop-blur-md rounded-md border border-white/20 text-[10px] font-mono text-[#F27D26] font-bold">
+                  <div className="absolute bottom-3 right-3 px-3 py-1 bg-[#FAF8F5] backdrop-blur-md rounded-md border border-[#CFC8BA] text-[10px] font-mono text-[#0077ED] font-bold">
                     100% AUTHENTIC MULTI ENTERPRISE INSTALLATION
                   </div>
                 </div>
@@ -619,24 +628,24 @@ export const RealPhotosSection: React.FC<RealPhotosSectionProps> = ({
                   {/* Left Specs */}
                   <div className="lg:col-span-2 space-y-4">
                     <div>
-                      <h4 className="text-xs font-mono font-bold text-[#F27D26] uppercase tracking-wider mb-1">
+                      <h4 className="text-xs font-mono font-bold text-[#0077ED] uppercase tracking-wider mb-1">
                         Installation Overview & Application
                       </h4>
-                      <p className="text-sm text-white/80 leading-relaxed">
+                      <p className="text-sm text-[#334155] leading-relaxed">
                         {selectedPhoto.description}
                       </p>
                     </div>
 
-                    <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-2">
-                      <div className="text-xs font-mono font-bold text-white flex items-center gap-2">
-                        <Layers className="w-4 h-4 text-[#F27D26]" />
+                    <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#E2DDD2] space-y-2">
+                      <div className="text-xs font-mono font-bold text-[#0F172A] flex items-center gap-2">
+                        <Layers className="w-4 h-4 text-[#0077ED]" />
                         <span>Engineering Specifications & Dimensions</span>
                       </div>
-                      <p className="text-xs font-mono text-white/70 leading-relaxed">
+                      <p className="text-xs font-mono text-[#475569] leading-relaxed">
                         {selectedPhoto.specs}
                       </p>
                       <div className="flex items-center gap-2 pt-1">
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#F27D26]/20 text-[#F27D26] border border-[#F27D26]/40">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#0077ED]/20 text-[#0077ED] border border-[#0077ED]/40">
                           {selectedPhoto.gradeName}
                         </span>
                         <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
@@ -647,13 +656,13 @@ export const RealPhotosSection: React.FC<RealPhotosSectionProps> = ({
 
                     {/* Key Benefits */}
                     <div>
-                      <h5 className="text-xs font-mono font-bold text-white/60 uppercase tracking-wider mb-2">
+                      <h5 className="text-xs font-mono font-bold text-[#475569] uppercase tracking-wider mb-2">
                         Facility Advantages Delivered
                       </h5>
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                         {selectedPhoto.benefits.map((b, idx) => (
-                          <div key={idx} className="p-2.5 rounded-lg bg-white/5 border border-white/5 text-[11px] font-mono text-white/80 flex items-start gap-1.5">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-[#F27D26] flex-shrink-0 mt-0.5" />
+                          <div key={idx} className="p-2.5 rounded-lg bg-[#FAF8F5] border border-[#EAE5DA] text-[11px] font-mono text-[#334155] flex items-start gap-1.5">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-[#0077ED] flex-shrink-0 mt-0.5" />
                             <span>{b}</span>
                           </div>
                         ))}
@@ -662,15 +671,15 @@ export const RealPhotosSection: React.FC<RealPhotosSectionProps> = ({
                   </div>
 
                   {/* Right Action Box */}
-                  <div className="bg-[#151822] border border-white/10 rounded-xl p-5 flex flex-col justify-between space-y-4">
+                  <div className="bg-[#151822] border border-[#E2DDD2] rounded-xl p-5 flex flex-col justify-between space-y-4">
                     <div>
-                      <span className="text-[10px] font-mono text-[#F27D26] uppercase font-bold tracking-wider block mb-1">
+                      <span className="text-[10px] font-mono text-[#0077ED] uppercase font-bold tracking-wider block mb-1">
                         FACTORY DIRECT QUOTE
                       </span>
-                      <h4 className="text-base font-bold text-white mb-2">
+                      <h4 className="text-base font-bold text-[#0F172A] mb-2">
                         Want This Exact Setup For Your Doorway?
                       </h4>
-                      <p className="text-xs text-white/60 leading-relaxed font-light">
+                      <p className="text-xs text-[#475569] leading-relaxed font-light">
                         Our engineering team calculates exact strip count, overlap ratio, SS 304 track length, and freight dispatch directly from Ahmedabad HQ.
                       </p>
                     </div>
@@ -683,7 +692,7 @@ export const RealPhotosSection: React.FC<RealPhotosSectionProps> = ({
                             setSelectedPhoto(null);
                             onOpenQuoteModal(selectedPhoto.grade);
                           }}
-                          className="w-full py-3 bg-[#F27D26] hover:bg-[#ff8f3d] text-white font-mono font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-lg shadow-[#F27D26]/30 flex items-center justify-center gap-2 cursor-pointer"
+                          className="w-full py-3 bg-[#0077ED] hover:bg-[#2B8EFF] text-white font-mono font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-lg shadow-[#0077ED]/30 flex items-center justify-center gap-2 cursor-pointer"
                         >
                           <FileDown className="w-4 h-4" />
                           <span>Request Formal Quote</span>
@@ -697,7 +706,7 @@ export const RealPhotosSection: React.FC<RealPhotosSectionProps> = ({
                             setSelectedPhoto(null);
                             onOpenConfigurator(selectedPhoto.grade);
                           }}
-                          className="w-full py-2.5 bg-white/10 hover:bg-white/15 text-white font-mono font-bold text-xs uppercase tracking-wider rounded-xl transition-all border border-white/15 flex items-center justify-center gap-2 cursor-pointer"
+                          className="w-full py-2.5 bg-[#F4EFE6] hover:bg-[#EFE9DC] text-[#0F172A] font-mono font-bold text-xs uppercase tracking-wider rounded-xl transition-all border border-[#D8D2C5] flex items-center justify-center gap-2 cursor-pointer"
                         >
                           <Sliders className="w-3.5 h-3.5 text-cyan-400" />
                           <span>Test in 3D CAD Configurator</span>
@@ -711,7 +720,7 @@ export const RealPhotosSection: React.FC<RealPhotosSectionProps> = ({
                             setSelectedPhoto(null);
                             onOpenSampleModal(selectedPhoto.grade);
                           }}
-                          className="w-full py-2 bg-transparent hover:bg-white/5 text-white/70 hover:text-white font-mono text-[11px] rounded-xl transition-all border border-white/10 flex items-center justify-center gap-1.5 cursor-pointer"
+                          className="w-full py-2 bg-transparent hover:bg-[#FAF8F5] text-[#475569] hover:text-[#0077ED] font-mono text-[11px] rounded-xl transition-all border border-[#E2DDD2] flex items-center justify-center gap-1.5 cursor-pointer"
                         >
                           <span>Get Free Physical Swatch Kit</span>
                         </button>

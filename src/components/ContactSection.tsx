@@ -23,6 +23,7 @@ import { MultiLogo, MultiLogoIcon } from './MultiLogo';
 import { ThreeMapLocationScene, GOOGLE_MAPS_DIRECT_URL } from './ThreeMapLocationScene';
 import { useLanguage } from '../i18n/LanguageContext';
 import { FocusedSectionId } from './FocusedSectionView';
+import { useAntiBotFormProtection, AntiBotProtectionBadge } from '../utils/antiBotSecurity';
 
 interface ContactSectionProps {
   onNavigateSection?: (sectionId: FocusedSectionId) => void;
@@ -34,6 +35,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   onOpenSampleModal
 }) => {
   const { language } = useLanguage();
+  const { honeypotInputProps, validateSubmission } = useAntiBotFormProtection();
 
   // Form State
   const [fullName, setFullName] = useState('');
@@ -43,6 +45,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [botError, setBotError] = useState<string | null>(null);
 
   // Map Mode Toggle: '3d' or 'google'
   const [mapViewMode, setMapViewMode] = useState<'3d' | 'google'>('3d');
@@ -50,6 +53,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!fullName.trim() || !phone.trim()) return;
+
+    // Run Enterprise Anti-Bot Protection & Honeypot Trap Checks
+    const botCheck = validateSubmission();
+    if (!botCheck.isLegitimate) {
+      setBotError(botCheck.reason || 'Submission blocked by Anti-Bot verification.');
+      return;
+    }
+    setBotError(null);
 
     setIsSubmitting(true);
 
@@ -84,7 +95,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   };
 
   return (
-    <div className="w-full bg-[#08090C] text-[#E0E0E0] min-h-screen">
+    <div className="w-full bg-[#F8F6F0] text-[#1E293B] min-h-screen">
       {/* ========================================================================= */}
       {/* 1. TOP HERO BANNER (Matches Cyan/Industrial Header in Reference Image)     */}
       {/* ========================================================================= */}
@@ -109,7 +120,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           </h1>
 
           {/* Breadcrumb Navigation */}
-          <div className="flex items-center justify-center gap-2 text-xs sm:text-sm font-medium text-white/90 font-mono">
+          <div className="flex items-center justify-center gap-2 text-xs sm:text-sm font-medium text-[#1E293B] font-mono">
             <button
               type="button"
               onClick={() => onNavigateSection && onNavigateSection('configurator')}
@@ -137,16 +148,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="lg:col-span-6 bg-[#101216] border border-white/15 p-6 sm:p-8 rounded-2xl shadow-2xl relative overflow-hidden"
+            className="lg:col-span-6 bg-[#FFFFFF] border border-[#D8D2C5] p-6 sm:p-8 rounded-2xl shadow-2xl relative overflow-hidden"
           >
             {/* Top Accent Line */}
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#00a8cc] via-[#F27D26] to-[#00a8cc]" />
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#00a8cc] via-[#0077ED] to-[#00a8cc]" />
 
             <div className="mb-6">
-              <h2 className="text-2xl sm:text-3xl font-black text-white uppercase font-display tracking-tight mb-2">
+              <h2 className="text-2xl sm:text-3xl font-black text-[#0F172A] uppercase font-display tracking-tight mb-2">
                 CONTACT WITH US
               </h2>
-              <p className="text-xs sm:text-sm text-white/70 font-light leading-relaxed font-sans">
+              <p className="text-xs sm:text-sm text-[#475569] font-light leading-relaxed font-sans">
                 Got Questions? We've answers. Need suggestions? We've ideas. Get in touch with us now. We're happy to discuss your requirement and queries.
               </p>
             </div>
@@ -155,15 +166,15 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-[#161a22] border border-emerald-500/40 p-6 rounded-xl text-center space-y-4"
+                className="bg-[#FAF8F5] border border-emerald-500/40 p-6 rounded-xl text-center space-y-4"
               >
                 <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-7 h-7" />
                 </div>
-                <h3 className="text-lg font-bold text-white font-mono">
+                <h3 className="text-lg font-bold text-[#0F172A] font-mono">
                   Thank You, {fullName}!
                 </h3>
-                <p className="text-xs text-white/70">
+                <p className="text-xs text-[#475569]">
                   Your message has been dispatched to Multi Enterprise executive team. We have also opened WhatsApp to connect you directly.
                 </p>
                 <button
@@ -188,7 +199,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     placeholder="Your Full Name Please *"
-                    className="w-full bg-[#181B22] border border-white/20 focus:border-[#00a8cc] focus:ring-1 focus:ring-[#00a8cc] rounded-lg px-4 py-3 text-sm text-white placeholder-white/40 transition-colors font-sans"
+                    className="w-full bg-[#F4EFE6] border border-[#CFC8BA] focus:border-[#00a8cc] focus:ring-1 focus:ring-[#00a8cc] rounded-lg px-4 py-3 text-sm text-[#0F172A] placeholder-[#94A3B8] transition-colors font-sans"
                   />
                 </div>
 
@@ -203,7 +214,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Your EmailId"
-                    className="w-full bg-[#181B22] border border-white/20 focus:border-[#00a8cc] focus:ring-1 focus:ring-[#00a8cc] rounded-lg px-4 py-3 text-sm text-white placeholder-white/40 transition-colors font-sans"
+                    className="w-full bg-[#F4EFE6] border border-[#CFC8BA] focus:border-[#00a8cc] focus:ring-1 focus:ring-[#00a8cc] rounded-lg px-4 py-3 text-sm text-[#0F172A] placeholder-[#94A3B8] transition-colors font-sans"
                   />
                 </div>
 
@@ -219,7 +230,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="Your phone number *"
-                    className="w-full bg-[#181B22] border border-white/20 focus:border-[#00a8cc] focus:ring-1 focus:ring-[#00a8cc] rounded-lg px-4 py-3 text-sm text-white placeholder-white/40 transition-colors font-sans"
+                    className="w-full bg-[#F4EFE6] border border-[#CFC8BA] focus:border-[#00a8cc] focus:ring-1 focus:ring-[#00a8cc] rounded-lg px-4 py-3 text-sm text-[#0F172A] placeholder-[#94A3B8] transition-colors font-sans"
                   />
                 </div>
 
@@ -234,7 +245,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
                     placeholder="Subject (e.g. PVC Curtain Quote, Cold Storage Strip)"
-                    className="w-full bg-[#181B22] border border-white/20 focus:border-[#00a8cc] focus:ring-1 focus:ring-[#00a8cc] rounded-lg px-4 py-3 text-sm text-white placeholder-white/40 transition-colors font-sans"
+                    className="w-full bg-[#F4EFE6] border border-[#CFC8BA] focus:border-[#00a8cc] focus:ring-1 focus:ring-[#00a8cc] rounded-lg px-4 py-3 text-sm text-[#0F172A] placeholder-[#94A3B8] transition-colors font-sans"
                   />
                 </div>
 
@@ -249,12 +260,22 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Write your Message (dimensions, grade preference, facility location)"
-                    className="w-full bg-[#181B22] border border-white/20 focus:border-[#00a8cc] focus:ring-1 focus:ring-[#00a8cc] rounded-lg px-4 py-3 text-sm text-white placeholder-white/40 transition-colors font-sans resize-y min-h-[100px]"
+                    className="w-full bg-[#F4EFE6] border border-[#CFC8BA] focus:border-[#00a8cc] focus:ring-1 focus:ring-[#00a8cc] rounded-lg px-4 py-3 text-sm text-[#0F172A] placeholder-[#94A3B8] transition-colors font-sans resize-y min-h-[100px]"
                   />
                 </div>
 
+                {/* Hidden Honeypot Anti-Bot Field */}
+                <input {...honeypotInputProps} />
+
+                {/* Anti-Bot Error Alert if Triggered */}
+                {botError && (
+                  <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-xs font-mono text-red-600">
+                    ⚠ {botError}
+                  </div>
+                )}
+
                 {/* Submit CTA Button (Matching Reference Image Style) */}
-                <div className="pt-2">
+                <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                   <button
                     type="submit"
                     disabled={isSubmitting}
@@ -269,6 +290,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       </>
                     )}
                   </button>
+
+                  <AntiBotProtectionBadge minimal />
                 </div>
               </form>
             )}
@@ -283,23 +306,23 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           >
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-2xl sm:text-3xl font-black text-white uppercase font-display tracking-tight">
+                <h2 className="text-2xl sm:text-3xl font-black text-[#0F172A] uppercase font-display tracking-tight">
                   FIND US
                 </h2>
-                <p className="text-xs text-white/60 font-mono">
+                <p className="text-xs text-[#475569] font-mono">
                   Madhuram Complex • Subhash Bridge • Ahmedabad
                 </p>
               </div>
 
               {/* View Switcher: 3D Map vs Google Map Embed */}
-              <div className="flex items-center bg-[#14161C] border border-white/15 rounded-lg p-1 text-xs font-mono">
+              <div className="flex items-center bg-[#FAF8F5] border border-[#D8D2C5] rounded-lg p-1 text-xs font-mono">
                 <button
                   type="button"
                   onClick={() => setMapViewMode('3d')}
                   className={`px-3 py-1.5 rounded-md font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                     mapViewMode === '3d'
-                      ? 'bg-[#F27D26] text-white shadow-md'
-                      : 'text-white/60 hover:text-white'
+                      ? 'bg-[#0077ED] text-white shadow-md'
+                      : 'text-[#475569] hover:text-[#0077ED]'
                   }`}
                 >
                   <Sparkles className="w-3.5 h-3.5" />
@@ -311,7 +334,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   className={`px-3 py-1.5 rounded-md font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                     mapViewMode === 'google'
                       ? 'bg-[#00a8cc] text-white shadow-md'
-                      : 'text-white/60 hover:text-white'
+                      : 'text-[#475569] hover:text-[#0077ED]'
                   }`}
                 >
                   <Navigation className="w-3.5 h-3.5" />
@@ -325,7 +348,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               {mapViewMode === '3d' ? (
                 <ThreeMapLocationScene className="w-full h-[400px] sm:h-[480px]" />
               ) : (
-                <div className="relative w-full h-[400px] sm:h-[480px] bg-[#111317] border border-white/15 rounded-xl overflow-hidden shadow-2xl">
+                <div className="relative w-full h-[400px] sm:h-[480px] bg-[#FAF8F5] border border-[#D8D2C5] rounded-xl overflow-hidden shadow-2xl">
                   {/* Embedded Google Map Frame */}
                   <iframe
                     title="Multi Enterprise Google Map Location"
@@ -340,7 +363,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   />
 
                   {/* Top Bar Floating Direct Access Action */}
-                  <div className="absolute top-3 left-3 right-3 bg-black/90 backdrop-blur-md p-3 rounded-xl border border-white/20 flex items-center justify-between shadow-2xl">
+                  <div className="absolute top-3 left-3 right-3 bg-[#FAF8F5] backdrop-blur-md p-3 rounded-xl border border-[#CFC8BA] flex items-center justify-between shadow-2xl">
                     <div className="flex items-center gap-2">
                       <MapPin className="w-4 h-4 text-red-500" />
                       <span className="text-xs font-bold text-white font-mono">
@@ -363,8 +386,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
             </div>
 
             {/* Quick GPS Location Bar */}
-            <div className="bg-[#121419] border border-white/10 p-3.5 rounded-xl flex items-center justify-between text-xs font-mono">
-              <span className="text-white/60">
+            <div className="bg-[#FFFFFF] border border-[#E2DDD2] p-3.5 rounded-xl flex items-center justify-between text-xs font-mono">
+              <span className="text-[#475569]">
                 GPS: 23.0560° N, 72.5804° E (Near RTO Circle)
               </span>
               <a
@@ -387,15 +410,15 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           {/* Card 1: Address */}
           <motion.div 
             whileHover={{ y: -4 }}
-            className="bg-[#111317] border border-white/15 p-6 rounded-2xl shadow-xl flex flex-col items-center text-center group hover:border-[#00a8cc] transition-all"
+            className="bg-[#FAF8F5] border border-[#D8D2C5] p-6 rounded-2xl shadow-xl flex flex-col items-center text-center group hover:border-[#00a8cc] transition-all"
           >
             <div className="w-14 h-14 rounded-full bg-[#00a8cc]/10 border border-[#00a8cc]/30 flex items-center justify-center text-[#00a8cc] mb-4 group-hover:scale-110 transition-transform">
               <MapPin className="w-6 h-6" />
             </div>
-            <h3 className="text-sm font-bold text-white font-mono uppercase tracking-wider mb-2">
+            <h3 className="text-sm font-bold text-[#0F172A] font-mono uppercase tracking-wider mb-2">
               OUR LOCATION
             </h3>
-            <p className="text-xs text-white/70 font-sans leading-relaxed">
+            <p className="text-xs text-[#475569] font-sans leading-relaxed">
               FF-5, Madhuram Complex, Keshav Nagar, Near R.T.O. Circle, Subhash Bridge, Ahmedabad - 380 027, Gujarat, India.
             </p>
             <a
@@ -412,15 +435,15 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           {/* Card 2: Email */}
           <motion.div 
             whileHover={{ y: -4 }}
-            className="bg-[#111317] border border-white/15 p-6 rounded-2xl shadow-xl flex flex-col items-center text-center group hover:border-[#00a8cc] transition-all"
+            className="bg-[#FAF8F5] border border-[#D8D2C5] p-6 rounded-2xl shadow-xl flex flex-col items-center text-center group hover:border-[#00a8cc] transition-all"
           >
             <div className="w-14 h-14 rounded-full bg-[#00a8cc]/10 border border-[#00a8cc]/30 flex items-center justify-center text-[#00a8cc] mb-4 group-hover:scale-110 transition-transform">
               <Mail className="w-6 h-6" />
             </div>
-            <h3 className="text-sm font-bold text-white font-mono uppercase tracking-wider mb-2">
+            <h3 className="text-sm font-bold text-[#0F172A] font-mono uppercase tracking-wider mb-2">
               EMAIL DIRECTORY
             </h3>
-            <div className="space-y-1 text-xs text-white/80 font-mono">
+            <div className="space-y-1 text-xs text-[#334155] font-mono">
               <div>
                 <a href="mailto:multimehta@gmail.com" className="hover:text-[#00a8cc] transition-colors">
                   multimehta@gmail.com
@@ -442,26 +465,31 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           {/* Card 3: Phone */}
           <motion.div 
             whileHover={{ y: -4 }}
-            className="bg-[#111317] border border-white/15 p-6 rounded-2xl shadow-xl flex flex-col items-center text-center group hover:border-[#00a8cc] transition-all"
+            className="bg-[#FAF8F5] border border-[#D8D2C5] p-6 rounded-2xl shadow-xl flex flex-col items-center text-center group hover:border-[#00a8cc] transition-all"
           >
             <div className="w-14 h-14 rounded-full bg-[#00a8cc]/10 border border-[#00a8cc]/30 flex items-center justify-center text-[#00a8cc] mb-4 group-hover:scale-110 transition-transform">
               <Phone className="w-6 h-6" />
             </div>
-            <h3 className="text-sm font-bold text-white font-mono uppercase tracking-wider mb-2">
+            <h3 className="text-sm font-bold text-[#0F172A] font-mono uppercase tracking-wider mb-2">
               CALL EXPERTS
             </h3>
             <div className="space-y-1.5 text-xs font-mono">
               <div>
-                <a href="tel:+919377678155" className="text-white font-bold hover:text-[#00a8cc] transition-colors">
+                <a href="tel:+919377678155" className="text-[#0F172A] font-bold hover:text-[#00a8cc] transition-colors">
                   (+91) 93776 78155
                 </a>
               </div>
               <div>
-                <a href="tel:+919327000042" className="text-white/80 hover:text-[#00a8cc] transition-colors">
+                <a href="tel:+919327000042" className="text-[#334155] hover:text-[#00a8cc] transition-colors">
                   (+91) 93270 00042
                 </a>
               </div>
-              <div className="text-[11px] text-white/40 pt-1">
+              <div>
+                <a href="tel:+919687700045" className="text-[#334155] hover:text-[#00a8cc] transition-colors">
+                  (+91) 96877 00045
+                </a>
+              </div>
+              <div className="text-[11px] text-[#64748B] pt-1">
                 Mon - Sat: 9:00 AM - 7:30 PM IST
               </div>
             </div>
@@ -471,26 +499,30 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
         {/* ========================================================================= */}
         {/* 4. REFERENCE THREE-COLUMN FOOTER BLOCK (MATCHING SCREENSHOT BOTTOM AREA)   */}
         {/* ========================================================================= */}
-        <div className="mt-20 pt-16 border-t border-white/15">
+        <div className="mt-20 pt-16 border-t border-[#D8D2C5]">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {/* Column 1: CONTACT INFORMATION */}
             <div className="space-y-4">
-              <h4 className="text-base sm:text-lg font-black text-white uppercase font-display tracking-tight">
+              <h4 className="text-base sm:text-lg font-black text-[#0F172A] uppercase font-display tracking-tight">
                 CONTACT INFORMATION
               </h4>
-              <p className="text-xs text-white/70 leading-relaxed font-sans">
+              <p className="text-xs text-[#475569] leading-relaxed font-sans">
                 FF-5, Madhuram Complex, Keshav Nagar,<br />
-                Near R.T.O. Circle, Subhash Bridge,<br />
-                Ahmedabad - 380 027.
+                Nr. R.T.O. Circle, Subhash Bridge,<br />
+                Ahmedabad, INDIA - 380 027
               </p>
-              <div className="space-y-1.5 text-xs font-mono text-white/80">
+              <div className="space-y-1.5 text-xs font-mono text-[#334155]">
                 <div className="flex items-center gap-2">
                   <Phone className="w-3.5 h-3.5 text-[#00a8cc]" />
-                  <span>+91 9377 678 155</span>
+                  <span>(+91) 93776 78155</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Phone className="w-3.5 h-3.5 text-[#00a8cc]" />
-                  <span>+91 9327 000 042</span>
+                  <span>(+91) 93270 00042</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Phone className="w-3.5 h-3.5 text-[#00a8cc]" />
+                  <span>(+91) 96877 00045</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="w-3.5 h-3.5 text-[#00a8cc]" />
@@ -509,10 +541,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
             {/* Column 2: QUICK LINKS */}
             <div className="space-y-4">
-              <h4 className="text-base sm:text-lg font-black text-white uppercase font-display tracking-tight">
+              <h4 className="text-base sm:text-lg font-black text-[#0F172A] uppercase font-display tracking-tight">
                 QUICK LINKS
               </h4>
-              <ul className="space-y-2 text-xs font-mono text-white/70">
+              <ul className="space-y-2 text-xs font-mono text-[#475569]">
                 <li>
                   <button
                     type="button"
@@ -578,10 +610,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
             {/* Column 3: SO WHAT YOU THINK ? */}
             <div className="space-y-4">
-              <h4 className="text-base sm:text-lg font-black text-white uppercase font-display tracking-tight">
+              <h4 className="text-base sm:text-lg font-black text-[#0F172A] uppercase font-display tracking-tight">
                 SO WHAT YOU THINK ?
               </h4>
-              <p className="text-xs text-white/70 leading-relaxed font-sans">
+              <p className="text-xs text-[#475569] leading-relaxed font-sans">
                 Ready to transform your workspace with our best solutions? Let's talk now!
               </p>
               <div className="pt-2">

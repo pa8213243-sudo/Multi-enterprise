@@ -1,4 +1,18 @@
 export type PVCGrade = 
+  // 12 Exact Factory Grades from PVC strip specs
+  | 'transparent'
+  | 'blue-natural'
+  | 'standard-ribbed'
+  | 'gray'
+  | 'navy-blue'
+  | 'white-opaque'
+  | 'multi-red'
+  | 'orange-amber'
+  | 'sky-blue'
+  | 'parrot-green'
+  | 'lemon-yellow'
+  | 'multi-green'
+  // Legacy aliases for backward compatibility
   | 'standard-clear'
   | 'polar-freezer'
   | 'double-ribbed'

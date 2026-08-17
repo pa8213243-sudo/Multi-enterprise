@@ -1,25 +1,25 @@
 import React, { useState, useMemo, useRef } from 'react';
 import { MultiLogo, MultiLogoIcon } from './MultiLogo';
-import { 
-  ShieldCheck, 
-  Award, 
-  CheckCircle2, 
-  ChevronDown, 
-  FlaskConical, 
-  Flame, 
-  Clock, 
+import {
+  ShieldCheck,
+  Award,
+  CheckCircle2,
+  ChevronDown,
+  FlaskConical,
+  Flame,
+  Clock,
   Building,
-  Search, 
-  X, 
-  SlidersHorizontal, 
-  Wrench, 
-  ThermometerSnowflake, 
-  Sparkles, 
-  Copy, 
-  Check, 
-  HelpCircle, 
-  ChevronsUpDown, 
-  BookOpen 
+  Search,
+  X,
+  SlidersHorizontal,
+  Wrench,
+  ThermometerSnowflake,
+  Sparkles,
+  Copy,
+  Check,
+  HelpCircle,
+  ChevronsUpDown,
+  BookOpen
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { FAQS, FAQItem } from '../data/products';
@@ -100,7 +100,7 @@ export const QualityStandards: React.FC = () => {
   }, [selectedCategory, searchQuery]);
 
   const toggleFaq = (id: string) => {
-    setOpenFaqIds((prev) => 
+    setOpenFaqIds((prev) =>
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
     );
   };
@@ -141,35 +141,35 @@ export const QualityStandards: React.FC = () => {
   };
 
   return (
-    <section id="quality" className="relative py-24 bg-[#0A0A0B] text-[#E0E0E0] border-t border-white/10 overflow-hidden">
+    <section id="quality" className="relative py-10 sm:py-12 bg-[#F8F6F0] text-[#1E293B] border-t border-[#E2DDD2] overflow-hidden">
       {/* Background Subtle Technical Grid */}
-      <div 
+      <div
         className="absolute inset-0 opacity-15 pointer-events-none"
         style={{
-          backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(rgba(0,0,0,0.06) 1px, transparent 1px)',
           backgroundSize: '32px 32px'
         }}
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header with Motion */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-6 sm:mb-8"
         >
           <div className="flex items-center justify-center gap-2 mb-3">
             <MultiLogoIcon size={20} className="w-5 h-5" />
-            <span className="text-[#F27D26] text-xs font-mono tracking-widest uppercase font-bold">
+            <span className="text-[#0077ED] text-xs font-mono tracking-widest uppercase font-bold">
               {t.qualitySection.badge}
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white uppercase font-display mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0F172A] uppercase font-display mb-4">
             {t.qualitySection.title}
           </h2>
-          <p className="text-sm sm:text-base text-white/60 leading-relaxed font-light">
+          <p className="text-sm sm:text-base text-[#475569] leading-relaxed font-light">
             {t.qualitySection.subtitle}
           </p>
         </motion.div>
@@ -183,18 +183,18 @@ export const QualityStandards: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.45, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-[#0F1012] p-5 sm:p-6 border border-white/10 hover:border-[#F27D26] transition-all group"
+              className="bg-[#FAF8F5] p-5 sm:p-6 border border-[#E2DDD2] hover:border-[#0077ED] transition-all group"
             >
               <div className="flex items-center justify-between mb-3">
-                <span className="px-2.5 py-0.5 bg-white/5 text-[#F27D26] text-[10px] font-mono font-bold border border-white/10 uppercase tracking-widest">
+                <span className="px-2.5 py-0.5 bg-[#FAF8F5] text-[#0077ED] text-[10px] font-mono font-bold border border-[#E2DDD2] uppercase tracking-widest">
                   {cert.code}
                 </span>
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 opacity-80" />
               </div>
-              <h3 className="text-sm font-bold text-white uppercase mb-2 group-hover:text-[#F27D26] transition-colors">
+              <h3 className="text-sm font-bold text-[#0F172A] uppercase mb-2 group-hover:text-[#0077ED] transition-colors">
                 {cert.title}
               </h3>
-              <p className="text-xs text-white/60 leading-relaxed font-light">
+              <p className="text-xs text-[#475569] leading-relaxed font-light">
                 {cert.desc}
               </p>
             </motion.div>
@@ -205,41 +205,41 @@ export const QualityStandards: React.FC = () => {
 
         {/* Dynamic Technical FAQ Accordion Section */}
         <div id="faq-section" className="max-w-4xl mx-auto pt-6">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.5 }}
             className="text-center mb-8"
           >
-            <div className="text-[#F27D26] text-xs font-mono tracking-widest uppercase font-bold mb-2">
+            <div className="text-[#0077ED] text-xs font-mono tracking-widest uppercase font-bold mb-2">
               [ {t.qualitySection.faqTitle} ]
             </div>
-            <h3 className="text-2xl sm:text-3xl font-black text-white uppercase font-display mb-3">
+            <h3 className="text-2xl sm:text-3xl font-black text-[#0F172A] uppercase font-display mb-3">
               Technical & Engineering FAQs
             </h3>
-            <p className="text-xs sm:text-sm text-white/60 font-light max-w-xl mx-auto">
+            <p className="text-xs sm:text-sm text-[#475569] font-light max-w-xl mx-auto">
               Engineering guidance on sizing formulas, acclimation protocols, cleaning regimens, and material grades.
             </p>
           </motion.div>
 
           {/* Interactive Search and Category Filter Toolbar */}
-          <div className="bg-[#0F1012] p-4 sm:p-5 border border-white/10 mb-6 space-y-4 shadow-xl">
+          <div className="bg-[#FAF8F5] p-4 sm:p-5 border border-[#E2DDD2] mb-6 space-y-4 shadow-xl">
             {/* Search Input Bar */}
             <div className="relative">
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none" />
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#64748B] pointer-events-none" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={t.qualitySection.searchPlaceholder}
-                className="w-full bg-black/60 border border-white/10 pl-10 pr-10 py-2.5 text-xs text-white placeholder:text-white/40 focus:outline-none focus:border-[#F27D26] font-mono transition-colors"
+                className="w-full bg-[#FAF8F5] border border-[#E2DDD2] pl-10 pr-10 py-2.5 text-xs text-[#0F172A] placeholder:text-[#64748B] focus:outline-none focus:border-[#0077ED] font-mono transition-colors"
                 aria-label="Search FAQs"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-white/40 hover:text-white transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-[#64748B] hover:text-[#0077ED] transition-colors"
                   title="Clear search"
                   aria-label="Clear search query"
                 >
@@ -249,8 +249,8 @@ export const QualityStandards: React.FC = () => {
             </div>
 
             {/* Category Filter Tabs with Keyboard Support */}
-            <div 
-              role="tablist" 
+            <div
+              role="tablist"
               aria-label="FAQ Category Filters"
               className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs font-mono scrollbar-none"
             >
@@ -260,7 +260,7 @@ export const QualityStandards: React.FC = () => {
                 return (
                   <button
                     key={cat.id}
-                    ref={(el) => (categoryTabsRef.current[idx] = el)}
+                    ref={(el) => { categoryTabsRef.current[idx] = el; }}
                     role="tab"
                     id={`faq-cat-tab-${cat.id}`}
                     aria-selected={isSelected}
@@ -268,13 +268,12 @@ export const QualityStandards: React.FC = () => {
                     tabIndex={isSelected ? 0 : -1}
                     onKeyDown={(e) => handleCategoryKeyDown(e, idx)}
                     onClick={() => setSelectedCategory(cat.id)}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 uppercase tracking-wider text-[10px] whitespace-nowrap transition-all border cursor-pointer ${
-                      isSelected
-                        ? 'bg-white text-black font-bold border-white shadow-md'
-                        : 'bg-black/40 text-white/60 border-white/10 hover:text-white hover:border-white/30'
-                    }`}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 uppercase tracking-wider text-[10px] whitespace-nowrap transition-all border cursor-pointer ${isSelected
+                      ? 'bg-white text-black font-bold border-white shadow-md'
+                      : 'bg-[#FAF8F5] text-[#475569] border-[#E2DDD2] hover:text-[#0077ED] hover:border-[#B8AF9F]'
+                      }`}
                   >
-                    <IconComponent className={`w-3 h-3 ${isSelected ? 'text-[#F27D26]' : 'text-white/40'}`} />
+                    <IconComponent className={`w-3 h-3 ${isSelected ? 'text-[#0077ED]' : 'text-[#64748B]'}`} />
                     <span>{cat.label}</span>
                   </button>
                 );
@@ -282,15 +281,15 @@ export const QualityStandards: React.FC = () => {
             </div>
 
             {/* Action Bar (Expand/Collapse All & Results Count) */}
-            <div className="flex items-center justify-between text-[11px] font-mono text-white/50 pt-2 border-t border-white/10">
+            <div className="flex items-center justify-between text-[11px] font-mono text-[#64748B] pt-2 border-t border-[#E2DDD2]">
               <div>
-                Showing <strong className="text-white">{filteredFaqs.length}</strong> of {FAQS.length} items
+                Showing <strong className="text-[#0F172A]">{filteredFaqs.length}</strong> of {FAQS.length} items
               </div>
               <div className="flex items-center gap-3">
                 <button
                   type="button"
                   onClick={handleExpandAll}
-                  className="hover:text-white text-white/60 transition-colors cursor-pointer"
+                  className="hover:text-[#0077ED] text-[#475569] transition-colors cursor-pointer"
                 >
                   {t.qualitySection.expandAll}
                 </button>
@@ -298,7 +297,7 @@ export const QualityStandards: React.FC = () => {
                 <button
                   type="button"
                   onClick={handleCollapseAll}
-                  className="hover:text-white text-white/60 transition-colors cursor-pointer"
+                  className="hover:text-[#0077ED] text-[#475569] transition-colors cursor-pointer"
                 >
                   {t.qualitySection.collapseAll}
                 </button>
@@ -315,29 +314,27 @@ export const QualityStandards: React.FC = () => {
                 return (
                   <div
                     key={faq.id}
-                    className={`border transition-colors ${
-                      isOpen ? 'bg-[#121316] border-[#F27D26]/60' : 'bg-[#0E0F12] border-white/10 hover:border-white/25'
-                    }`}
+                    className={`border transition-colors ${isOpen ? 'bg-[#FFFFFF] border-[#0077ED]/60' : 'bg-[#FAF8F5] border-[#E2DDD2] hover:border-[#C5BDAE]'
+                      }`}
                   >
                     <button
                       type="button"
                       onClick={() => toggleFaq(faq.id)}
                       aria-expanded={isOpen}
                       aria-controls={`faq-answer-${faq.id}`}
-                      className="w-full p-4 sm:p-5 text-left flex items-start justify-between gap-4 cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#F27D26]"
+                      className="w-full p-4 sm:p-5 text-left flex items-start justify-between gap-4 cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#0077ED]"
                     >
                       <div className="flex items-start gap-3">
-                        <span className="text-xs font-mono font-bold text-[#F27D26] px-1.5 py-0.5 bg-[#F27D26]/10 border border-[#F27D26]/30 mt-0.5">
+                        <span className="text-xs font-mono font-bold text-[#0077ED] px-1.5 py-0.5 bg-[#0077ED]/10 border border-[#0077ED]/30 mt-0.5">
                           Q
                         </span>
-                        <span className="text-sm sm:text-base font-bold text-white font-mono">
+                        <span className="text-sm sm:text-base font-bold text-[#0F172A] font-mono">
                           {faq.question}
                         </span>
                       </div>
                       <ChevronDown
-                        className={`w-4 h-4 text-[#F27D26] flex-shrink-0 transition-transform duration-300 mt-1 ${
-                          isOpen ? 'rotate-180' : ''
-                        }`}
+                        className={`w-4 h-4 text-[#0077ED] flex-shrink-0 transition-transform duration-300 mt-1 ${isOpen ? 'rotate-180' : ''
+                          }`}
                       />
                     </button>
 
@@ -351,19 +348,19 @@ export const QualityStandards: React.FC = () => {
                           transition={{ duration: 0.25 }}
                           className="overflow-hidden"
                         >
-                          <div className="px-4 pb-5 sm:px-5 sm:pb-6 pt-1 border-t border-white/10 text-xs sm:text-sm text-white/70 leading-relaxed font-light space-y-4">
+                          <div className="px-4 pb-5 sm:px-5 sm:pb-6 pt-1 border-t border-[#E2DDD2] text-xs sm:text-sm text-[#475569] leading-relaxed font-light space-y-4">
                             <p>{faq.answer}</p>
 
                             {/* Key Takeaway Highlights */}
                             {faq.highlights && faq.highlights.length > 0 && (
-                              <div className="bg-black/50 p-3 border border-white/10 space-y-1.5">
-                                <div className="text-[10px] font-mono text-[#F27D26] uppercase tracking-widest font-bold">
+                              <div className="bg-[#FAF8F5] p-3 border border-[#E2DDD2] space-y-1.5">
+                                <div className="text-[10px] font-mono text-[#0077ED] uppercase tracking-widest font-bold">
                                   [ KEY SPECIFICATION HIGHLIGHTS ]:
                                 </div>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs font-mono text-white/80">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs font-mono text-[#334155]">
                                   {faq.highlights.map((h, i) => (
                                     <div key={i} className="flex items-center gap-1.5">
-                                      <span className="text-[#F27D26]">▸</span>
+                                      <span className="text-[#0077ED]">▸</span>
                                       <span>{h}</span>
                                     </div>
                                   ))}
@@ -376,7 +373,7 @@ export const QualityStandards: React.FC = () => {
                               <button
                                 type="button"
                                 onClick={(e) => handleCopyAnswer(faq, e)}
-                                className="flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider bg-white/5 hover:bg-white/10 text-white/60 hover:text-white border border-white/10 transition-all cursor-pointer"
+                                className="flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider bg-[#FAF8F5] hover:bg-[#F4EFE6] text-[#475569] hover:text-[#0077ED] border border-[#E2DDD2] transition-all cursor-pointer"
                               >
                                 {isCopied ? (
                                   <>
@@ -399,15 +396,15 @@ export const QualityStandards: React.FC = () => {
                 );
               })
             ) : (
-              <div className="bg-[#0F1012] border border-white/10 p-8 text-center text-xs font-mono text-white/40 space-y-2">
-                <HelpCircle className="w-8 h-8 mx-auto text-white/20" />
+              <div className="bg-[#FAF8F5] border border-[#E2DDD2] p-8 text-center text-xs font-mono text-[#64748B] space-y-2">
+                <HelpCircle className="w-8 h-8 mx-auto text-[#94A3B8]" />
                 <div>No questions matched your search "{searchQuery}".</div>
                 <button
                   onClick={() => {
                     setSearchQuery('');
                     setSelectedCategory('all');
                   }}
-                  className="text-[#F27D26] underline cursor-pointer hover:text-white"
+                  className="text-[#0077ED] underline cursor-pointer hover:text-[#0077ED]"
                 >
                   Clear search and view all FAQs
                 </button>

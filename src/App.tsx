@@ -5,6 +5,7 @@ import { EntranceAnimation } from './components/EntranceAnimation';
 import { SampleRequestModal } from './components/SampleRequestModal';
 import { QuoteModal } from './components/QuoteModal';
 import { FocusedSectionView, FocusedSectionId } from './components/FocusedSectionView';
+import { MultiAIChatbot } from './components/MultiAIChatbot';
 import { PVCGrade, CurtainConfiguration, ComputedQuote } from './types';
 import { MessageSquare, PhoneCall, ArrowUp } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'motion/react';
@@ -14,13 +15,13 @@ function AppContent() {
   const { t, language } = useLanguage();
   const [showEntrance, setShowEntrance] = useState<boolean>(true);
   const [sampleModalOpen, setSampleModalOpen] = useState(false);
-  const [selectedSampleGrade, setSelectedSampleGrade] = useState<PVCGrade>('standard-clear');
+  const [selectedSampleGrade, setSelectedSampleGrade] = useState<PVCGrade>('transparent');
   
   const [quoteModalOpen, setQuoteModalOpen] = useState(false);
   const [currentConfig, setCurrentConfig] = useState<CurtainConfiguration | undefined>(undefined);
   const [currentQuote, setCurrentQuote] = useState<ComputedQuote | undefined>(undefined);
 
-  const [activeConfiguratorGrade, setActiveConfiguratorGrade] = useState<PVCGrade>('standard-clear');
+  const [activeConfiguratorGrade, setActiveConfiguratorGrade] = useState<PVCGrade>('transparent');
 
   // Focused Section View State & Navigation
   const [focusedSection, setFocusedSection] = useState<FocusedSectionId | null>(null);
@@ -101,7 +102,7 @@ function AppContent() {
     handleNavigateToSection('roi-calculator');
   };
 
-  const handleOpenSampleModal = (grade: PVCGrade = 'standard-clear') => {
+  const handleOpenSampleModal = (grade: PVCGrade = 'transparent') => {
     setSelectedSampleGrade(grade);
     setSampleModalOpen(true);
   };
@@ -117,7 +118,7 @@ function AppContent() {
     setQuoteModalOpen(true);
   };
 
-  const handleOpenDirectQuote = (grade: PVCGrade = 'standard-clear') => {
+  const handleOpenDirectQuote = (grade: PVCGrade = 'transparent') => {
     if (!currentConfig || !currentQuote) {
       const defaultConfig: CurtainConfiguration = {
         width: 2400,
@@ -157,7 +158,7 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#08090C] text-[#E0E0E0] selection:bg-[#F27D26] selection:text-white font-sans antialiased">
+    <div className="min-h-screen bg-[#F8F6F0] text-[#1E293B] selection:bg-[#0077ED] selection:text-white font-sans antialiased">
       {/* Entrance Animation Screen */}
       <AnimatePresence>
         {showEntrance && (
@@ -165,19 +166,20 @@ function AppContent() {
         )}
       </AnimatePresence>
 
-      {/* Industrial Orange Scroll Progress Bar */}
+      {/* Industrial Blue Scroll Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[3px] bg-[#F27D26] origin-left z-50 shadow-[0_0_8px_#F27D26] pointer-events-none"
+        className="fixed top-0 left-0 right-0 h-[3px] bg-[#0077ED] origin-left z-50 shadow-[0_0_8px_#0077ED] pointer-events-none"
         style={{ scaleX }}
       />
 
-      {/* Global Precision Navigation Bar */}
+      {/* Global Precision Navigation Bar with Active Section Indicator */}
       <Navbar
         onOpenConfigurator={handleOpenConfigurator}
-        onOpenSampleModal={() => handleOpenSampleModal('standard-clear')}
+        onOpenSampleModal={() => handleOpenSampleModal('transparent')}
         onOpenRoiCalculator={handleOpenRoiCalculator}
         onOpenQuoteModal={() => handleOpenDirectQuote(activeConfiguratorGrade)}
         onNavigateToSection={handleNavigateToSection}
+        activeSectionId={focusedSection}
       />
 
       {/* Main Viewport: Home Page OR Section-Specific Focused Module */}
@@ -214,6 +216,7 @@ function AppContent() {
             >
               <HomePage
                 onNavigateSection={handleNavigateToSection}
+                onSelectGradeForConfigurator={handleSelectGradeForConfigurator}
                 onOpenQuoteModal={() => handleOpenDirectQuote(activeConfiguratorGrade)}
                 onOpenSampleModal={() => handleOpenSampleModal(activeConfiguratorGrade)}
               />
@@ -237,21 +240,13 @@ function AppContent() {
         quote={currentQuote}
       />
 
-      {/* Floating Direct Technical Support Widget */}
-      <div className="fixed bottom-6 right-6 z-30 flex flex-col gap-2.5">
-        <a
-          href="https://wa.me/919377678155?text=Hello%20Multi%20Enterprise,%20I%20would%20like%20a%20technical%20quote%20for%20industrial%20PVC%20strip%20curtains."
-          target="_blank"
-          rel="noopener noreferrer"
-          title="Chat with Technical Sales on WhatsApp (+91 9377 678 155)"
-          className="flex items-center gap-2 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full shadow-2xl transition-transform hover:scale-105 text-xs font-mono font-bold"
-        >
-          <MessageSquare className="w-4 h-4" />
-          <span className="hidden sm:inline">
-            {language === 'hi' ? 'व्हाट्सएप तकनीकी सहायता' : 'WhatsApp +91 9377 678 155'}
-          </span>
-        </a>
-      </div>
+      {/* Interactive AI Technical Chatbot & Advisor (Replaces static button) */}
+      <MultiAIChatbot
+        onOpenConfigurator={handleOpenConfigurator}
+        onOpenSampleModal={handleOpenSampleModal}
+        onNavigateToSection={handleNavigateToSection}
+        onOpenQuoteModal={() => handleOpenDirectQuote(activeConfiguratorGrade)}
+      />
     </div>
   );
 }

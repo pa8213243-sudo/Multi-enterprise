@@ -82,7 +82,7 @@ export const HardwareInstallation: React.FC = () => {
   const Icon = current.icon;
 
   return (
-    <section id="installation" className="relative py-24 bg-[#0A0A0B] text-[#E0E0E0] border-t border-white/10 overflow-hidden">
+    <section id="installation" className="relative py-24 bg-[#F8F6F0] text-[#1E293B] border-t border-[#E2DDD2] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header with Motion */}
         <motion.div 
@@ -94,14 +94,14 @@ export const HardwareInstallation: React.FC = () => {
         >
           <div className="flex items-center justify-center gap-2 mb-3">
             <MultiLogoIcon size={18} className="w-4.5 h-4.5" />
-            <span className="text-[#F27D26] text-xs font-mono tracking-widest uppercase font-bold">
+            <span className="text-[#0077ED] text-xs font-mono tracking-widest uppercase font-bold">
               {t.hardwareSection.badge}
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white uppercase font-display mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0F172A] uppercase font-display mb-4">
             {t.hardwareSection.title}
           </h2>
-          <p className="text-sm sm:text-base text-white/60 leading-relaxed font-light">
+          <p className="text-sm sm:text-base text-[#475569] leading-relaxed font-light">
             {t.hardwareSection.subtitle}
           </p>
         </motion.div>
@@ -117,7 +117,7 @@ export const HardwareInstallation: React.FC = () => {
             return (
               <button
                 key={s.step}
-                ref={(el) => (stepButtonsRef.current[idx] = el)}
+                ref={(el) => { stepButtonsRef.current[idx] = el; }}
                 role="tab"
                 id={`install-step-tab-${s.step}`}
                 aria-selected={isActive}
@@ -125,24 +125,28 @@ export const HardwareInstallation: React.FC = () => {
                 tabIndex={isActive ? 0 : -1}
                 onKeyDown={(e) => handleStepKeyDown(e, idx)}
                 onClick={() => setActiveStep(s.step)}
-                className={`p-4 text-left border transition-all cursor-pointer ${
+                className={`p-4 text-left border-2 transition-all cursor-pointer rounded-xl ${
                   isActive
-                    ? 'bg-[#1C1E24] border-[#F27D26] text-white shadow-xl ring-1 ring-[#F27D26]'
-                    : 'bg-[#0F1012] border-white/10 hover:border-white/30 text-white/60'
+                    ? 'bg-[#FFFFFF] border-[#0077ED] shadow-[0_4px_20px_rgba(0,119,237,0.15)] ring-2 ring-[#0077ED]/20'
+                    : 'bg-[#FAF8F5] border-[#E2DDD2] hover:border-[#0077ED]/40 text-[#475569]'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <div className={`w-7 h-7 flex items-center justify-center text-xs font-mono font-bold ${
-                    isActive ? 'bg-white text-black' : 'bg-white/10 text-white/60'
+                  <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-mono font-bold transition-colors ${
+                    isActive ? 'bg-[#0077ED] text-white shadow-sm' : 'bg-[#EAE5DA] text-[#475569]'
                   }`}>
                     0{s.step}
                   </div>
-                  <span className="text-[10px] font-mono text-white/40 flex items-center gap-1">
-                    <Clock className="w-3 h-3 text-[#F27D26]" />
+                  <span className={`text-[10px] font-mono flex items-center gap-1 font-semibold ${
+                    isActive ? 'text-[#0077ED]' : 'text-[#64748B]'
+                  }`}>
+                    <Clock className="w-3 h-3 text-[#0077ED]" />
                     {s.time}
                   </span>
                 </div>
-                <div className={`text-xs font-bold uppercase tracking-wider ${isActive ? 'text-white' : 'text-white/70'}`}>
+                <div className={`text-xs font-bold uppercase tracking-wider font-mono ${
+                  isActive ? 'text-[#0077ED]' : 'text-[#475569]'
+                }`}>
                   {s.short}
                 </div>
               </button>
@@ -161,31 +165,31 @@ export const HardwareInstallation: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.35 }}
-            className="bg-[#121316] border border-white/10 p-6 sm:p-8 lg:p-10 shadow-2xl"
+            className="bg-[#FFFFFF] border border-[#E2DDD2] p-6 sm:p-8 lg:p-10 shadow-2xl"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               {/* Step Description */}
               <div className="lg:col-span-7 space-y-5">
                 <div className="flex items-center gap-3">
-                  <div className="p-3 bg-white/5 border border-white/10 text-[#F27D26]">
+                  <div className="p-3 bg-[#FAF8F5] border border-[#E2DDD2] text-[#0077ED]">
                     <Icon className="w-6 h-6" />
                   </div>
                   <div>
-                    <span className="text-xs font-mono uppercase text-[#F27D26] tracking-widest font-bold">
+                    <span className="text-xs font-mono uppercase text-[#0077ED] tracking-widest font-bold">
                       [ STEP 0{activeStep} OF 04 ]
                     </span>
-                    <h3 className="text-xl sm:text-2xl font-black text-white uppercase font-display">
+                    <h3 className="text-xl sm:text-2xl font-black text-[#0F172A] uppercase font-display">
                       {current.title}
                     </h3>
                   </div>
                 </div>
 
-                <p className="text-sm sm:text-base text-white/80 leading-relaxed font-light">
+                <p className="text-sm sm:text-base text-[#334155] leading-relaxed font-light">
                   {current.desc}
                 </p>
 
-                <div className="bg-black/40 border-l-2 border-[#F27D26] p-4 text-xs font-mono text-white/70">
-                  <strong className="text-[#F27D26] block uppercase mb-1 font-bold">
+                <div className="bg-[#FAF8F5] border-l-2 border-[#0077ED] p-4 text-xs font-mono text-[#475569]">
+                  <strong className="text-[#0077ED] block uppercase mb-1 font-bold">
                     [ {t.hardwareSection.tips} ]:
                   </strong>
                   {current.tips}
@@ -193,14 +197,14 @@ export const HardwareInstallation: React.FC = () => {
               </div>
 
               {/* Step Graphic / CAD Blueprint Diagram */}
-              <div className="lg:col-span-5 bg-black/60 border border-white/10 p-6 flex flex-col justify-center items-center text-center">
-                <div className="w-20 h-20 rounded-full bg-[#1C1E24] border border-[#F27D26]/40 flex items-center justify-center mb-4 text-[#F27D26]">
+              <div className="lg:col-span-5 bg-[#FAF8F5] border border-[#E2DDD2] p-6 flex flex-col justify-center items-center text-center">
+                <div className="w-20 h-20 rounded-full bg-[#FFFFFF] border border-[#0077ED]/40 flex items-center justify-center mb-4 text-[#0077ED]">
                   <Icon className="w-10 h-10" />
                 </div>
-                <div className="text-xs font-mono uppercase tracking-widest text-white/50 mb-1">
+                <div className="text-xs font-mono uppercase tracking-widest text-[#64748B] mb-1">
                   CAD BLUEPRINT • SPECIFICATION #SS304
                 </div>
-                <div className="text-sm font-bold text-white font-mono">
+                <div className="text-sm font-bold text-[#0F172A] font-mono">
                   {current.short}
                 </div>
               </div>

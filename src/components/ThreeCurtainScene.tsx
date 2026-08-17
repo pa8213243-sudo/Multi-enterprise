@@ -12,6 +12,7 @@ import {
   ZoomOut,
   Flame,
   Maximize2,
+  Minimize2,
   Sliders,
   Layers,
   Sparkles
@@ -22,6 +23,7 @@ interface ThreeCurtainSceneProps {
   overlap?: OverlapOption;
   hardware?: HardwareType;
   stripCount?: number;
+  thickness?: number;
   heightRatio?: number;
   interactive?: boolean;
   viewMode?: 'realistic' | 'thermal' | 'airflow';
@@ -155,6 +157,7 @@ export const ThreeCurtainScene: React.FC<ThreeCurtainSceneProps> = ({
   overlap = 50,
   hardware = 'ss304-hook-track',
   stripCount = 7,
+  thickness = 2,
   heightRatio = 1.4,
   interactive = true,
   viewMode: controlledViewMode,
@@ -202,27 +205,55 @@ export const ThreeCurtainScene: React.FC<ThreeCurtainSceneProps> = ({
 
   const targetRotation = useRef<{ x: number; y: number }>({ x: 0.10, y: -0.18 });
   const currentRotation = useRef<{ x: number; y: number }>({ x: 0.10, y: -0.18 });
-  const targetZoom = useRef<number>(4.8);
-  const currentZoom = useRef<number>(4.8);
+  const targetZoom = useRef<number>(6.2);
+  const currentZoom = useRef<number>(6.2);
 
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const effectiveOverlap = overlapPct || overlap;
+  const isMultiGreen = grade === 'multi-green';
+
+  // Smoothly adjust camera zoom and viewport when expanded in-place
+  useEffect(() => {
+    targetZoom.current = isExpanded ? 5.6 : 6.2;
+    const timer = setTimeout(() => {
+      if (containerRef.current && rendererRef.current && cameraRef.current) {
+        const w = containerRef.current.clientWidth;
+        const h = containerRef.current.clientHeight;
+        if (w > 0 && h > 0) {
+          cameraRef.current.aspect = w / h;
+          cameraRef.current.updateProjectionMatrix();
+          rendererRef.current.setSize(w, h);
+        }
+      }
+    }, 180);
+    return () => clearTimeout(timer);
+  }, [isExpanded]);
 
   // Memoize heavy grade data computations
   const currentGradeData = useMemo(() => {
     return PVC_GRADES[grade] || PVC_GRADES['standard-clear'];
   }, [grade]);
 
-  // Memoize geometry layout dimensions - calibrated scale so doorway is never over-zoomed or clipped
+  // Memoize geometry layout dimensions - dynamically reactive to doorway width & height sliders
   const curtainLayout = useMemo(() => {
-    const count = Math.max(stripCount, 3);
-    const targetWidth = Math.min(2.8, Math.max(1.8, count * 0.16));
+    const count = Math.min(Math.max(stripCount || 7, 3), 45);
+    const targetWidth = Math.min(3.2, Math.max(1.6, count * 0.16));
     const stripW = Math.max(0.18, Math.min(0.40, (targetWidth / count) * 1.55));
-    const overlapStep = (stripW * (100 - effectiveOverlap / 1.5)) / 100;
+    // Safe overlap step calculation preventing 0 division or excessive overlap
+    const overlapRatio = Math.min(Math.max(effectiveOverlap, 0), 100);
+    const overlapStep = (stripW * (100 - (overlapRatio >= 100 ? 50 : overlapRatio / 1.5))) / 100;
     const totalCurtainWidth = (count - 1) * overlapStep;
-    const stripH = 2.1 * Math.min(Math.max(heightRatio, 0.8), 1.5);
-    return { stripW, stripH, stripD: 0.015, overlapStep, totalCurtainWidth };
-  }, [heightRatio, effectiveOverlap, stripCount]);
+
+    // Dynamically scale strip height in 3D in real-time as user changes Clear Opening Height slider (1800mm to 6000mm)
+    const heightFactor = heightMm ? (heightMm / 2400) : (heightRatio || 1.4);
+    const stripH = 2.1 * Math.min(Math.max(heightFactor, 0.70), 2.70);
+
+    // Dynamic visual thickness depth based on thickness prop (1.5mm -> 0.012, 2mm -> 0.020, 3mm -> 0.036, 4mm -> 0.054)
+    const thicknessMm = thickness || 2;
+    const stripD = Math.max(0.010, Math.min(0.060, (thicknessMm / 2) * 0.022));
+
+    return { stripW, stripH, stripD, overlapStep, totalCurtainWidth, count, thicknessMm };
+  }, [heightMm, heightRatio, effectiveOverlap, stripCount, thickness]);
 
   const setViewMode = useCallback((mode: 'realistic' | 'thermal' | 'airflow') => {
     setInternalViewMode(mode);
@@ -258,21 +289,21 @@ export const ThreeCurtainScene: React.FC<ThreeCurtainSceneProps> = ({
     setCameraAngle(preset);
     if (preset === 'front') {
       targetRotation.current = { x: 0.0, y: 0.0 };
-      targetZoom.current = 4.6;
+      targetZoom.current = 6.0;
     } else if (preset === 'side') {
       targetRotation.current = { x: 0.05, y: -Math.PI / 3.0 };
-      targetZoom.current = 5.0;
+      targetZoom.current = 6.3;
     } else if (preset === 'isometric') {
       targetRotation.current = { x: 0.10, y: -0.18 };
-      targetZoom.current = 4.8;
+      targetZoom.current = 6.2;
     } else if (preset === 'top') {
       targetRotation.current = { x: 0.55, y: -0.15 };
-      targetZoom.current = 4.5;
+      targetZoom.current = 6.0;
     }
   }, []);
 
   const handleZoom = useCallback((delta: number) => {
-    targetZoom.current = Math.max(3.0, Math.min(7.5, targetZoom.current + delta));
+    targetZoom.current = Math.max(2.0, Math.min(6.5, targetZoom.current + delta));
   }, []);
 
   // --- Step 1: Initialize WebGL Context, Renderer, Scene, Camera & Render Loop ---
@@ -287,7 +318,7 @@ export const ThreeCurtainScene: React.FC<ThreeCurtainSceneProps> = ({
     sceneRef.current = scene;
 
     const camera = new THREE.PerspectiveCamera(36, width / height, 0.1, 100);
-    camera.position.set(0, 0, 5.4);
+    camera.position.set(0, 0, 6.2);
     cameraRef.current = camera;
 
     const renderer = new THREE.WebGLRenderer({
@@ -300,35 +331,44 @@ export const ThreeCurtainScene: React.FC<ThreeCurtainSceneProps> = ({
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.18;
+    renderer.toneMappingExposure = 1.26;
 
     container.innerHTML = '';
     container.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
-    // --- Lighting Setup ---
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.95);
+    // --- High-End Studio 3-Point Lighting for Razor-Sharp Specular Highlights ---
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.1);
     scene.add(ambientLight);
 
-    const dirLight1 = new THREE.DirectionalLight(0xffffff, 2.0);
-    dirLight1.position.set(5, 7, 6);
-    dirLight1.castShadow = true;
-    dirLight1.shadow.mapSize.width = 1024;
-    dirLight1.shadow.mapSize.height = 1024;
-    dirLight1.shadow.bias = -0.0001;
-    scene.add(dirLight1);
+    // Key Light: Overhead top-front studio light casting crisp glossy specular highlights
+    const keyLight = new THREE.DirectionalLight(0xffffff, 2.6);
+    keyLight.position.set(4, 8, 6);
+    keyLight.castShadow = true;
+    keyLight.shadow.mapSize.width = 1024;
+    keyLight.shadow.mapSize.height = 1024;
+    keyLight.shadow.bias = -0.0001;
+    scene.add(keyLight);
 
-    const dirLight2 = new THREE.DirectionalLight(0x93c5fd, 1.4);
-    dirLight2.position.set(-6, 4, -4);
-    scene.add(dirLight2);
+    // Warm Fill Light: Soft ambient bounce bringing out rich polymer color
+    const fillLight = new THREE.DirectionalLight(0xffedd5, 1.3);
+    fillLight.position.set(-6, 4, -3);
+    scene.add(fillLight);
 
-    const pointLight = new THREE.PointLight(0xf27d26, 2.0, 12);
-    pointLight.position.set(0, 2.8, 2.2);
-    scene.add(pointLight);
+    // Center Focus Spotlight: Highlighting stainless steel track & strip overlap
+    const centerSpot = new THREE.PointLight(0x0077ed, 2.2, 14);
+    centerSpot.position.set(0, 3.2, 2.4);
+    scene.add(centerSpot);
 
-    const cyanRimLight = new THREE.PointLight(0x38bdf8, 1.4, 10);
-    cyanRimLight.position.set(0, -1.5, 3.0);
+    // Rim Backlight: Electric blue/cyan edge glow outlining the translucent strips
+    const cyanRimLight = new THREE.PointLight(0x38bdf8, 2.0, 12);
+    cyanRimLight.position.set(0, -1.2, 3.2);
     scene.add(cyanRimLight);
+
+    // Top Rim Specular: Gleam on stainless steel rail track
+    const topGleam = new THREE.PointLight(0xffffff, 1.8, 8);
+    topGleam.position.set(0, 2.0, -1.0);
+    scene.add(topGleam);
 
     // Subtle Industrial Floor Grid
     const gridHelper = new THREE.GridHelper(12, 24, 0x475569, 0x1e293b);
@@ -337,6 +377,7 @@ export const ThreeCurtainScene: React.FC<ThreeCurtainSceneProps> = ({
 
     // Master Transformation Groups
     const masterGroup = new THREE.Group();
+    masterGroup.position.y = -0.18; // Slight downward offset so top track is never obstructed by HUD
     scene.add(masterGroup);
     masterGroupRef.current = masterGroup;
 
@@ -511,6 +552,21 @@ export const ThreeCurtainScene: React.FC<ThreeCurtainSceneProps> = ({
     const handlePointerDown = (e: PointerEvent) => {
       isInteracting.current = true;
       lastTouchPos.current = { x: e.clientX, y: e.clientY };
+      try {
+        (e.target as HTMLElement)?.setPointerCapture?.(e.pointerId);
+      } catch {
+        // Safe fallback
+      }
+
+      // Tap on curtain strip imparts physical swing deflection
+      if (container && stripMeshesRef.current.length > 0) {
+        const rect = container.getBoundingClientRect();
+        const normX = (e.clientX - rect.left) / rect.width;
+        const stripIdx = Math.floor(normX * stripMeshesRef.current.length);
+        if (stripMeshesRef.current[stripIdx]) {
+          stripMeshesRef.current[stripIdx].vel += (Math.random() - 0.5) * 0.8;
+        }
+      }
     };
 
     const handlePointerMove = (e: PointerEvent) => {
@@ -519,20 +575,35 @@ export const ThreeCurtainScene: React.FC<ThreeCurtainSceneProps> = ({
       const deltaY = e.clientY - lastTouchPos.current.y;
       lastTouchPos.current = { x: e.clientX, y: e.clientY };
 
-      targetRotation.current.y += deltaX * 0.007;
-      targetRotation.current.x = Math.max(-0.4, Math.min(0.8, targetRotation.current.x + deltaY * 0.007));
+      targetRotation.current.y += deltaX * 0.008;
+      targetRotation.current.x = Math.max(-0.4, Math.min(0.8, targetRotation.current.x + deltaY * 0.008));
+
+      // Dragging across strips imparts natural physics wave
+      if (container && Math.abs(deltaX) > 2 && stripMeshesRef.current.length > 0) {
+        const rect = container.getBoundingClientRect();
+        const normX = (e.clientX - rect.left) / rect.width;
+        const stripIdx = Math.floor(normX * stripMeshesRef.current.length);
+        if (stripMeshesRef.current[stripIdx]) {
+          stripMeshesRef.current[stripIdx].vel += deltaX * 0.04;
+        }
+      }
     };
 
-    const handlePointerUp = () => {
+    const handlePointerUp = (e: PointerEvent) => {
       isInteracting.current = false;
+      try {
+        (e.target as HTMLElement)?.releasePointerCapture?.(e.pointerId);
+      } catch {
+        // Safe fallback
+      }
     };
 
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault();
-      targetZoom.current = Math.max(2.8, Math.min(7.5, targetZoom.current + e.deltaY * 0.003));
+      targetZoom.current = Math.max(2.0, Math.min(6.5, targetZoom.current + e.deltaY * 0.003));
     };
 
-    // Touch pinch-to-zoom support
+    // Mobile two-finger pinch-to-zoom support
     const handleTouchStart = (e: TouchEvent) => {
       if (e.touches.length === 2) {
         const dx = e.touches[0].clientX - e.touches[1].clientX;
@@ -547,8 +618,8 @@ export const ThreeCurtainScene: React.FC<ThreeCurtainSceneProps> = ({
         const dy = e.touches[0].clientY - e.touches[1].clientY;
         const dist = Math.hypot(dx, dy);
         if (touchStartDist.current > 0) {
-          const delta = (touchStartDist.current - dist) * 0.01;
-          targetZoom.current = Math.max(2.8, Math.min(7.5, targetZoom.current + delta));
+          const delta = (touchStartDist.current - dist) * 0.012;
+          targetZoom.current = Math.max(2.0, Math.min(6.5, targetZoom.current + delta));
         }
         touchStartDist.current = dist;
       }
@@ -639,10 +710,10 @@ export const ThreeCurtainScene: React.FC<ThreeCurtainSceneProps> = ({
     const railGeo = new THREE.BoxGeometry(railLength, 0.12, 0.08);
     const isStainless = hardware === 'ss304-hook-track';
     const railMat = new THREE.MeshStandardMaterial({
-      color: isStainless ? 0xd1d5db : 0x94a3b8,
-      metalness: isStainless ? 0.95 : 0.75,
-      roughness: isStainless ? 0.15 : 0.45,
-      envMapIntensity: 1.5
+      color: isStainless ? 0xf1f5f9 : 0xa1a1aa,
+      metalness: isStainless ? 0.98 : 0.80,
+      roughness: isStainless ? 0.15 : 0.40,
+      envMapIntensity: 2.0
     });
     const railMesh = new THREE.Mesh(railGeo, railMat);
     railMesh.position.set(0, stripH / 2 + 0.06, 0);
@@ -653,9 +724,9 @@ export const ThreeCurtainScene: React.FC<ThreeCurtainSceneProps> = ({
     // Wall Mount Bracket Caps
     const bracketGeo = new THREE.BoxGeometry(0.14, 0.22, 0.18);
     const bracketMat = new THREE.MeshStandardMaterial({
-      color: 0x475569,
-      metalness: 0.8,
-      roughness: 0.3
+      color: 0x334155,
+      metalness: 0.85,
+      roughness: 0.25
     });
     const leftBracket = new THREE.Mesh(bracketGeo, bracketMat);
     leftBracket.position.set(-railLength / 2 + 0.07, stripH / 2 + 0.06, 0.05);
@@ -666,9 +737,9 @@ export const ThreeCurtainScene: React.FC<ThreeCurtainSceneProps> = ({
     // Hanging Teeth / Prongs on Track
     const prongGeo = new THREE.BoxGeometry(0.022, 0.06, 0.06);
     const prongMat = new THREE.MeshStandardMaterial({
-      color: 0xe2e8f0,
-      metalness: 0.9,
-      roughness: 0.2
+      color: 0xf8fafc,
+      metalness: 0.98,
+      roughness: 0.12
     });
     const prongCount = Math.floor(railLength / 0.12);
     for (let p = 0; p < prongCount; p++) {
@@ -702,31 +773,50 @@ export const ThreeCurtainScene: React.FC<ThreeCurtainSceneProps> = ({
       stripMaterial = new THREE.MeshPhysicalMaterial({
         color: new THREE.Color(0x0ea5e9),
         emissive: new THREE.Color(0x0284c7),
-        emissiveIntensity: 0.35,
-        transmission: 0.70,
-        opacity: 0.85,
+        emissiveIntensity: 0.40,
+        transmission: 0.72,
+        opacity: 0.88,
         transparent: true,
-        roughness: 0.1,
-        metalness: 0.05,
+        roughness: 0.06,
+        metalness: 0.03,
         clearcoat: 1.0,
-        ior: 1.48,
+        clearcoatRoughness: 0.04,
+        ior: 1.52,
         side: THREE.DoubleSide
       });
     } else {
-      // Realistic mode with high-end physical polymer shader
+      // Ultra-Realistic Physical Polymer Shader with Crystal-Clear Specularity
       const color3d = currentGradeData.color3D;
+      const isMultiGreenGrade = grade === 'multi-green';
+      const isOpaqueGrade = grade === 'white-opaque' || grade === 'gray' || grade === 'navy-blue';
+
       stripMaterial = new THREE.MeshPhysicalMaterial({
-        color: new THREE.Color(color3d.color),
-        transmission: color3d.transmission,
-        opacity: color3d.opacity,
+        color: new THREE.Color(isMultiGreenGrade ? 0x008037 : color3d.color),
+        transmission: isOpaqueGrade ? 0.05 : (isMultiGreenGrade ? 0.72 : Math.max(0.85, color3d.transmission)),
+        opacity: isOpaqueGrade ? 0.98 : (isMultiGreenGrade ? 0.92 : color3d.opacity),
         transparent: true,
-        roughness: color3d.roughness,
-        metalness: color3d.metalness,
-        clearcoat: color3d.clearcoat,
-        ior: color3d.ior,
+        roughness: isMultiGreenGrade ? 0.08 : 0.04,
+        metalness: 0.02,
+        clearcoat: 1.0,
+        clearcoatRoughness: 0.03,
+        ior: isMultiGreenGrade ? 1.54 : 1.52,
+        reflectivity: 0.92,
+        attenuationColor: new THREE.Color(color3d.color),
+        attenuationDistance: 1.2,
+        specularIntensity: 1.2,
+        specularColor: new THREE.Color(0xffffff),
         side: THREE.DoubleSide,
         depthWrite: false
       });
+    }
+
+    // Adapt 3D background color for Multi Green vs Standard
+    const isMultiGreenGrade = grade === 'multi-green';
+    if (rendererRef.current) {
+      rendererRef.current.setClearColor(isMultiGreenGrade ? 0xffffff : 0x000000, isMultiGreenGrade ? 1 : 0);
+    }
+    if (sceneRef.current) {
+      sceneRef.current.background = isMultiGreenGrade ? new THREE.Color(0xfcfbf8) : null;
     }
 
     // --- Build Strip Assemblies with Hinge Pivots ---
@@ -735,16 +825,20 @@ export const ThreeCurtainScene: React.FC<ThreeCurtainSceneProps> = ({
 
     const clampGeo = new THREE.BoxGeometry(stripW * 0.94, 0.14, stripD * 2.4);
     const clampMat = new THREE.MeshStandardMaterial({
-      color: isStainless ? 0xd4d4d8 : 0xa1a1aa,
-      metalness: 0.9,
-      roughness: 0.25
+      color: isStainless ? 0xe2e8f0 : 0xb0b0b8,
+      metalness: 0.96,
+      roughness: 0.18
     });
 
-    const rivetGeo = new THREE.CylinderGeometry(0.015, 0.015, stripD * 2.8, 8);
+    const rivetGeo = new THREE.CylinderGeometry(0.015, 0.015, stripD * 2.8, 12);
     rivetGeo.rotateX(Math.PI / 2);
-    const rivetMat = new THREE.MeshStandardMaterial({ color: 0x52525b, metalness: 0.9, roughness: 0.2 });
+    const rivetMat = new THREE.MeshStandardMaterial({ 
+      color: 0xffffff, 
+      metalness: 1.0, 
+      roughness: 0.08 
+    });
 
-    for (let i = 0; i < stripCount; i++) {
+    for (let i = 0; i < curtainLayout.count; i++) {
       const stripPivot = new THREE.Group();
       const xPos = startX + i * overlapStep;
       const zLayer = (i % 2 === 0 ? 0 : 0.025) + (Math.sin(i) * 0.002);
@@ -756,54 +850,54 @@ export const ThreeCurtainScene: React.FC<ThreeCurtainSceneProps> = ({
       stripMesh.receiveShadow = true;
       stripPivot.add(stripMesh);
 
-      // Stainless Steel Clamping Head Plate
+      // Top Mounting Clamp Plate
       const clampMesh = new THREE.Mesh(clampGeo, clampMat);
       clampMesh.position.set(0, -0.07, 0);
+      clampMesh.castShadow = true;
       stripPivot.add(clampMesh);
 
       // Fastener Rivets
       const rivet1 = new THREE.Mesh(rivetGeo, rivetMat);
-      rivet1.position.set(-stripW * 0.3, -0.07, 0);
+      rivet1.position.set(-stripW * 0.25, -0.07, 0);
       const rivet2 = new THREE.Mesh(rivetGeo, rivetMat);
-      rivet2.position.set(stripW * 0.3, -0.07, 0);
+      rivet2.position.set(stripW * 0.25, -0.07, 0);
       stripPivot.add(rivet1, rivet2);
 
       stripsGroup.add(stripPivot);
       stripMeshesRef.current.push({
         mesh: stripPivot,
-        phase: i * 0.45,
+        phase: i * 0.35 + Math.random() * 0.2,
         vel: 0
       });
     }
 
-    // --- Build Particles (Thermal Heat Rise / Airflow Vortex Streamlines) ---
+    // --- Build Airflow / Thermal Particle System ---
     if (activeViewMode === 'thermal' || activeViewMode === 'airflow') {
-      const particleCount = activeViewMode === 'thermal' ? 240 : 360;
+      const particleCount = activeViewMode === 'thermal' ? 280 : 380;
       const pGeo = new THREE.BufferGeometry();
       const pPos = new Float32Array(particleCount * 3);
       const pColors = new Float32Array(particleCount * 3);
 
       for (let p = 0; p < particleCount; p++) {
-        pPos[p * 3] = (Math.random() - 0.5) * 4.4;
-        pPos[p * 3 + 1] = (Math.random() - 0.5) * 3.2;
-        pPos[p * 3 + 2] = 2.5 + Math.random() * 2.0;
+        pPos[p * 3] = (Math.random() - 0.5) * 4.0;
+        pPos[p * 3 + 1] = (Math.random() - 0.5) * 3.0;
+        pPos[p * 3 + 2] = (Math.random() - 0.5) * 4.5;
 
         if (activeViewMode === 'thermal') {
-          // Warm red/orange particles in ambient room transitioning to cold cyan in freezer
-          const isWarm = Math.random() > 0.4;
-          if (isWarm) {
+          // Warm red/orange particles in front (z > 0), cold cryogenic blue behind (z < 0)
+          if (pPos[p * 3 + 2] > 0) {
             pColors[p * 3] = 1.0;
-            pColors[p * 3 + 1] = 0.3 + Math.random() * 0.3;
-            pColors[p * 3 + 2] = 0.05;
+            pColors[p * 3 + 1] = 0.35 + Math.random() * 0.3;
+            pColors[p * 3 + 2] = 0.1;
           } else {
-            pColors[p * 3] = 0.05;
-            pColors[p * 3 + 1] = 0.8 + Math.random() * 0.2;
+            pColors[p * 3] = 0.1;
+            pColors[p * 3 + 1] = 0.75 + Math.random() * 0.25;
             pColors[p * 3 + 2] = 1.0;
           }
         } else {
-          // Airflow: energetic cyan & pure white streamline particles
-          pColors[p * 3] = 0.2 + Math.random() * 0.8;
-          pColors[p * 3 + 1] = 0.8 + Math.random() * 0.2;
+          // CFD Streamlines: Cyan / Sky Blue streamlines
+          pColors[p * 3] = 0.05 + Math.random() * 0.2;
+          pColors[p * 3 + 1] = 0.75 + Math.random() * 0.25;
           pColors[p * 3 + 2] = 1.0;
         }
       }
@@ -812,153 +906,166 @@ export const ThreeCurtainScene: React.FC<ThreeCurtainSceneProps> = ({
       pGeo.setAttribute('color', new THREE.BufferAttribute(pColors, 3));
 
       const pMat = new THREE.PointsMaterial({
-        size: activeViewMode === 'thermal' ? 0.08 : 0.06,
+        size: activeViewMode === 'thermal' ? 0.065 : 0.045,
         vertexColors: true,
         transparent: true,
         opacity: 0.85,
-        blending: THREE.AdditiveBlending
+        blending: THREE.AdditiveBlending,
+        depthWrite: false
       });
 
       const particleSystem = new THREE.Points(pGeo, pMat);
       masterGroup.add(particleSystem);
       particlesRef.current = particleSystem;
     }
-  }, [curtainLayout, hardware, activeViewMode, currentGradeData, thermalPalette, stripCount]);
+  }, [curtainLayout, hardware, activeViewMode, currentGradeData, thermalPalette, grade]);
 
   return (
-    <div 
-      className={`relative overflow-hidden bg-gradient-to-b from-[#0F1013] via-[#0A0A0C] to-[#080809] border border-white/10 shadow-2xl transition-all duration-300 ${
-        isFullscreen 
-          ? 'fixed inset-0 z-50 rounded-none w-screen h-screen' 
-          : `rounded-2xl ${className}`
-      }`}
-    >
-      {/* 3D WebGL Canvas Injection Container */}
+    <div className="flex flex-col gap-3">
+      {/* 1. Black 3D WebGL Canvas Viewport (100% Unobstructed at Bottom) */}
       <div 
-        ref={containerRef} 
-        className="w-full h-full cursor-grab active:cursor-grabbing touch-none select-none"
-        title="Click and drag to rotate in 3D • Pinch to zoom"
-      />
+        className={`relative overflow-hidden shadow-2xl transition-all duration-500 ease-in-out ${
+          isMultiGreen 
+            ? 'bg-gradient-to-b from-[#FFFFFF] via-[#FAF8F5] to-[#F1ECE1] border-2 border-emerald-600/30' 
+            : 'bg-gradient-to-b from-[#0F1013] via-[#0A0A0C] to-[#080809] border border-[#E2DDD2]'
+        } rounded-2xl ${
+          isExpanded 
+            ? 'w-full h-[560px] sm:h-[620px] lg:h-[660px]' 
+            : className
+        }`}
+      >
+        {/* 3D WebGL Canvas Injection Container */}
+        <div 
+          ref={containerRef} 
+          className="w-full h-full cursor-grab active:cursor-grabbing touch-none select-none"
+          title="Click and drag to rotate in 3D • Pinch to zoom"
+        />
 
-      {/* Top Floating HUD: View Mode Switcher & Fullscreen Expand */}
+        {/* Top Floating HUD: View Mode Switcher & In-Place Height Expand (Pinned to Top Edge) */}
+        {showControls && (
+          <div className="absolute top-2.5 left-2.5 right-2.5 z-20 flex items-center justify-between pointer-events-none gap-2">
+            {/* Mode Switcher Tabs */}
+            <div className="flex items-center flex-nowrap gap-1 bg-[#FAF8F5]/95 backdrop-blur-md p-1 rounded-xl border border-[#D8D2C5] shadow-xl pointer-events-auto">
+              <button
+                type="button"
+                onClick={() => setViewMode('realistic')}
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[10.5px] sm:text-xs font-mono font-bold transition-all cursor-pointer whitespace-nowrap ${
+                  activeViewMode === 'realistic'
+                    ? 'bg-[#0077ED] text-white shadow-[0_0_12px_rgba(0,119,237,0.5)]'
+                    : 'text-[#475569] hover:text-[#0077ED] hover:bg-[#F4EFE6]'
+                }`}
+              >
+                <Eye className="w-3.5 h-3.5 flex-shrink-0" />
+                <span>3D Polymer</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setViewMode('thermal')}
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[10.5px] sm:text-xs font-mono font-bold transition-all cursor-pointer whitespace-nowrap ${
+                  activeViewMode === 'thermal'
+                    ? 'bg-rose-600 text-white shadow-[0_0_12px_rgba(225,29,72,0.6)]'
+                    : 'text-[#475569] hover:text-[#0077ED] hover:bg-[#F4EFE6]'
+                }`}
+              >
+                <Flame className="w-3.5 h-3.5 text-rose-400 flex-shrink-0" />
+                <span>FLIR Thermal</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setViewMode('airflow')}
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[10.5px] sm:text-xs font-mono font-bold transition-all cursor-pointer whitespace-nowrap ${
+                  activeViewMode === 'airflow'
+                    ? 'bg-cyan-600 text-white shadow-[0_0_12px_rgba(8,145,178,0.6)]'
+                    : 'text-[#475569] hover:text-[#0077ED] hover:bg-[#F4EFE6]'
+                }`}
+              >
+                <Wind className="w-3.5 h-3.5 text-cyan-300 flex-shrink-0" />
+                <span>Airflow CFD</span>
+              </button>
+            </div>
+
+            {/* Top Right: Expand 3D Viewport Downward Toggle */}
+            <div className="bg-[#FAF8F5]/95 backdrop-blur-md p-1 rounded-xl border border-[#D8D2C5] shadow-xl pointer-events-auto flex-shrink-0">
+              <button
+                type="button"
+                onClick={() => setIsExpanded(!isExpanded)}
+                className={`p-1.5 px-2 rounded-lg transition-colors cursor-pointer flex items-center gap-1 text-[10.5px] sm:text-xs font-mono font-bold ${
+                  isExpanded 
+                    ? 'bg-[#0077ED] text-white shadow-md' 
+                    : 'text-[#475569] hover:text-[#0077ED] hover:bg-[#F4EFE6]'
+                }`}
+                title={isExpanded ? "Collapse 3D View" : "Expand 3D View Downward"}
+              >
+                {isExpanded ? (
+                  <>
+                    <Minimize2 className="w-3.5 h-3.5 flex-shrink-0" />
+                    <span className="hidden sm:inline">Shorten</span>
+                  </>
+                ) : (
+                  <>
+                    <Maximize2 className="w-3.5 h-3.5 flex-shrink-0" />
+                    <span className="hidden sm:inline">Expand 3D</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* 2. DEDICATED CONTROLS & SIMULATION BAR BELOW 3D CANVAS (Zero obstruction of curtain!) */}
       {showControls && (
-        <div className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
-          {/* Mode Switcher Tabs */}
-          <div className="flex flex-wrap items-center gap-1.5 bg-black/80 backdrop-blur-md p-1.5 rounded-xl border border-white/15 shadow-xl pointer-events-auto">
-            <button
-              type="button"
-              onClick={() => setViewMode('realistic')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
-                activeViewMode === 'realistic'
-                  ? 'bg-[#F27D26] text-white shadow-[0_0_12px_rgba(242,125,38,0.5)]'
-                  : 'text-white/60 hover:text-white hover:bg-white/10'
-              }`}
-            >
-              <Eye className="w-3.5 h-3.5" />
-              <span>3D Polymer</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setViewMode('thermal')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
-                activeViewMode === 'thermal'
-                  ? 'bg-rose-600 text-white shadow-[0_0_12px_rgba(225,29,72,0.6)]'
-                  : 'text-white/60 hover:text-white hover:bg-white/10'
-              }`}
-            >
-              <Flame className="w-3.5 h-3.5 text-rose-400" />
-              <span>FLIR Thermal</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setViewMode('airflow')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
-                activeViewMode === 'airflow'
-                  ? 'bg-cyan-600 text-white shadow-[0_0_12px_rgba(8,145,178,0.6)]'
-                  : 'text-white/60 hover:text-white hover:bg-white/10'
-              }`}
-            >
-              <Wind className="w-3.5 h-3.5 text-cyan-300" />
-              <span>Airflow CFD</span>
-            </button>
+        <div className="flex flex-wrap items-center justify-between gap-2 p-2 bg-[#FFFFFF] border border-[#E2DDD2] rounded-xl shadow-xs">
+          {/* Orbit & Thickness hint */}
+          <div className="text-[10px] sm:text-[11px] font-mono text-[#64748B] px-1 hidden sm:block">
+            <span>Orbit: Drag • Zoom: Pinch / Scroll • Thickness: <strong className="text-[#0F172A]">{curtainLayout.thicknessMm}mm</strong></span>
           </div>
 
-          {/* Top Right: Fullscreen Toggle */}
-          <div className="bg-black/80 backdrop-blur-md p-1.5 rounded-xl border border-white/15 shadow-xl pointer-events-auto">
-            <button
-              type="button"
-              onClick={() => setIsFullscreen(!isFullscreen)}
-              className={`p-1.5 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 text-xs font-mono font-bold ${
-                isFullscreen 
-                  ? 'bg-[#F27D26] text-white' 
-                  : 'text-white/70 hover:text-white hover:bg-white/10'
-              }`}
-              title={isFullscreen ? "Exit Fullscreen" : "Immersive Expanded Viewport"}
-            >
-              <Maximize2 className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">{isFullscreen ? 'Exit' : 'Expand'}</span>
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* Bottom Floating Toolbar: Drive-Through Simulation & Camera Controls */}
-      {showControls && (
-        <div className="absolute bottom-4 left-4 right-4 z-20 flex flex-wrap items-center justify-between gap-2 pointer-events-none">
-          {/* Bottom Left: Orbit Hint */}
-          <div className="bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/15 text-[10px] font-mono text-white/50 pointer-events-auto hidden md:block">
-            <span>Orbit: Drag • Zoom: Pinch / Scroll</span>
-          </div>
-
-          {/* Bottom Center / Right Controls Container */}
-          <div className="flex items-center gap-2 bg-black/85 backdrop-blur-md p-1.5 rounded-xl border border-white/15 shadow-2xl pointer-events-auto ml-auto">
-            {/* Drive-Through Simulation Button - Highlighted at Bottom */}
+          {/* Drive-Through & Camera Controls */}
+          <div className="flex items-center gap-1.5 w-full sm:w-auto justify-between sm:justify-end">
             <button
               type="button"
               onClick={triggerForkliftPass}
               disabled={isSimulatingForklift}
-              className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer shadow-lg ${
+              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer shadow-sm ${
                 isSimulatingForklift
-                  ? 'bg-[#F27D26] text-white animate-pulse shadow-[0_0_15px_rgba(242,125,38,0.6)]'
-                  : 'bg-[#F27D26]/20 hover:bg-[#F27D26] text-white border border-[#F27D26]/50 hover:border-[#F27D26]'
+                  ? 'bg-[#0077ED] text-white animate-pulse shadow-[0_0_15px_rgba(0,119,237,0.6)]'
+                  : 'bg-[#0077ED] hover:bg-[#2B8EFF] text-white'
               }`}
               title="Simulate vehicle or personnel driving through the curtain"
             >
-              <Truck className="w-4 h-4 text-[#F27D26] group-hover:text-white" />
+              <Truck className="w-3.5 h-3.5 text-white flex-shrink-0" />
               <span>{isSimulatingForklift ? 'Vehicle Passing...' : 'Simulate Drive-Through'}</span>
             </button>
 
-            <div className="h-4 w-px bg-white/20 mx-0.5" />
+            <div className="h-4 w-px bg-[#EAE4D7] mx-1" />
 
-            {/* Zoom In */}
             <button
               type="button"
               onClick={() => handleZoom(-0.6)}
-              className="p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors cursor-pointer"
+              className="p-1.5 text-[#475569] hover:text-[#0077ED] hover:bg-[#FAF8F5] rounded-lg transition-colors cursor-pointer border border-[#E2DDD2]"
               title="Zoom In"
               aria-label="Zoom in"
             >
               <ZoomIn className="w-3.5 h-3.5" />
             </button>
 
-            {/* Zoom Out */}
             <button
               type="button"
               onClick={() => handleZoom(0.6)}
-              className="p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors cursor-pointer"
+              className="p-1.5 text-[#475569] hover:text-[#0077ED] hover:bg-[#FAF8F5] rounded-lg transition-colors cursor-pointer border border-[#E2DDD2]"
               title="Zoom Out"
               aria-label="Zoom out"
             >
               <ZoomOut className="w-3.5 h-3.5" />
             </button>
 
-            {/* Reset Camera Angle */}
             <button
               type="button"
               onClick={() => handleCameraPreset('isometric')}
-              className="p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors cursor-pointer"
+              className="p-1.5 text-[#475569] hover:text-[#0077ED] hover:bg-[#FAF8F5] rounded-lg transition-colors cursor-pointer border border-[#E2DDD2]"
               title="Reset Camera Angle"
               aria-label="Reset camera angle"
             >
@@ -967,76 +1074,6 @@ export const ThreeCurtainScene: React.FC<ThreeCurtainSceneProps> = ({
           </div>
         </div>
       )}
-
-      {/* FLIR Thermal Overlay Legend & Spot Crosshairs */}
-      {activeViewMode === 'thermal' && (
-        <>
-          {/* Simulated Crosshair Spot Telemetry */}
-          <div className="absolute top-16 right-4 z-20 pointer-events-none hidden sm:flex flex-col gap-1.5 font-mono text-[10px]">
-            <div className="bg-black/85 backdrop-blur-md px-2.5 py-1.5 rounded border border-rose-500/40 text-white flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping" />
-              <span>Exterior Ambient: <strong className="text-rose-400">Warm Air Zone</strong></span>
-            </div>
-            <div className="bg-black/85 backdrop-blur-md px-2.5 py-1.5 rounded border border-cyan-500/40 text-white flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-cyan-400" />
-              <span>Cold Storage: <strong className="text-cyan-300">Sub-Zero Isolation</strong></span>
-            </div>
-            <div className="bg-black/85 backdrop-blur-md px-2.5 py-1.5 rounded border border-emerald-500/40 text-emerald-400 font-bold">
-              <span>Thermal Barrier: Continuous Convective Seal</span>
-            </div>
-          </div>
-
-          <div className="absolute bottom-16 left-4 z-20 bg-black/85 backdrop-blur-md border border-rose-500/30 p-3 rounded-xl shadow-2xl max-w-xs text-xs font-mono">
-            <div className="flex items-center justify-between gap-3 mb-2">
-              <span className="text-[10px] uppercase font-bold text-rose-400 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping" />
-                FLIR Thermal Telemetry
-              </span>
-              <span className="text-[9px] text-white/40 font-mono">Industrial Grade</span>
-            </div>
-
-            <div className="h-3 w-full rounded bg-gradient-to-r from-[#00e1ff] via-[#d6006e] via-[#ff3b00] to-[#ffffff] mb-1.5 border border-white/20" />
-
-            <div className="flex justify-between text-[9px] text-white/70 font-mono">
-              <span>Cold Enclosure</span>
-              <span>Barrier Interface</span>
-              <span>Ambient Plant</span>
-            </div>
-          </div>
-        </>
-      )}
-
-      {/* Airflow CFD Streamline Overlay HUD */}
-      {activeViewMode === 'airflow' && (
-        <>
-          <div className="absolute top-16 right-4 z-20 pointer-events-none hidden sm:flex flex-col gap-1.5 font-mono text-[10px]">
-            <div className="bg-black/85 backdrop-blur-md px-2.5 py-1.5 rounded border border-cyan-500/40 text-white flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
-              <span>Inlet Velocity: <strong className="text-cyan-300">Airflow Streamline</strong></span>
-            </div>
-            <div className="bg-black/85 backdrop-blur-md px-2.5 py-1.5 rounded border border-emerald-500/40 text-emerald-300 flex items-center gap-2">
-              <span>Barrier Action: <strong>Deflected &amp; Contained Draft</strong></span>
-            </div>
-          </div>
-
-          <div className="absolute bottom-16 left-4 z-20 bg-black/85 backdrop-blur-md border border-cyan-500/30 p-3 rounded-xl shadow-2xl max-w-xs text-xs font-mono">
-            <div className="flex items-center justify-between gap-3 mb-1.5">
-              <span className="text-[10px] uppercase font-bold text-cyan-300 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
-                CFD Velocity Streamline Simulation
-              </span>
-            </div>
-            <p className="text-[10px] text-white/60 leading-tight">
-              Laminar streamline collision demonstrates boundary layer deflection and effective air draft suppression.
-            </p>
-          </div>
-        </>
-      )}
-
-      {/* Subtle Bottom Right Spec Info */}
-      <div className="absolute bottom-3 right-4 z-10 hidden sm:flex items-center gap-2 text-[10px] font-mono text-white/40 bg-black/60 px-2.5 py-1 rounded-md border border-white/10">
-        <span>Single-finger orbit • Pinch to zoom</span>
-      </div>
     </div>
   );
 };

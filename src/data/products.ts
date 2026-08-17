@@ -1,31 +1,31 @@
 import { ProductGradeInfo, IndustrySolution } from '../types';
 
 export const PVC_GRADES: Record<string, ProductGradeInfo> = {
-  'standard-clear': {
-    id: 'standard-clear',
-    name: 'Standard Clear Smooth PVC',
-    shortName: 'Standard Clear',
-    tagline: 'High-optical transparency barrier for industrial warehouses & pedestrian traffic',
-    colorHex: '#38bdf8',
+  'transparent': {
+    id: 'transparent',
+    name: 'Transparent',
+    shortName: 'Transparent Clear',
+    tagline: 'High-optical clarity virgin polymer barrier for industrial warehouses & pedestrian thoroughfares',
+    colorHex: '#e0f2fe',
     color3D: {
-      color: 0x93c5fd,
-      transmission: 0.92,
-      opacity: 0.75,
-      roughness: 0.08,
-      metalness: 0.05,
-      clearcoat: 0.95,
+      color: 0xe0f2fe,
+      transmission: 0.94,
+      opacity: 0.70,
+      roughness: 0.05,
+      metalness: 0.02,
+      clearcoat: 1.0,
       ior: 1.52,
-      tint: 'rgba(56, 189, 248, 0.15)'
+      tint: 'rgba(224, 242, 254, 0.12)'
     },
     temperatureRange: { min: -15, max: 50, unit: '°C' },
     thicknessOptions: [1.5, 2, 3, 4],
     widthOptions: [100, 200, 300, 400],
     keyFeatures: [
-      'High optical clarity and light transmission',
-      'Effective thermal barrier to separate ambient zones',
+      'High optical clarity and light transmission (~88%)',
+      'Effective thermal barrier to separate ambient temperature zones',
       'Acoustic noise isolation across noisy factory floor areas',
-      'Smooth non-snag edge profile for smooth passage',
-      'Virgin compound formulation free from hazardous contaminants'
+      'Smooth non-snag rounded edge profile for smooth passage',
+      '100% Virgin compound formulation free from DOP/DEHP contaminants'
     ],
     applications: [
       'Warehouse loading docks & internal partition barriers',
@@ -37,80 +37,80 @@ export const PVC_GRADES: Record<string, ProductGradeInfo> = {
       shoreHardness: '77 Shore A',
       tensileStrength: '17.5 MPa',
       elongationAtBreak: '340%',
-      lightTransmission: 'High Transparency (~88%)',
+      lightTransmission: 'High Clarity (~88%)',
       fireRating: 'Self-Extinguishing Compound',
-      uvResistance: 'UV Stabilized',
+      uvResistance: 'UV Stabilized Grade',
       coldCrackTemp: '-15°C',
-      soundReduction: 'Acoustic Dampening'
+      soundReduction: '18-22 dB Dampening'
     },
-    badge: 'Popular Choice',
-    badgeColor: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40',
-    imageUrl: '/assets/Screenshot 2026-08-16 214504.png',
+    badge: 'High Clarity',
+    badgeColor: 'bg-cyan-100 text-cyan-900 border-cyan-300 font-bold',
+    imageUrl: '/assets/PVC strip/Screenshot 2026-08-16 214504.png',
     realPhotoUrl: '/assets/Screenshot 2026-08-16 214040.png'
   },
-  'polar-freezer': {
-    id: 'polar-freezer',
-    name: 'Polar / Sub-Zero Freezer Grade',
-    shortName: 'Polar Low Temp',
-    tagline: 'Low-temperature plasticized formula flexible down to -40°C without cracking',
+  'blue-natural': {
+    id: 'blue-natural',
+    name: 'Blue Natural',
+    shortName: 'Blue Natural',
+    tagline: 'Classic pale blue tinted clarity PVC strip for industrial facilities & logistics doorways',
     colorHex: '#60a5fa',
     color3D: {
-      color: 0x60a5fa,
-      transmission: 0.90,
-      opacity: 0.82,
-      roughness: 0.15,
+      color: 0x93c5fd,
+      transmission: 0.92,
+      opacity: 0.75,
+      roughness: 0.08,
       metalness: 0.05,
-      clearcoat: 0.9,
-      ior: 1.48,
-      tint: 'rgba(96, 165, 250, 0.25)'
+      clearcoat: 0.95,
+      ior: 1.52,
+      tint: 'rgba(96, 165, 250, 0.18)'
     },
-    temperatureRange: { min: -40, max: 25, unit: '°C' },
+    temperatureRange: { min: -15, max: 50, unit: '°C' },
     thicknessOptions: [2, 3, 4],
     widthOptions: [200, 300, 400],
     keyFeatures: [
-      'Stays supple and flexible at sub-zero cold room temperatures',
-      'Helps maintain cold room temperature during open door loading',
-      'Restricts moist ambient air from entering and forming evaporator frost',
-      'Food-safe proximity and hygienic maintenance',
-      'Resistant to thermal shock and low-temp cracking'
+      'Natural blue tint reduces harsh glare in outdoor-facing doorways',
+      'Excellent energy conservation restricting AC and heating loss',
+      'Dust, smoke, and fume isolation between manufacturing cells',
+      'Flexible polymer with excellent bounce-back memory',
+      'Tear-resistant formulation for high pedestrian & hand-truck usage'
     ],
     applications: [
-      'Walk-in freezers & cold storage facilities',
-      'Refrigerated meat, seafood & dairy packhouses',
-      'Reefer transport trailers & intermodal docks',
-      'Perishable food logistics hubs'
+      'Factory entrance portals and internal partitions',
+      'Packaging lines and goods dispatch doorways',
+      'Pharma warehouse ambient staging areas',
+      'Commercial kitchen stores & cold preparation rooms'
     ],
     specs: {
-      shoreHardness: '65 Shore A (Soft Cold)',
-      tensileStrength: '15.2 MPa',
-      elongationAtBreak: '400%',
-      lightTransmission: 'Clear Sub-Zero Form',
+      shoreHardness: '76 Shore A',
+      tensileStrength: '17.0 MPa',
+      elongationAtBreak: '350%',
+      lightTransmission: 'Blue Tint Clear (~85%)',
       fireRating: 'Self-Extinguishing Compound',
-      uvResistance: 'Stabilized Grade',
-      coldCrackTemp: '-40°C',
-      soundReduction: 'Thermal Isolating'
+      uvResistance: 'UV Stabilized Grade',
+      coldCrackTemp: '-15°C',
+      soundReduction: '19 dB Isolation'
     },
-    badge: 'Cold Storage',
-    badgeColor: 'bg-blue-500/20 text-blue-300 border-blue-500/40',
-    imageUrl: '/assets/Screenshot 2026-08-16 214521.png',
-    realPhotoUrl: '/assets/Screenshot 2026-08-16 214133.png'
+    badge: 'Popular Choice',
+    badgeColor: 'bg-blue-100 text-blue-900 border-blue-300 font-bold',
+    imageUrl: '/assets/PVC strip/Screenshot 2026-08-16 214521.png',
+    realPhotoUrl: '/assets/Screenshot 2026-08-16 214040.png'
   },
-  'double-ribbed': {
-    id: 'double-ribbed',
-    name: 'Double-Ribbed Heavy Duty (Forklift Grade)',
-    shortName: 'Double-Ribbed',
-    tagline: 'Raised shock-absorbing ribs absorb forklift blade & pallet friction',
-    colorHex: '#fbbf24',
+  'standard-ribbed': {
+    id: 'standard-ribbed',
+    name: 'Standard Ribbed',
+    shortName: 'Standard Ribbed',
+    tagline: 'Raised shock-absorbing ribs absorb forklift blade & pallet friction to keep vision clear',
+    colorHex: '#93c5fd',
     color3D: {
-      color: 0xfde047,
+      color: 0x93c5fd,
       transmission: 0.88,
-      opacity: 0.80,
+      opacity: 0.82,
       roughness: 0.12,
       metalness: 0.08,
       clearcoat: 0.98,
       ior: 1.54,
       ribbed: true,
-      tint: 'rgba(251, 191, 36, 0.2)'
+      tint: 'rgba(147, 197, 253, 0.22)'
     },
     temperatureRange: { min: -20, max: 50, unit: '°C' },
     thicknessOptions: [2, 3, 4, 5],
@@ -138,152 +138,442 @@ export const PVC_GRADES: Record<string, ProductGradeInfo> = {
       coldCrackTemp: '-20°C',
       soundReduction: 'Heavy Barrier Mass'
     },
-    badge: 'Heavy Traffic',
-    badgeColor: 'bg-amber-500/20 text-amber-300 border-amber-500/40',
-    imageUrl: '/assets/Screenshot 2026-08-16 214547.png',
+    badge: 'Forklift Tough',
+    badgeColor: 'bg-amber-100 text-amber-900 border-amber-300 font-bold',
+    imageUrl: '/assets/PVC strip/Screenshot 2026-08-16 214531.png',
     realPhotoUrl: '/assets/Screenshot 2026-08-16 214025.png'
   },
-  'anti-static': {
-    id: 'anti-static',
-    name: 'Anti-Static ESD Controlled PVC',
-    shortName: 'Anti-Static ESD',
-    tagline: 'Surface dissipation helps prevent static discharge in electronics & cleanrooms',
-    colorHex: '#10b981',
+  'gray': {
+    id: 'gray',
+    name: 'Gray',
+    shortName: 'Industrial Gray',
+    tagline: 'Translucent / opaque neutral gray PVC strip for visual screening and departmental isolation',
+    colorHex: '#94a3b8',
     color3D: {
-      color: 0x6ee7b7,
-      transmission: 0.89,
-      opacity: 0.78,
-      roughness: 0.1,
-      metalness: 0.05,
-      clearcoat: 0.92,
-      ior: 1.51,
-      tint: 'rgba(16, 185, 129, 0.2)'
+      color: 0x64748b,
+      transmission: 0.35,
+      opacity: 0.90,
+      roughness: 0.25,
+      metalness: 0.15,
+      clearcoat: 0.80,
+      ior: 1.50,
+      tint: 'rgba(148, 163, 184, 0.70)'
     },
-    temperatureRange: { min: -10, max: 50, unit: '°C' },
+    temperatureRange: { min: -10, max: 55, unit: '°C' },
     thicknessOptions: [2, 3],
     widthOptions: [200, 300],
     keyFeatures: [
-      'Surface static dissipative properties',
-      'Helps prevent static electrical build-up in sensitive zones',
-      'Smooth surface minimizes airborne dust adherence',
-      'Suitable for electronic assembly and clean environment partitions',
-      'High clarity for seamless line-of-sight across workstations'
+      'Sleek modern gray appearance for clean industrial interiors',
+      'Provides privacy while keeping noise and dust contained',
+      'Resistant to oil, grease, mild acids and chemical washings',
+      'Non-stick formula ensures free-hanging strip alignment',
+      'Hides background clutter in storage and service bays'
     ],
     applications: [
-      'Semiconductor & electronics assembly bays',
-      'SMT circuit board production lines',
-      'Data center aisle containment partitions',
-      'Powder packaging & dust-sensitive labs'
+      'Workshop service bays and maintenance rooms',
+      'Machinery screening & testing enclosures',
+      'Waste processing & material recycling rooms',
+      'Aesthetic architectural factory dividers'
     ],
     specs: {
-      shoreHardness: '76 Shore A',
-      tensileStrength: '16.8 MPa',
-      elongationAtBreak: '360%',
-      lightTransmission: 'Transparent Light Green Tint',
+      shoreHardness: '77 Shore A',
+      tensileStrength: '17.2 MPa',
+      elongationAtBreak: '335%',
+      lightTransmission: 'Translucent/Opaque Filter',
       fireRating: 'Self-Extinguishing Compound',
-      uvResistance: 'Standard Indoor Grade',
+      uvResistance: 'Standard Industrial Grade',
       coldCrackTemp: '-10°C',
       soundReduction: 'Acoustic Partition'
     },
-    badge: 'Cleanroom & SMT',
-    badgeColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40',
-    imageUrl: '/assets/Screenshot 2026-08-16 214616.png',
-    realPhotoUrl: '/assets/Screenshot 2026-08-16 214053.png'
+    badge: 'Privacy & Zoning',
+    badgeColor: 'bg-slate-200 text-slate-900 border-slate-400 font-bold',
+    imageUrl: '/assets/PVC strip/Screenshot 2026-08-16 214547.png',
+    realPhotoUrl: '/assets/Screenshot 2026-08-16 214123.png'
   },
-  'welding-safety': {
-    id: 'welding-safety',
-    name: 'Welding Flash Screen PVC',
-    shortName: 'Welding Safety',
-    tagline: 'Optical radiation and flash filtering barrier protecting surrounding personnel',
-    colorHex: '#059669',
+  'navy-blue': {
+    id: 'navy-blue',
+    name: 'Navy Blue',
+    shortName: 'Navy Blue',
+    tagline: 'Deep navy blue polymer barrier for zone segregation, privacy and visual isolation',
+    colorHex: '#1d4ed8',
     color3D: {
-      color: 0x064e3b,
-      transmission: 0.45,
+      color: 0x1e3a8a,
+      transmission: 0.40,
       opacity: 0.92,
-      roughness: 0.2,
-      metalness: 0.1,
-      clearcoat: 0.8,
-      ior: 1.55,
-      tint: 'rgba(6, 78, 59, 0.75)'
+      roughness: 0.20,
+      metalness: 0.10,
+      clearcoat: 0.85,
+      ior: 1.53,
+      tint: 'rgba(29, 78, 216, 0.75)'
     },
-    temperatureRange: { min: -15, max: 60, unit: '°C' },
+    temperatureRange: { min: -15, max: 55, unit: '°C' },
     thicknessOptions: [2, 3],
     widthOptions: [200, 300],
     keyFeatures: [
-      'Filters hazardous arc flashes and UV/IR welding glare',
-      'Flame retardant polymer formulation for hot grinding sparks',
-      'Allows supervisors to safely observe operations through the dark tint',
-      'Contains sparks and abrasive metal dust within the bay',
-      'Available in dark green and safety bronze tints'
+      'Distinctive rich navy blue tint for clear departmental identification',
+      'Effective light suppression and partial privacy barrier',
+      'Strong resistance to industrial vapors and drafts',
+      'Smooth edges prevent snags during staff passage',
+      'Virgin compound durable under continuous heavy cycle use'
     ],
     applications: [
-      'MIG, TIG & Arc welding enclosures & fabrication bays',
-      'Robotic welding cell perimeters & laser cutting booths',
-      'Metal grinding & abrasive spark containment zones',
-      'Automotive bodyshop welding stations'
+      'Assembly line boundary partitions',
+      'Chemical and paint prep area barriers',
+      'Security boundary markers and warehouse aisles',
+      'Commercial facility aesthetic barriers'
     ],
     specs: {
       shoreHardness: '78 Shore A',
-      tensileStrength: '18.0 MPa',
-      elongationAtBreak: '330%',
-      lightTransmission: 'Translucent Safety Filter Tint',
-      fireRating: 'Flame Retardant Compound',
-      uvResistance: 'UV & Arc Flash Filter',
+      tensileStrength: '17.8 MPa',
+      elongationAtBreak: '340%',
+      lightTransmission: 'Deep Blue Tint (~35%)',
+      fireRating: 'Self-Extinguishing Compound',
+      uvResistance: 'UV Stabilized Grade',
       coldCrackTemp: '-15°C',
       soundReduction: 'Noise Enclosure'
     },
-    badge: 'Welding Protection',
-    badgeColor: 'bg-emerald-600/30 text-emerald-300 border-emerald-500/50',
-    imageUrl: '/assets/Screenshot 2026-08-16 214608.png',
-    realPhotoUrl: '/assets/Screenshot 2026-08-16 214148.png'
+    badge: 'Zone Marker',
+    badgeColor: 'bg-indigo-100 text-indigo-950 border-indigo-300 font-bold',
+    imageUrl: '/assets/PVC strip/Screenshot 2026-08-16 214608.png',
+    realPhotoUrl: '/assets/Screenshot 2026-08-16 214053.png'
   },
-  'anti-insect': {
-    id: 'anti-insect',
-    name: 'Anti-Insect Yellow PVC',
-    shortName: 'Anti-Insect Amber',
-    tagline: 'Yellow optical spectrum helps deter flying insects at open doorways',
-    colorHex: '#eab308',
+  'white-opaque': {
+    id: 'white-opaque',
+    name: 'White Opaque',
+    shortName: 'White Opaque',
+    tagline: 'Solid pure white hygienic PVC strip barrier for cleanrooms, milk & dairy, and complete privacy',
+    colorHex: '#f8fafc',
     color3D: {
-      color: 0xfacc15,
-      transmission: 0.85,
-      opacity: 0.82,
-      roughness: 0.1,
+      color: 0xffffff,
+      transmission: 0.05,
+      opacity: 0.98,
+      roughness: 0.30,
       metalness: 0.05,
-      clearcoat: 0.9,
-      ior: 1.52,
-      tint: 'rgba(234, 179, 8, 0.4)'
+      clearcoat: 0.90,
+      ior: 1.49,
+      tint: 'rgba(248, 250, 252, 0.98)'
     },
     temperatureRange: { min: -15, max: 50, unit: '°C' },
     thicknessOptions: [2, 3],
     widthOptions: [200, 300],
     keyFeatures: [
-      'Yellow visual wavelength filters out insect-attracting light spectrum',
-      'Provides a physical barrier against flying pests and drafts',
-      'Maintains good visibility for personnel and equipment operators',
-      'Smooth wipe-clean surface suitable for food environments',
-      'Flexible and durable for high traffic kitchen & storage doors'
+      '100% Sight blocking opaque white surface for complete privacy',
+      'Hygienic easy-wipe finish suited for dairy, food and medical packaging',
+      'Reflects heat and bright lighting within controlled chambers',
+      'DOP/DEHP-free formulation complies with clean processing standards',
+      'Resistant to sanitizing agents and frequent chemical washdowns'
     ],
     applications: [
-      'Food processing & bakery receiving docks',
-      'Packaging & bottling facilities',
-      'Commercial kitchen delivery doorways',
-      'Agricultural packhouses & produce handling'
+      'Milk, dairy & ice cream processing plants',
+      'Pharmaceutical cleanroom pass-throughs',
+      'Mortuary, medical & hospital privacy partitions',
+      'Supermarket butcheries and meat prep rooms'
+    ],
+    specs: {
+      shoreHardness: '76 Shore A',
+      tensileStrength: '16.5 MPa',
+      elongationAtBreak: '360%',
+      lightTransmission: '0% (Total Opacity)',
+      fireRating: 'Self-Extinguishing Compound',
+      uvResistance: 'Food Contact Safe Formula',
+      coldCrackTemp: '-15°C',
+      soundReduction: 'Sound Containment'
+    },
+    badge: 'Dairy & Cleanroom',
+    badgeColor: 'bg-zinc-200 text-zinc-900 border-zinc-400 font-bold',
+    imageUrl: '/assets/PVC strip/Screenshot 2026-08-16 214616.png',
+    realPhotoUrl: '/assets/Screenshot 2026-08-16 214133.png'
+  },
+  'multi-red': {
+    id: 'multi-red',
+    name: 'Multi Red',
+    shortName: 'Multi Red',
+    tagline: 'High-visibility safety warning red PVC strip for doorway edge outlines and danger perimeters',
+    colorHex: '#dc2626',
+    color3D: {
+      color: 0xb91c1c,
+      transmission: 0.45,
+      opacity: 0.92,
+      roughness: 0.15,
+      metalness: 0.08,
+      clearcoat: 0.90,
+      ior: 1.54,
+      tint: 'rgba(220, 38, 38, 0.75)'
+    },
+    temperatureRange: { min: -15, max: 60, unit: '°C' },
+    thicknessOptions: [2, 3],
+    widthOptions: [200, 300],
+    keyFeatures: [
+      'Vivid safety red warning color immediately alerts vehicle drivers',
+      'Commonly used as the outer 1-2 edge strips to define door clearance width',
+      'Contains sparks and UV flash in welding and grinding enclosures',
+      'Tough polymer stands up to heavy industrial friction',
+      'Prevents collisions in fast-moving forklift warehouse bays'
+    ],
+    applications: [
+      'Warehouse doorway edge markers & forklift clearance alerts',
+      'Hazardous equipment perimeter safety enclosures',
+      'Welding & hot work spark isolation booths',
+      'Emergency equipment access zones'
+    ],
+    specs: {
+      shoreHardness: '78 Shore A',
+      tensileStrength: '18.2 MPa',
+      elongationAtBreak: '330%',
+      lightTransmission: 'Translucent Warning Red (~40%)',
+      fireRating: 'Flame Retardant Compound',
+      uvResistance: 'UV & Arc Flash Filter',
+      coldCrackTemp: '-15°C',
+      soundReduction: 'Safety Barrier Mass'
+    },
+    badge: 'Safety Warning',
+    badgeColor: 'bg-rose-100 text-rose-900 border-rose-300 font-bold',
+    imageUrl: '/assets/PVC strip/Screenshot 2026-08-16 214626.png',
+    realPhotoUrl: '/assets/Screenshot 2026-08-16 214025.png'
+  },
+  'orange-amber': {
+    id: 'orange-amber',
+    name: 'Orange Amber',
+    shortName: 'Orange Amber',
+    tagline: 'Amber orange insect barrier filtering light spectrum to repel flying pests at open doorways',
+    colorHex: '#f97316',
+    color3D: {
+      color: 0xea580c,
+      transmission: 0.75,
+      opacity: 0.85,
+      roughness: 0.10,
+      metalness: 0.05,
+      clearcoat: 0.92,
+      ior: 1.53,
+      tint: 'rgba(249, 115, 22, 0.60)'
+    },
+    temperatureRange: { min: -15, max: 50, unit: '°C' },
+    thicknessOptions: [2, 3],
+    widthOptions: [200, 300],
+    keyFeatures: [
+      'Special amber-orange wavelength blocks insect-attracting UV spectrum',
+      'Deters flies, mosquitoes and moths from entering food processing zones',
+      'Maintains good see-through optical visibility for worker safety',
+      'Smooth easy-to-clean surface suited for HACCP standards',
+      'Supple flexible feel with high tear resistance'
+    ],
+    applications: [
+      'Food processing plants, bakeries & sweet manufacturing',
+      'Beverage bottling & dairy packaging doors',
+      'Commercial restaurant kitchen receiving doors',
+      'Agricultural packhouses & cold room entrances'
+    ],
+    specs: {
+      shoreHardness: '77 Shore A',
+      tensileStrength: '17.4 MPa',
+      elongationAtBreak: '345%',
+      lightTransmission: 'Transparent Amber Filter Tint',
+      fireRating: 'Self-Extinguishing Compound',
+      uvResistance: 'Insect Repelling UV Filter',
+      coldCrackTemp: '-15°C',
+      soundReduction: 'Thermal & Insect Barrier'
+    },
+    badge: 'Anti-Insect Guard',
+    badgeColor: 'bg-orange-100 text-orange-950 border-orange-300 font-bold',
+    imageUrl: '/assets/PVC strip/Screenshot 2026-08-16 214731.png',
+    realPhotoUrl: '/assets/Screenshot 2026-08-16 214252.png'
+  },
+  'sky-blue': {
+    id: 'sky-blue',
+    name: 'Sky Blue',
+    shortName: 'Sky Blue Polar',
+    tagline: 'Special low-temperature plasticized formula flexible down to -40°C in blast freezers without cracking',
+    colorHex: '#38bdf8',
+    color3D: {
+      color: 0x38bdf8,
+      transmission: 0.90,
+      opacity: 0.80,
+      roughness: 0.14,
+      metalness: 0.05,
+      clearcoat: 0.95,
+      ior: 1.48,
+      tint: 'rgba(56, 189, 248, 0.30)'
+    },
+    temperatureRange: { min: -40, max: 25, unit: '°C' },
+    thicknessOptions: [2, 3, 4],
+    widthOptions: [200, 300, 400],
+    keyFeatures: [
+      'Remains soft, supple and elastic at sub-zero cold room temperatures',
+      'Does not become brittle or snap under freezer operations down to -40°C',
+      'Drastically restricts warm moist air from causing ice build-up on cooling coils',
+      'Food-contact safe plasticizer formulation',
+      'Saves substantial electrical power for industrial refrigeration compressors'
+    ],
+    applications: [
+      'Walk-in freezers, blast freezers & cold storage warehouses',
+      'Meat, seafood, ice cream and dairy refrigeration plants',
+      'Reefer container trucks & perishable food logistics docks',
+      'Pharmaceutical cold chain storage rooms'
+    ],
+    specs: {
+      shoreHardness: '65 Shore A (Soft Cold Formula)',
+      tensileStrength: '15.2 MPa',
+      elongationAtBreak: '400%',
+      lightTransmission: 'Clear Sub-Zero Form (~86%)',
+      fireRating: 'Self-Extinguishing Compound',
+      uvResistance: 'Stabilized Low-Temp Grade',
+      coldCrackTemp: '-40°C',
+      soundReduction: 'Deep Thermal Isolating'
+    },
+    badge: 'Polar Sub-Zero (-40°C)',
+    badgeColor: 'bg-cyan-100 text-cyan-950 border-cyan-300 font-bold',
+    imageUrl: '/assets/PVC strip/Screenshot 2026-08-16 214746.png',
+    realPhotoUrl: '/assets/Screenshot 2026-08-16 214133.png'
+  },
+  'parrot-green': {
+    id: 'parrot-green',
+    name: 'Parrot Green',
+    shortName: 'Parrot Green',
+    tagline: 'Bright vibrant green PVC strip for facility division, process separation & decorative partitions',
+    colorHex: '#22c55e',
+    color3D: {
+      color: 0x16a34a,
+      transmission: 0.70,
+      opacity: 0.85,
+      roughness: 0.12,
+      metalness: 0.05,
+      clearcoat: 0.90,
+      ior: 1.52,
+      tint: 'rgba(34, 197, 94, 0.55)'
+    },
+    temperatureRange: { min: -10, max: 50, unit: '°C' },
+    thicknessOptions: [2, 3],
+    widthOptions: [200, 300],
+    keyFeatures: [
+      'Bright vibrant green color creates clear visual segregation between bays',
+      'Good light transmission while establishing distinct operational boundaries',
+      'Flexible, scratch-resistant virgin polymer compound',
+      'Resistant to grease, water, dust and mild chemicals',
+      'Smooth non-snag edge finish for employee comfort'
+    ],
+    applications: [
+      'Packaging vs. raw material storage segregation',
+      'Automotive and engineering parts staging bays',
+      'Agricultural processing & sorting facilities',
+      'Aesthetic and commercial facility partitions'
+    ],
+    specs: {
+      shoreHardness: '77 Shore A',
+      tensileStrength: '17.1 MPa',
+      elongationAtBreak: '340%',
+      lightTransmission: 'Translucent Green (~65%)',
+      fireRating: 'Self-Extinguishing Compound',
+      uvResistance: 'Standard Industrial Grade',
+      coldCrackTemp: '-10°C',
+      soundReduction: 'Acoustic Partition'
+    },
+    badge: 'Facility Segregation',
+    badgeColor: 'bg-emerald-100 text-emerald-950 border-emerald-300 font-bold',
+    imageUrl: '/assets/PVC strip/Screenshot 2026-08-16 214754.png',
+    realPhotoUrl: '/assets/Screenshot 2026-08-16 214053.png'
+  },
+  'lemon-yellow': {
+    id: 'lemon-yellow',
+    name: 'Lemon Yellow',
+    shortName: 'Lemon Yellow',
+    tagline: 'Bright translucent yellow PVC strip for insect prevention, high visibility and UV filtering',
+    colorHex: '#eab308',
+    color3D: {
+      color: 0xfacc15,
+      transmission: 0.85,
+      opacity: 0.80,
+      roughness: 0.10,
+      metalness: 0.04,
+      clearcoat: 0.94,
+      ior: 1.52,
+      tint: 'rgba(234, 179, 8, 0.45)'
+    },
+    temperatureRange: { min: -15, max: 50, unit: '°C' },
+    thicknessOptions: [2, 3],
+    widthOptions: [200, 300],
+    keyFeatures: [
+      'High-clarity yellow tint filters out wavelengths that attract flying insects',
+      'Bright luminous color enhances entryway visibility and workplace safety',
+      'Acts as a dependable thermal and dust barrier for high-traffic doors',
+      'Wipe-clean food-grade surface suited for commercial catering',
+      'Long-lasting polymer compound resistant to daily wear'
+    ],
+    applications: [
+      'Food catering, bakeries & confectionery processing doors',
+      'Pharmaceutical packaging airlocks',
+      'Supermarket stockroom doorways',
+      'Grain, seed and spice storage warehouses'
     ],
     specs: {
       shoreHardness: '77 Shore A',
       tensileStrength: '17.2 MPa',
       elongationAtBreak: '345%',
-      lightTransmission: 'Transparent Amber Filter Tint',
+      lightTransmission: 'Transparent Lemon Tint (~82%)',
       fireRating: 'Self-Extinguishing Compound',
-      uvResistance: 'UV Stabilized Grade',
+      uvResistance: 'UV Stabilized & Insect Filter',
       coldCrackTemp: '-15°C',
       soundReduction: 'Thermal Barrier'
     },
-    badge: 'Food Safe & HACCP',
-    badgeColor: 'bg-yellow-500/20 text-yellow-300 border-yellow-500/40',
-    imageUrl: '/assets/Screenshot 2026-08-16 214531.png',
+    badge: 'Insect & UV Guard',
+    badgeColor: 'bg-amber-100 text-amber-950 border-amber-300 font-bold',
+    imageUrl: '/assets/PVC strip/Screenshot 2026-08-16 214803.png',
     realPhotoUrl: '/assets/Screenshot 2026-08-16 214252.png'
-  }
+  },
+  'multi-green': {
+    id: 'multi-green',
+    name: 'Multi Green',
+    shortName: 'Multi Green Welding',
+    tagline: 'Dark forest green welding grade filter shielding harmful UV/IR arc flashes and hot grinding sparks',
+    colorHex: '#15803d',
+    color3D: {
+      color: 0x064e3b,
+      transmission: 0.45,
+      opacity: 0.92,
+      roughness: 0.20,
+      metalness: 0.10,
+      clearcoat: 0.85,
+      ior: 1.55,
+      tint: 'rgba(21, 128, 61, 0.75)'
+    },
+    temperatureRange: { min: -15, max: 60, unit: '°C' },
+    thicknessOptions: [2, 3],
+    widthOptions: [200, 300],
+    keyFeatures: [
+      'Filters hazardous optical radiation from MIG, TIG, and Arc welding',
+      'Protects surrounding workers from flash burns and eye injury',
+      'Flame retardant polymer prevents ignition from flying sparks',
+      'Allows safety supervisors to inspect welding operations from outside',
+      'Contains grinding dust and abrasive particles within the work bay'
+    ],
+    applications: [
+      'Welding bays, fabrication shops & boiler manufacturing',
+      'Robotic welding cells and laser cutting perimeters',
+      'Metal grinding, cutting & spark containment booths',
+      'Automotive body repair & chassis welding zones'
+    ],
+    specs: {
+      shoreHardness: '78 Shore A',
+      tensileStrength: '18.0 MPa',
+      elongationAtBreak: '330%',
+      lightTransmission: 'Dark Green Safety Filter (~20%)',
+      fireRating: 'Flame Retardant Compound',
+      uvResistance: 'UV & Infrared Arc Flash Filter',
+      coldCrackTemp: '-15°C',
+      soundReduction: 'Noise Enclosure'
+    },
+    badge: 'Welding Protection',
+    badgeColor: 'bg-emerald-100 text-emerald-950 border-emerald-400 font-bold',
+    imageUrl: '/assets/PVC strip/Screenshot 2026-08-16 214814.png',
+    realPhotoUrl: '/assets/Screenshot 2026-08-16 214148.png'
+  },
+
+  // Legacy Aliases for seamless backwards compatibility
+  get 'standard-clear'() { return this['transparent']; },
+  get 'polar-freezer'() { return this['sky-blue']; },
+  get 'double-ribbed'() { return this['standard-ribbed']; },
+  get 'anti-static'() { return this['parrot-green']; },
+  get 'welding-safety'() { return this['multi-green']; },
+  get 'anti-insect'() { return this['orange-amber']; }
 };
 
 export const HARDWARE_SYSTEMS = [

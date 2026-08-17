@@ -1,15 +1,15 @@
 import React from 'react';
 import { MultiLogo, MultiLogoIcon } from './MultiLogo';
 import { useLanguage } from '../i18n/LanguageContext';
-import { 
-  ShieldCheck, 
-  Award, 
-  Truck, 
-  Layers, 
-  ThermometerSnowflake, 
-  Factory, 
-  CheckCircle2, 
-  Clock, 
+import {
+  ShieldCheck,
+  Award,
+  Truck,
+  Layers,
+  ThermometerSnowflake,
+  Factory,
+  CheckCircle2,
+  Clock,
   FileCheck2,
   PackageCheck
 } from 'lucide-react';
@@ -29,7 +29,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
   const highlights = [
     {
       title: language === 'hi' ? '100% वर्जिन ग्रेड पॉलिमर' : '100% Virgin Grade Polymer',
-      desc: language === 'hi' 
+      desc: language === 'hi'
         ? 'हम केवल प्रथम-गुणवत्ता वाले अनरिसाइकिल पॉलिमर का उपयोग करते हैं, जिससे अद्वितीय स्पष्टता और लचीलापन सुनिश्चित होता है।'
         : 'Formulated exclusively with virgin polymer compounds to guarantee consistent optical transparency and extended wear life.',
       icon: ShieldCheck
@@ -58,29 +58,29 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
   ];
 
   return (
-    <section id="about" className="relative py-24 bg-[#0A0A0C] border-t border-white/10 text-[#E0E0E0] overflow-hidden">
+    <section id="about" className="relative py-10 sm:py-12 bg-[#F8F6F0] border-t border-[#E2DDD2] text-[#1E293B] overflow-hidden">
       {/* Precision Technical Grid Background */}
-      <div 
-        className="absolute inset-0 opacity-10 pointer-events-none" 
+      <div
+        className="absolute inset-0 opacity-10 pointer-events-none"
         style={{
-          backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(rgba(0,0,0,0.06) 1px, transparent 1px)',
           backgroundSize: '40px 40px'
-        }} 
+        }}
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Header */}
-        <div className="max-w-3xl mb-16">
+        <div className="max-w-3xl mb-6 sm:mb-8">
           <div className="flex items-center gap-2 mb-3">
             <MultiLogoIcon size={18} className="w-4.5 h-4.5" />
-            <span className="text-[#F27D26] text-xs font-mono tracking-widest uppercase font-bold">
+            <span className="text-[#0077ED] text-xs font-mono tracking-widest uppercase font-bold">
               {language === 'hi' ? '[ मल्टी एंटरप्राइज • कंपनी परिचय ]' : '[ ABOUT MULTI ENTERPRISE • MANUFACTURING OVERVIEW ]'}
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white uppercase font-display mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0F172A] uppercase font-display mb-4">
             {language === 'hi' ? 'औद्योगिक पीवीसी स्ट्रिप कर्टन निर्माण' : 'Precision Thermal & Industrial Barriers'}
           </h2>
-          <p className="text-sm sm:text-base text-white/60 leading-relaxed font-light">
+          <p className="text-sm sm:text-base text-[#475569] leading-relaxed font-light">
             {language === 'hi'
               ? 'मल्टी एंटरप्राइज कोल्ड स्टोरेज, वेयरहाउस, क्लीनरूम, वेल्डिंग और खाद्य प्रसंस्करण सुविधाओं के लिए उच्च गुणवत्ता वाले पीवीसी स्ट्रिप कर्टन्स और सस्पेंशन हार्डवेयर का विश्वसनीय निर्माता है।'
               : 'Multi Enterprise is an established industrial manufacturer producing heavy-duty PVC strip curtains, sub-zero cold room thermal barriers, anti-static cleanroom partitions, and stainless steel suspension hardware.'}
@@ -92,22 +92,22 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
           {highlights.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div 
+              <div
                 key={idx}
-                className="bg-[#121316] border border-white/10 p-6 rounded-xl relative overflow-hidden flex flex-col justify-between"
+                className="bg-[#FFFFFF] border border-[#E2DDD2] p-6 rounded-xl relative overflow-hidden flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center mb-4">
-                    <Icon className="w-5 h-5 text-[#F27D26]" />
+                  <div className="w-10 h-10 rounded-lg bg-[#FAF8F5] border border-[#E2DDD2] flex items-center justify-center mb-4">
+                    <Icon className="w-5 h-5 text-[#0077ED]" />
                   </div>
-                  <h3 className="text-sm font-bold text-white font-mono uppercase mb-2">
+                  <h3 className="text-sm font-bold text-[#0F172A] font-mono uppercase mb-2">
                     {item.title}
                   </h3>
                   <p className="text-xs text-white/55 leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-white/10 flex items-center gap-1.5 text-[10px] font-mono text-[#F27D26]">
+                <div className="mt-4 pt-3 border-t border-[#E2DDD2] flex items-center gap-1.5 text-[10px] font-mono text-[#0077ED]">
                   <CheckCircle2 className="w-3 h-3" />
                   <span>Quality Verified</span>
                 </div>
@@ -117,20 +117,20 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
         </div>
 
         {/* Corporate Trust Banner */}
-        <div className="bg-gradient-to-r from-[#121316] via-[#181920] to-[#121316] border border-white/15 p-8 rounded-2xl shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div className="bg-[#FAF8F5] border border-[#D8D2C5] p-8 rounded-2xl shadow-xl flex flex-col lg:flex-row items-center justify-between gap-8">
           <div className="space-y-2 max-w-2xl">
             <div className="flex items-center gap-2">
-              <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 bg-[#F27D26]/20 text-[#F27D26] border border-[#F27D26]/30 rounded">
+              <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 bg-[#0077ED]/10 text-[#0077ED] border border-[#0077ED]/30 rounded font-bold">
                 FACTORY DIRECT ADVANTAGE
               </span>
-              <span className="text-xs font-mono text-white/40">EST. 1998</span>
+              <span className="text-xs font-mono text-[#64748B] font-bold">EST. 1998</span>
             </div>
-            <h3 className="text-xl sm:text-2xl font-bold text-white font-display uppercase tracking-tight">
-              {language === 'hi' 
+            <h3 className="text-xl sm:text-2xl font-bold text-[#0F172A] font-display uppercase tracking-tight">
+              {language === 'hi'
                 ? 'अपने दरवाजे के लिए सटीक विनिर्देश और तत्काल कोटेशन प्राप्त करें'
                 : 'Engineered for Heavy Forklifts, Walkways & Sub-Zero Storage'}
             </h3>
-            <p className="text-xs text-white/60 leading-relaxed font-light">
+            <p className="text-xs sm:text-sm text-[#475569] leading-relaxed font-normal">
               {language === 'hi'
                 ? 'हमारे 3D कॉन्फिगरेटर के साथ अपने उद्घाटन आकार का परीक्षण करें या अपने विनिर्देशों के मूल्यांकन के लिए नि:शुल्क फिजिकल स्वैच किट का अनुरोध करें।'
                 : 'Test your exact door opening in our interactive 3D configurator or request physical polymer swatches delivered directly to your facility.'}
@@ -142,7 +142,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
               <button
                 type="button"
                 onClick={onOpenConfigurator}
-                className="px-5 py-3 bg-[#F27D26] hover:bg-[#ff8c37] text-white font-mono font-bold text-xs uppercase tracking-wider rounded-lg transition-all shadow-lg cursor-pointer"
+                className="px-5 py-3 bg-[#0077ED] hover:bg-[#2B8EFF] text-white font-mono font-bold text-xs uppercase tracking-wider rounded-lg transition-all shadow-lg cursor-pointer"
               >
                 {language === 'hi' ? '3D कॉन्फिगरेटर खोलें' : 'Launch 3D Configurator'}
               </button>
@@ -151,7 +151,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
               <button
                 type="button"
                 onClick={onOpenSampleModal}
-                className="px-4 py-3 bg-white/5 hover:bg-white/10 text-white border border-white/20 font-mono font-bold text-xs uppercase tracking-wider rounded-lg transition-all cursor-pointer"
+                className="px-4 py-3 bg-[#FAF8F5] hover:bg-[#F4EFE6] text-[#0F172A] border border-[#CFC8BA] font-mono font-bold text-xs uppercase tracking-wider rounded-lg transition-all cursor-pointer"
               >
                 {language === 'hi' ? 'नि:शुल्क स्वैच किट' : 'Request Swatch Kit'}
               </button>

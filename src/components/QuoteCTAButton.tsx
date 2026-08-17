@@ -36,22 +36,22 @@ export const QuoteCTAButton: React.FC<QuoteCTAButtonProps> = ({
   // High contrast industrial variants with subtle ambient glows
   const variantStyles = {
     primary:
-      'bg-gradient-to-r from-[#F27D26] to-[#E52421] text-white border border-[#F27D26]/80 hover:border-white/50 shadow-[0_0_20px_rgba(242,125,38,0.35)] hover:shadow-[0_0_35px_rgba(242,125,38,0.7)]',
+      'bg-gradient-to-r from-[#0077ED] to-[#E52421] text-white border border-[#0077ED]/80 hover:border-[#EAE5DA]0 shadow-[0_0_20px_rgba(0, 119, 237,0.35)] hover:shadow-[0_0_35px_rgba(0, 119, 237,0.7)]',
     white:
-      'bg-white text-black border border-white/40 hover:bg-[#F27D26] hover:text-white hover:border-[#F27D26] shadow-lg hover:shadow-[0_0_30px_rgba(242,125,38,0.6)]',
+      'bg-[#FFFFFF] text-[#0F172A] border border-[#D8D2C5] hover:bg-[#0077ED] hover:text-white hover:border-[#0077ED] shadow-lg hover:shadow-[0_0_30px_rgba(0, 119, 237,0.6)]',
     dark:
-      'bg-[#121316] text-white border border-white/20 hover:border-[#F27D26] hover:bg-[#1A1C23] shadow-md hover:shadow-[0_0_25px_rgba(242,125,38,0.4)]',
+      'bg-[#FFFFFF] text-[#0F172A] border border-[#D8D2C5] hover:border-[#0077ED] hover:bg-[#F4EFE6] shadow-md hover:shadow-[0_0_25px_rgba(0, 119, 237,0.4)]',
     outline:
-      'bg-transparent text-[#F27D26] border border-[#F27D26]/60 hover:bg-[#F27D26]/10 hover:border-[#F27D26] shadow-sm hover:shadow-[0_0_25px_rgba(242,125,38,0.45)]',
+      'bg-transparent text-[#0077ED] border border-[#0077ED]/60 hover:bg-[#0077ED]/10 hover:border-[#0077ED] shadow-sm hover:shadow-[0_0_25px_rgba(0, 119, 237,0.45)]',
     hero:
-      'bg-gradient-to-r from-[#F27D26] via-[#E52421] to-[#F27D26] bg-[length:200%_auto] hover:bg-right text-white border border-white/30 shadow-[0_0_25px_rgba(242,125,38,0.5)] hover:shadow-[0_0_45px_rgba(242,125,38,0.85)]',
+      'bg-gradient-to-r from-[#0077ED] via-[#E52421] to-[#0077ED] bg-[length:200%_auto] hover:bg-right text-white border border-[#B8AF9F] shadow-[0_0_25px_rgba(0, 119, 237,0.5)] hover:shadow-[0_0_45px_rgba(0, 119, 237,0.85)]',
   }[variant];
 
   return (
     <div className="relative inline-flex group select-none">
       {/* Subtle Ambient Radial Glow on Hover */}
       <div 
-        className="absolute -inset-1 bg-gradient-to-r from-[#F27D26] via-[#E52421] to-[#F27D26] rounded-sm blur-md opacity-0 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none" 
+        className="absolute -inset-1 bg-gradient-to-r from-[#0077ED] via-[#E52421] to-[#0077ED] rounded-sm blur-md opacity-0 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none" 
         aria-hidden="true"
       />
 
@@ -68,7 +68,7 @@ export const QuoteCTAButton: React.FC<QuoteCTAButtonProps> = ({
           y: 1,
           transition: { type: 'spring', stiffness: 500, damping: 20 } 
         }}
-        className={`group relative overflow-hidden font-mono uppercase tracking-widest font-bold select-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#F27D26] focus:ring-offset-2 focus:ring-offset-[#0A0A0B] transition-all duration-300 ${sizeStyles} ${variantStyles} ${className}`}
+        className={`group relative overflow-hidden font-mono uppercase tracking-widest font-bold select-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#0077ED] focus:ring-offset-2 focus:ring-offset-[#0A0A0B] transition-all duration-300 ${sizeStyles} ${variantStyles} ${className}`}
         {...rest}
       >
         {/* Animated Light Sweep Shimmer on Hover */}

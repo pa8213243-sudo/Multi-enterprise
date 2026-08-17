@@ -197,8 +197,8 @@ export const ThreeMapLocationScene: React.FC<ThreeMapLocationSceneProps> = ({
     // Architectural Orange Accent Band (Multi Enterprise Color)
     const bandGeo = new THREE.BoxGeometry(2.45, 0.12, 1.85);
     const bandMat = new THREE.MeshStandardMaterial({
-      color: 0xf27d26,
-      emissive: 0xf27d26,
+      color: 0x0077ed,
+      emissive: 0x0077ed,
       emissiveIntensity: 0.4,
       roughness: 0.2
     });
@@ -242,23 +242,107 @@ export const ThreeMapLocationScene: React.FC<ThreeMapLocationSceneProps> = ({
     awningMesh.castShadow = true;
     buildingGroup.add(awningMesh);
 
-    // Rooftop Signboard "MULTI ENTERPRISE - FF-5"
-    const signGeo = new THREE.BoxGeometry(1.8, 0.35, 0.08);
+    // -------------------------------------------------------------
+    // Multi Enterprise Official Logo & Name Canvas Texture
+    // -------------------------------------------------------------
+    const createSignboardTexture = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = 1024;
+      canvas.height = 256;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return null;
+
+      // Crisp White / Light Cream Background
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, 1024, 256);
+
+      // Subtle Outer Accent Frame
+      ctx.strokeStyle = '#0077ED';
+      ctx.lineWidth = 12;
+      ctx.strokeRect(6, 6, 1012, 244);
+
+      // Draw Multi Enterprise Geometric Icon Emblem (Left)
+      const logoX = 95;
+      const logoY = 128;
+
+      // Blue Diamond (Top)
+      ctx.fillStyle = '#1D4ED8';
+      ctx.beginPath();
+      ctx.moveTo(logoX, logoY - 70);
+      ctx.lineTo(logoX + 22, logoY - 48);
+      ctx.lineTo(logoX, logoY - 26);
+      ctx.lineTo(logoX - 22, logoY - 48);
+      ctx.closePath();
+      ctx.fill();
+
+      // Red M-wings Chevron (Bottom)
+      ctx.fillStyle = '#E52421';
+      ctx.beginPath();
+      ctx.moveTo(logoX - 48, logoY - 18);
+      ctx.lineTo(logoX, logoY + 30);
+      ctx.lineTo(logoX + 48, logoY - 18);
+      ctx.lineTo(logoX + 36, logoY + 45);
+      ctx.lineTo(logoX, logoY + 12);
+      ctx.lineTo(logoX - 36, logoY + 45);
+      ctx.closePath();
+      ctx.fill();
+
+      // Company Name Typography
+      // "MULTI"
+      ctx.fillStyle = '#0F172A';
+      ctx.font = '900 82px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('MULTI', 180, 95);
+
+      // "ENTERPRISE"
+      ctx.fillStyle = '#0077ED';
+      ctx.font = '800 74px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+      ctx.fillText('ENTERPRISE', 460, 95);
+
+      // Address / Sub-label
+      ctx.fillStyle = '#475569';
+      ctx.font = 'bold 30px "JetBrains Mono", Courier, monospace';
+      ctx.fillText('FF-5, MADHURAM COMPLEX • AHMEDABAD', 185, 175);
+
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.generateMipmaps = true;
+      texture.minFilter = THREE.LinearMipmapLinearFilter;
+      texture.magFilter = THREE.LinearFilter;
+      return texture;
+    };
+
+    const signTexture = createSignboardTexture();
+
+    // Rooftop Signboard Backplate & Base Frame
+    const signGeo = new THREE.BoxGeometry(2.0, 0.48, 0.08);
     const signMat = new THREE.MeshStandardMaterial({
-      color: 0x0a0c10,
-      roughness: 0.3
+      color: 0xffffff,
+      map: signTexture || undefined,
+      roughness: 0.2,
+      metalness: 0.1
     });
     const signMesh = new THREE.Mesh(signGeo, signMat);
-    signMesh.position.set(0, 2.45, 0.7);
+    signMesh.position.set(0, 2.50, 0.72);
     signMesh.castShadow = true;
     buildingGroup.add(signMesh);
 
-    // Signboard Orange Border Light
-    const signBorderGeo = new THREE.BoxGeometry(1.85, 0.4, 0.04);
-    const signBorderMat = new THREE.MeshBasicMaterial({ color: 0xf27d26 });
+    // Signboard Illumination & Border Halo
+    const signBorderGeo = new THREE.BoxGeometry(2.06, 0.54, 0.04);
+    const signBorderMat = new THREE.MeshBasicMaterial({ color: 0x0077ed });
     const signBorder = new THREE.Mesh(signBorderGeo, signBorderMat);
-    signBorder.position.set(0, 2.45, 0.68);
+    signBorder.position.set(0, 2.50, 0.68);
     buildingGroup.add(signBorder);
+
+    // Entrance Marquee Sign (Right above entrance awning)
+    const entranceSignGeo = new THREE.BoxGeometry(1.4, 0.22, 0.04);
+    const entranceSignMat = new THREE.MeshStandardMaterial({
+      color: 0xffffff,
+      map: signTexture || undefined,
+      roughness: 0.2
+    });
+    const entranceSignMesh = new THREE.Mesh(entranceSignGeo, entranceSignMat);
+    entranceSignMesh.position.set(0, 0.62, 0.93);
+    buildingGroup.add(entranceSignMesh);
 
     // Rooftop HVAC Equipment
     const hvacGeo = new THREE.BoxGeometry(0.6, 0.4, 0.6);
@@ -481,7 +565,7 @@ export const ThreeMapLocationScene: React.FC<ThreeMapLocationSceneProps> = ({
     // Ground GPS Pulse Ring
     const ringGeo = new THREE.RingGeometry(0.2, 0.32, 32);
     const ringMat = new THREE.MeshBasicMaterial({
-      color: 0xf27d26,
+      color: 0x0077ed,
       side: THREE.DoubleSide,
       transparent: true,
       opacity: 0.8
@@ -506,7 +590,7 @@ export const ThreeMapLocationScene: React.FC<ThreeMapLocationSceneProps> = ({
     vanGroup.add(vanMesh);
 
     const vanCabGeo = new THREE.BoxGeometry(0.35, 0.34, 0.4);
-    const vanCabMat = new THREE.MeshStandardMaterial({ color: 0xf27d26 });
+    const vanCabMat = new THREE.MeshStandardMaterial({ color: 0x0077ed });
     const vanCab = new THREE.Mesh(vanCabGeo, vanCabMat);
     vanCab.position.set(0.5, 0.18, 0);
     vanGroup.add(vanCab);
@@ -659,7 +743,7 @@ export const ThreeMapLocationScene: React.FC<ThreeMapLocationSceneProps> = ({
   };
 
   return (
-    <div className={`relative overflow-hidden bg-[#0A0C10] border border-white/15 rounded-xl shadow-2xl ${className}`}>
+    <div className={`relative overflow-hidden bg-[#F8F6F0] border border-[#D8D2C5] rounded-xl shadow-2xl ${className}`}>
       {/* Three.js Canvas Container */}
       <div 
         ref={containerRef} 
@@ -669,18 +753,18 @@ export const ThreeMapLocationScene: React.FC<ThreeMapLocationSceneProps> = ({
 
       {/* Top HUD: Location Info & Night/Day Mode */}
       <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
-        <div className="flex items-center gap-2 bg-black/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/15 shadow-xl pointer-events-auto">
-          <div className="w-2.5 h-2.5 rounded-full bg-[#F27D26] animate-ping" />
+        <div className="flex items-center gap-2 bg-[#0F172A]/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-[#D8D2C5] shadow-xl pointer-events-auto">
+          <div className="w-2.5 h-2.5 rounded-full bg-[#0077ED] animate-ping" />
           <span className="text-xs font-mono font-bold text-white uppercase tracking-wider">
             3D HQ Map • Ahmedabad
           </span>
         </div>
 
-        <div className="flex items-center gap-1.5 bg-black/85 backdrop-blur-md p-1 rounded-lg border border-white/15 shadow-xl pointer-events-auto">
+        <div className="flex items-center gap-1.5 bg-[#0F172A]/85 backdrop-blur-md p-1 rounded-lg border border-[#D8D2C5] shadow-xl pointer-events-auto">
           <button
             type="button"
             onClick={() => setIsNightMode(!isNightMode)}
-            className="p-1.5 text-white/70 hover:text-white hover:bg-white/10 rounded transition-colors cursor-pointer"
+            className="p-1.5 text-[#475569] hover:text-[#0077ED] hover:bg-[#F4EFE6] rounded transition-colors cursor-pointer"
             title={isNightMode ? 'Switch to Daylight' : 'Switch to Night Lighting'}
           >
             {isNightMode ? <Sun className="w-3.5 h-3.5 text-yellow-400" /> : <Moon className="w-3.5 h-3.5 text-sky-400" />}
@@ -688,7 +772,7 @@ export const ThreeMapLocationScene: React.FC<ThreeMapLocationSceneProps> = ({
           <button
             type="button"
             onClick={handleResetCamera}
-            className="p-1.5 text-white/70 hover:text-white hover:bg-white/10 rounded transition-colors cursor-pointer"
+            className="p-1.5 text-[#475569] hover:text-[#0077ED] hover:bg-[#F4EFE6] rounded transition-colors cursor-pointer"
             title="Reset 3D Camera"
           >
             <RotateCcw className="w-3.5 h-3.5" />
@@ -701,21 +785,21 @@ export const ThreeMapLocationScene: React.FC<ThreeMapLocationSceneProps> = ({
         <button
           type="button"
           onClick={handleInteractWithCharacter}
-          className="w-full text-left bg-gradient-to-r from-[#181B22]/95 to-[#232733]/95 hover:border-[#F27D26] border border-white/20 p-3 rounded-xl shadow-2xl backdrop-blur-xl transition-all cursor-pointer group"
+          className="w-full text-left bg-gradient-to-r from-[#181B22]/95 to-[#232733]/95 hover:border-[#0077ED] border border-[#CFC8BA] p-3 rounded-xl shadow-2xl backdrop-blur-xl transition-all cursor-pointer group"
         >
           <div className="flex items-center gap-2 mb-1">
             <span className="text-sm">👷‍♂️</span>
-            <span className="text-[11px] font-mono font-bold text-[#F27D26] uppercase">
+            <span className="text-[11px] font-mono font-bold text-[#0077ED] uppercase">
               Multi Enterprise Guide
             </span>
             <span className="text-[9px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.2 rounded font-mono">
               Online
             </span>
           </div>
-          <p className="text-xs text-white/90 font-sans leading-snug">
+          <p className="text-xs text-[#1E293B] font-sans leading-snug">
             "{characterMessage}"
           </p>
-          <div className="mt-1.5 text-[9px] font-mono text-white/40 group-hover:text-[#F27D26] flex items-center gap-1 transition-colors">
+          <div className="mt-1.5 text-[9px] font-mono text-[#64748B] group-hover:text-[#0077ED] flex items-center gap-1 transition-colors">
             <Smile className="w-3 h-3" />
             <span>Click to wave back or talk</span>
           </div>
@@ -723,12 +807,12 @@ export const ThreeMapLocationScene: React.FC<ThreeMapLocationSceneProps> = ({
       </div>
 
       {/* Bottom Bar: Direct Google Maps Action with Coordinates */}
-      <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between bg-black/90 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-white/20 shadow-2xl pointer-events-auto">
-        <div className="flex items-center gap-2 text-white">
+      <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between bg-[#FAF8F5] backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-[#CFC8BA] shadow-2xl pointer-events-auto">
+        <div className="flex items-center gap-2 text-[#0F172A]">
           <MapPin className="w-4 h-4 text-red-500 flex-shrink-0 animate-bounce" />
           <div className="text-[11px] font-mono">
-            <span className="font-bold text-white">FF-5, Madhuram Complex</span>
-            <span className="text-white/50 hidden sm:inline"> • Subhash Bridge, Ahmedabad</span>
+            <span className="font-bold text-[#0F172A]">FF-5, Madhuram Complex</span>
+            <span className="text-[#64748B] hidden sm:inline"> • Subhash Bridge, Ahmedabad</span>
           </div>
         </div>
 

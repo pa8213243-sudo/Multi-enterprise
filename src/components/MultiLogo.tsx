@@ -5,6 +5,7 @@ interface MultiLogoProps {
   size?: number | string;
   variant?: 'icon' | 'full' | 'compact' | 'hero';
   showEst?: boolean;
+  textColor?: 'dark' | 'white' | 'auto';
 }
 
 export const MultiLogoIcon: React.FC<{ className?: string; size?: number | string }> = ({ 
@@ -54,7 +55,10 @@ export const MultiLogo: React.FC<MultiLogoProps> = ({
   size = 28,
   variant = 'full',
   showEst = true,
+  textColor = 'dark',
 }) => {
+  const isWhiteText = textColor === 'white';
+
   if (variant === 'icon') {
     return <MultiLogoIcon size={size} className={className} />;
   }
@@ -62,24 +66,24 @@ export const MultiLogo: React.FC<MultiLogoProps> = ({
   if (variant === 'hero') {
     return (
       <div className={`inline-flex items-center gap-3 sm:gap-3.5 group cursor-pointer select-none ${className}`}>
-        <div className="p-2 sm:p-2.5 rounded-lg bg-[#121316] border border-white/15 flex items-center justify-center group-hover:border-[#F27D26]/60 group-hover:bg-[#181a20] transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.6)] group-hover:shadow-[0_0_20px_rgba(242,125,38,0.25)]">
+        <div className="p-2 sm:p-2.5 rounded-lg bg-[#FFFFFF] border border-[#D8D2C5] flex items-center justify-center group-hover:border-[#0077ED]/60 group-hover:bg-[#F4EFE6] transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.6)] group-hover:shadow-[0_0_20px_rgba(0,119,237,0.25)]">
           <MultiLogoIcon size={typeof size === 'number' ? size : 34} />
         </div>
         <div className="flex flex-col">
           <div className="flex items-baseline gap-1.5 sm:gap-2 leading-none">
-            <span className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tight text-white font-display group-hover:text-white transition-colors">
+            <span className={`text-xl sm:text-2xl lg:text-3xl font-black tracking-tight ${isWhiteText ? 'text-white' : 'text-[#0F172A]'} font-display group-hover:text-[#0077ED] transition-colors`}>
               MULTI
             </span>
-            <span className="text-[10px] sm:text-xs lg:text-sm font-bold tracking-[0.2em] sm:tracking-[0.25em] uppercase text-[#F27D26] font-mono">
+            <span className="text-[10px] sm:text-xs lg:text-sm font-bold tracking-[0.2em] sm:tracking-[0.25em] uppercase text-[#0077ED] font-mono">
               ENTERPRISE
             </span>
           </div>
           {showEst && (
             <div className="flex items-center gap-2 mt-1">
-              <span className="text-[8px] sm:text-[9px] font-mono tracking-wider sm:tracking-widest uppercase text-white/50">
+              <span className={`text-[8px] sm:text-[9px] font-mono tracking-wider sm:tracking-widest uppercase ${isWhiteText ? 'text-cyan-200/80' : 'text-[#64748B]'}`}>
                 INDUSTRIAL PVC BARRIERS
               </span>
-              <span className="text-[7.5px] sm:text-[8px] font-mono px-1.5 py-0.5 rounded bg-[#F27D26]/20 text-[#F27D26] border border-[#F27D26]/30">
+              <span className="text-[7.5px] sm:text-[8px] font-mono px-1.5 py-0.5 rounded bg-[#0077ED]/20 text-[#0077ED] border border-[#0077ED]/30 font-bold">
                 EST. 1998
               </span>
             </div>
@@ -90,26 +94,31 @@ export const MultiLogo: React.FC<MultiLogoProps> = ({
   }
 
   return (
-    <div className={`flex items-center gap-2 sm:gap-2.5 lg:gap-3 group cursor-pointer select-none shrink-0 ${className}`}>
-      {/* Precision Brand Icon Container */}
-      <div className="p-1 sm:p-1.5 rounded-md bg-[#121316] border border-white/15 flex items-center justify-center group-hover:border-[#F27D26]/60 group-hover:bg-[#181a20] transition-all duration-300 shadow-md group-hover:shadow-[0_0_15px_rgba(242,125,38,0.2)]">
-        <MultiLogoIcon size={typeof size === 'number' ? size : 26} />
+    <div className={`flex items-center gap-3 sm:gap-3.5 group cursor-pointer select-none shrink-0 ${className}`}>
+      {/* Precision Brand Icon Container (1.5x Scaled) */}
+      <div className="p-2 sm:p-2.5 rounded-xl bg-[#FFFFFF] border border-[#D8D2C5] flex items-center justify-center group-hover:border-[#0077ED]/60 group-hover:bg-[#F4EFE6] transition-all duration-300 shadow-lg group-hover:shadow-[0_0_20px_rgba(0,119,237,0.3)]">
+        <MultiLogoIcon size={typeof size === 'number' ? (size < 36 ? 38 : size) : 38} />
       </div>
 
-      {/* Typography */}
+      {/* Typography (1.5x Scaled) */}
       <div className="flex flex-col justify-center">
-        <div className="flex items-baseline gap-1 sm:gap-1.5 leading-none">
-          <span className="text-base sm:text-lg lg:text-xl font-black tracking-tight text-white group-hover:text-white transition-colors font-display">
+        <div className="flex items-baseline gap-1.5 sm:gap-2 leading-none">
+          <span className={`text-xl sm:text-2xl lg:text-[26px] font-black tracking-tight ${isWhiteText ? 'text-white' : 'text-[#0F172A]'} group-hover:text-[#0077ED] transition-colors font-display`}>
             MULTI
           </span>
-          <span className="text-[9px] sm:text-[10px] lg:text-[11px] font-bold tracking-[0.2em] sm:tracking-[0.25em] uppercase text-[#F27D26] font-mono">
+          <span className="text-xs sm:text-sm lg:text-[15px] font-bold tracking-[0.25em] uppercase text-[#0077ED] font-mono">
             ENTERPRISE
           </span>
         </div>
         {showEst && (
-          <span className="text-[7px] sm:text-[8px] font-mono tracking-wider sm:tracking-widest uppercase text-white/50 mt-0.5 whitespace-nowrap">
-            PREMIUM INDUSTRIAL PVC • EST. 1998
-          </span>
+          <div className="flex items-center gap-2 mt-1 whitespace-nowrap">
+            <span className={`text-[9px] sm:text-[10px] lg:text-[10.5px] font-mono tracking-wider sm:tracking-widest uppercase ${isWhiteText ? 'text-cyan-200/80' : 'text-[#475569]'}`}>
+              PREMIUM INDUSTRIAL PVC
+            </span>
+            <span className="text-[8px] sm:text-[9px] font-mono px-1.5 py-0.2 rounded bg-[#0077ED]/20 text-[#0077ED] border border-[#0077ED]/30 font-bold">
+              EST. 1998
+            </span>
+          </div>
         )}
       </div>
     </div>
